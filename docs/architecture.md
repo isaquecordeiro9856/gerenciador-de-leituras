@@ -1,6 +1,7 @@
 # Especificação Técnica (Architecture)
 
 ## Modelo de Dados (Diagrama Mermaid)
+
 Abaixo está o mapeamento das entidades que serão utilizadas na API Fake (JSON Server) e como elas se relacionam. Teremos a entidade "LIVRO" e a entidade "AVALIACAO".
 
 ```mermaid
