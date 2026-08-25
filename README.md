@@ -1,4 +1,4 @@
-```md
+
 # BookTracker - Gerenciador de Leituras
 
 **Autor:** Isaque Cordeiro
