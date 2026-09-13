@@ -7,7 +7,8 @@ O BookTracker é uma aplicação web responsiva para gerenciamento de biblioteca
 
 ## 📚 Documentação do Projeto
 * 📄 [Product Requirements Document (PRD)](docs/prd.md) - Escopo, atores, histórias de usuário e regras de negócio.
-* 🛠️ [Especificação Técnica](docs/architecture.md) - Design Tokens, modelo de dados (DER) e contratos da API.
+* 🛠️ [Especificação Técnica](docs/spec.md) - Versões das tecnologias e contrato da API pública.
+* 🏗️ [Arquitetura e Design System](docs/architecture.md) - Modelo de dados (DER), API fake e Design Tokens.
 
 ## 🎨 Design
 * 🎨 Design System: [`docs/architecture.md#design-tokens`](docs/architecture.md)
@@ -21,13 +22,30 @@ O BookTracker é uma aplicação web responsiva para gerenciamento de biblioteca
 ## 💻 Tecnologias e Dependências
 | Tecnologia | Uso |
 |---|---|
-| **Bootstrap 5** | Framework CSS: grid responsivo, navbar, cards, modais, formulários. |
+| **Bootstrap 5.3.8** | Framework CSS: grid responsivo, navbar, cards, modais, formulários. |
 | **JavaScript (ES6+)** | Lógica de negócio, DOM e requisições assíncronas (`fetch`). |
 | **jQuery** | Manipulação do DOM, eventos e animações. |
 | **jQuery Mask Plugin** | Máscara de entrada no campo ISBN. |
 | **Sass (SCSS)** | Variáveis, mixins e funções para modularizar o CSS. |
 | **JSON Server** | API Fake para simular um backend REST. |
-| **Google Books API** | API pública real para busca de livros por ISBN. |
+| **Google Books API v1** | API pública real para busca de livros por ISBN. |
+
+### Escolha do framework CSS e da API pública
+
+O projeto utiliza **Bootstrap 5.3.8** porque seu grid mobile-first e seus componentes prontos (como cards, formulários e modais) atendem às telas planejadas e facilitam adaptar a estante de livros a celulares, tablets e desktops. A versão 5 não depende de jQuery para os componentes interativos. O projeto Bootstrap segue ativo, publica a série 5.3 e usa licença MIT, adequada ao uso neste projeto. [Documentação e versões](https://getbootstrap.com/docs/versions/) · [Repositório e releases](https://github.com/twbs/bootstrap/releases) · [Licença MIT](https://getbootstrap.com/docs/5.3/about/license/) · [Migração para Bootstrap 5](https://getbootstrap.com/docs/5.3/migration/).
+
+A **Google Books API v1** agrega valor ao cadastro: uma busca pelo ISBN pode preencher automaticamente título, autores e capa, reduzindo a digitação manual. A API aceita consultas pelo parâmetro `q` com o operador `isbn:`. [Documentação oficial da busca](https://developers.google.com/books/docs/v1/using).
+
+## Checklist da Atividade 06
+
+- [ ] Configurei minha identidade no Git.
+- [ ] Clonei o repositório do meu projeto.
+- [x] Inicializei o NPM (`package.json`).
+- [x] Configurei o `.gitignore` para ignorar `node_modules` e `.env`.
+- [x] Instalei `jquery` e `uuid` como dependências de produção.
+- [x] Instalei `gh-pages` como dependência de desenvolvimento.
+- [ ] Fiz commit e push para a branch `main`.
+- [ ] Salvei screenshots do terminal e gerei o PDF de entrega.
 
 ## ✅ Checklist | Indicadores de Desempenho (ID) dos Resultados de Aprendizagem (RA)
 

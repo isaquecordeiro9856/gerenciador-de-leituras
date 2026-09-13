@@ -4,13 +4,13 @@
 
 | Tecnologia | Uso na Aplicação |
 |---|---|
-| **Bootstrap 5** | Framework CSS: sistema de Grid/Flexbox responsivo e componentes (navbar, cards, modais, formulários). |
+| **Bootstrap 5.3.8** | Framework CSS: sistema de Grid/Flexbox responsivo e componentes (navbar, cards, modais, formulários). |
 | **JavaScript Vanilla (ES6+)** | Lógica de negócio, manipulação do DOM e requisições assíncronas (`fetch`/`async`/`await`). |
 | **jQuery** | Manipulação do DOM, eventos e animações. |
 | **jQuery Mask Plugin** | Formatação de campos de entrada (máscara no campo ISBN). |
 | **Sass (SCSS)** | Modularização do CSS com variáveis, mixins e funções. |
 | **JSON Server** | API Fake para persistência das entidades Livro e Avaliação. |
-| **Google Books API** | API pública real para busca automática de dados dos livros por ISBN. |
+| **Google Books API v1** | API pública real para busca automática de dados dos livros por ISBN. |
 | **GitHub Pages** | Hospedagem/Deploy da aplicação (dependências via CDN). |
 
 ## APIs Consumidas
