@@ -13,25 +13,41 @@ Aplicação web responsiva para organizar uma biblioteca pessoal, acompanhar o s
 
 ## 🎨 Protótipo e Design
 
-- **Ferramenta:** Google Stitch (WEB, abordagem mobile-first).
-- **Protótipo oficial:** Google Stitch — versões Mobile e Desktop, com fluxo navegável.
+- **Ferramenta:** Google Stitch (WEB, mobile-first).
+- **Protótipo oficial:** conjunto final APPROVED com Mobile e Desktop.
 - **Link compartilhável:** https://stitch.google.com/u/1/projects/18205289966603005290?pli=1
-- **Design System:** [docs/architecture.md#7-design-system](docs/architecture.md#7-design-system)
+- **Contrato visual:** [docs/design-brief.md](docs/design-brief.md)
+- **Design System técnico:** [docs/architecture.md#7-design-system](docs/architecture.md#7-design-system)
 
 ### Direção visual
 
-O novo BookTracker seguirá uma linguagem editorial contemporânea: interface limpa, acolhedora e profissional, com capas de livros como principal elemento visual, fundo neutro quente, verde profundo como cor de identidade e detalhes em terracota.
+O BookTracker usa uma linguagem de **biblioteca pessoal contemporânea**: editorial, limpa, acolhedora e profissional. Capas de livros são o principal elemento visual; a interface usa fundo neutro quente, verde profundo como identidade e terracota como acento.
+
+### Conjunto final aprovado
+
+**Mobile:** M1 Estante populada · M2 Estante vazia · M3 Offcanvas · M4 Cadastro/Edição normal · M5 Validação/API · M6 Detalhes Lido · M7 Detalhes não concluído · M8 Modal de exclusão · M9 Feedback/Loading.
+
+**Desktop:** D1 Estante populada · D2 Estante vazia · D4 Cadastro/Edição normal · D5 Validação/API · D6 Detalhes Lido · D7 Detalhes não concluído · D8 Modal de exclusão.
+
+Os estados acima não criam páginas adicionais: o produto continua com três páginas HTML principais.
+
+### Protótipos de apresentação
+
+- **BookTracker Mobile Prototype** — inicia em M1.
+- **BookTracker Desktop Prototype** — inicia em D1.
+
+Os fluxos cobrem Estante → Adicionar/Editar → Detalhes → Exclusão/retorno e os estados necessários de validação, vazio, feedback e loading.
 
 ### Componentes Bootstrap planejados no protótipo
-
-Pelo menos estes componentes serão identificados visualmente para futura implementação:
 
 1. Navbar/Offcanvas;
 2. Cards;
 3. Modal;
 4. Forms/Input Group;
 5. Buttons;
-6. Badges.
+6. Badges;
+7. Alerts/Toasts;
+8. Select/Dropdown.
 
 ## 🧭 Páginas planejadas
 
@@ -137,7 +153,7 @@ Os comandos para JSON Server, Sass, lint, desenvolvimento e deploy serão adicio
 
 ## 🗺️ Roadmap
 
-- **Fundação / 1ª Entrega:** documentação ✅ · protótipo Mobile/Desktop navegável ✅ · vídeo ⏳
+- **Fundação / 1ª Entrega:** documentação ✅ · Design System ✅ · protótipo final Mobile/Desktop navegável ✅ · vídeo ⏳
 - **Atividade 06:** configuração Node/NPM/Git ✅ · evidências/PDF ⏳
 - **Entrega 2:** HTML/CSS responsivo com Bootstrap ⏳
 - **Entrega 3:** JavaScript, Web Storage, APIs e deploy ⏳
