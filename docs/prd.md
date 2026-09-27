@@ -1,100 +1,186 @@
 # Product Requirements Document (PRD)
 
-## Identificação
-**Autor:** Isaque Cordeiro
-**Projeto:** BookTracker - Gerenciador de Leituras
+## 1. Identificação
 
-## Descrição
-O BookTracker é uma aplicação web responsiva voltada para o gerenciamento de uma biblioteca pessoal. O sistema resolve o problema da desorganização no hábito de leitura, permitindo que o usuário cadastre livros, organize-os por status (Quero Ler, Lendo, Lido) e registre avaliações das obras finalizadas.
+- **Autor:** Isaque Cordeiro
+- **Projeto:** BookTracker — Gerenciador de Leituras
+- **Tipo:** Aplicação web responsiva para gerenciamento de biblioteca pessoal
 
-## Público-Alvo
-Leitores amadores e ávidos (jovens e adultos) que desejam organizar sua biblioteca pessoal, acompanhar o progresso das leituras em andamento e registrar suas impressões sobre as obras concluídas.
+## 2. Visão do Produto
 
-## Atores do Sistema
-* **Leitor:** Pessoa que utiliza a aplicação para gerenciar seus próprios livros e leituras.
-* **Usuário:** Pessoa que possui conta na aplicação, com login e senha, para acessar sua estante pessoal de livros.
+O **BookTracker** ajuda leitores a organizar uma biblioteca pessoal digital de forma simples e visual. A aplicação permite cadastrar livros, localizar dados de uma obra pelo ISBN, acompanhar o status da leitura e registrar uma avaliação após a conclusão.
 
-## Regras de Negócio
-* **RN01:** Todo livro cadastrado deve possuir obrigatoriamente ISBN, título, autor e status de leitura.
-* **RN02:** O status de leitura aceita apenas os valores: `Quero Ler`, `Lendo` ou `Lido`.
-* **RN03:** O campo ISBN deve conter entre 10 e 13 dígitos numéricos (com ou sem hífen) e não pode estar duplicado na estante do usuário.
-* **RN04:** Ao informar um ISBN válido no cadastro, o sistema deve consultar a Google Books API para preencher automaticamente título, autor e capa; se o livro não for encontrado, o usuário poderá preencher os dados manualmente.
-* **RN05:** Avaliações (nota e resenha) só podem ser registradas para livros com status `Lido`.
-* **RN06:** A nota da avaliação deve ser um número inteiro entre 1 e 5 estrelas.
-* **RN07:** Cada livro pode ter no máximo uma avaliação associada.
-* **RN08:** Os dados da estante devem ser persistidos na API Fake (JSON Server); preferências de exibição (ex: filtro ativo) devem ser mantidas no Web Storage.
-* **RN09:** A exclusão de um livro deve remover também a avaliação a ele associada.
-* **RN10:** Todo usuário deve possuir obrigatoriamente nome, e-mail e senha para se cadastrar no sistema.
-* **RN11:** O e-mail deve ser único no sistema (não pode haver dois usuários com o mesmo e-mail).
-* **RN12:** A senha deve ter no mínimo 6 caracteres.
-* **RN13:** O usuário só pode acessar e gerenciar seus próprios livros (cada livro está vinculado a um único usuário).
-* **RN14:** Ao cadastrar um livro, o sistema deve associá-lo automaticamente ao usuário logado.
-* **RN15:** O usuário deve estar logado para acessar funcionalidades da aplicação (cadastro, edição, exclusão, avaliação).
+O projeto foi deliberadamente mantido enxuto para priorizar uma implementação correta e demonstrável dos conteúdos da disciplina: layout responsivo, Framework CSS, formulários, validações, Web Storage, bibliotecas JavaScript, API fake, API pública e manipulação dinâmica do DOM.
 
-## Histórias de Usuário (Escopo)
+## 3. Problema
 
-### HU01 - Cadastro de Usuário
-* **Como** Leitor,
-* **Eu quero** me cadastrar no sistema com nome, e-mail e senha,
-* **Para que** eu possa ter minha própria estante de livros pessoal.
+Leitores frequentemente distribuem suas anotações entre listas, aplicativos de notas e memória, dificultando responder perguntas simples como quais livros ainda querem ler, o que estão lendo agora, quais obras concluíram e o que acharam de cada leitura.
 
-**Critérios de Aceitação:**
-- [ ] DADO que o usuário está na tela de cadastro, QUANDO informa nome, e-mail e senha válidos, ENTAO o sistema cria sua conta e redireciona para a tela de login.
-- [ ] DADO que o e-mail já está cadastrado no sistema, QUANDO o usuário tenta se cadastrar, ENTAO o sistema exibe mensagem de erro: "Este e-mail já está em uso".
-- [ ] DADO que a senha tem menos de 6 caracteres, QUANDO o usuário tenta se cadastrar, ENTAO o sistema exibe mensagem de erro: "A senha deve ter no mínimo 6 caracteres".
-- [ ] DADO que o nome ou e-mail estão em branco, QUANDO o usuário tenta se cadastrar, ENTAO o sistema exibe mensagem de erro: "Preencha todos os campos obrigatórios".
+O BookTracker centraliza essas informações em uma estante digital acessível pelo navegador.
 
-### HU02 - Login de Usuário
-* **Como** Leitor,
-* **Eu quero** fazer login no sistema com e-mail e senha,
-* **Para que** eu possa acessar minha estante de livros.
+## 4. Público-alvo
 
-**Critérios de Aceitação:**
-- [ ] DADO que o usuário está na tela de login, QUANDO informa e-mail e senha corretos, ENTAO o sistema autentica e redireciona para a estante.
-- [ ] DADO que o e-mail não está cadastrado, QUANDO o usuário tenta fazer login, ENTAO o sistema exibe mensagem de erro: "E-mail ou senha incorretos".
-- [ ] DADO que a senha está incorreta, QUANDO o usuário tenta fazer login, ENTAO o sistema exibe mensagem de erro: "E-mail ou senha incorretos".
-- [ ] DADO que os campos estão em branco, QUANDO o usuário tenta fazer login, ENTAO o sistema exibe mensagem de erro: "Preencha todos os campos".
+Leitores jovens e adultos que desejam organizar suas leituras sem a complexidade de uma rede social literária ou de um sistema de biblioteca profissional.
 
-### HU03 - Buscar Livro por ISBN
-* **Como** Leitor,
-* **Eu quero** buscar um livro pelo ISBN (via Google Books API),
-* **Para que** o sistema preencha a capa, título e autor automaticamente, poupando meu tempo de digitação.
+## 5. Ator do Sistema
 
-**Critérios de Aceitação:**
-- [ ] DADO que o usuário informou um ISBN válido (10 ou 13 dígitos), QUANDO o sistema consulta a Google Books API, ENTAO os campos título, autor e capa são preenchidos automaticamente.
-- [ ] DADO que o ISBN informado não existe na Google Books API, QUANDO o sistema recebe a resposta vazia, ENTAO exibe mensagem: "Livro não encontrado. Preencha os dados manualmente."
-- [ ] DADO que o ISBN já está cadastrado na estante do usuário, QUANDO o sistema valida, ENTAO exibe mensagem: "Este livro já está na sua estante".
-- [ ] DADO que houve falha de rede, QUANDO o sistema tenta consultar a API, ENTAO exibe mensagem: "Erro de conexão. Verifique sua internet."
+### Leitor
 
-### HU04 - Visualizar Coleção em Cards
-* **Como** Leitor,
-* **Eu quero** visualizar minha coleção de livros em formato de cards,
-* **Para que** eu possa identificar rapidamente as obras pela capa e pelo status.
+Pessoa que utiliza a aplicação para cadastrar, consultar, organizar, editar e avaliar os livros da própria coleção local do projeto.
 
-**Critérios de Aceitação:**
-- [ ] DADO que o usuário possui livros cadastrados, QUANDO acessa a estante, ENTAO visualiza cards com capa, título e status de leitura.
-- [ ] DADO que o usuário possui livros em diferentes status, QUANDO visualiza a estante, ENTAO os cards são exibidos com cores diferentes para cada status (Quero Ler, Lendo, Lido).
-- [ ] DADO que o usuário não possui livros, QUANDO acessa a estante, ENTAO exibe mensagem: "Sua estante está vazia. Comece cadastrando um livro!"
-- [ ] DADO que existem livros cadastrados, QUANDO o usuário aplica filtro por status, ENTAO apenas os livros do status selecionado são exibidos.
+> O escopo acadêmico não inclui autenticação de usuários. O foco está nas funcionalidades de front-end e integração exigidas pela disciplina.
 
-### HU05 - Adicionar Avaliação
-* **Como** Leitor,
-* **Eu quero** adicionar uma nota e uma resenha aos livros com status "Lido",
-* **Para que** eu possa manter um histórico do que achei de cada obra.
+## 6. Escopo Funcional
 
-**Critérios de Aceitação:**
-- [ ] DADO que o livro possui status "Lido", QUANDO o usuário preenche nota (1-5) e resenha, ENTAO a avaliação é salva associada ao livro.
-- [ ] DADO que o livro possui status diferente de "Lido", QUANDO o usuário tenta avaliar, ENTAO o botão de avaliação fica desabilitado.
-- [ ] DADO que o livro já possui avaliação, QUANDO o usuário tenta adicionar outra, ENTAO exibe mensagem: "Este livro já possui avaliação. Você pode editá-la."
-- [ ] DADO que a nota está fora do intervalo 1-5, QUANDO o usuário tenta salvar, ENTAO exibe mensagem de erro: "A nota deve ser entre 1 e 5 estrelas".
+A aplicação terá três páginas HTML principais:
 
-### HU06 - Editar ou Excluir Livro
-* **Como** Leitor,
-* **Eu quero** editar o status da leitura ou excluir um livro da minha estante,
-* **Para que** minha coleção virtual reflita a realidade.
+1. **Estante (index.html)**
+   - lista de livros em cards;
+   - busca textual;
+   - filtros por status;
+   - ordenação;
+   - acesso ao detalhe de cada livro;
+   - atalho para cadastrar um novo livro.
 
-**Critérios de Aceitação:**
-- [ ] DADO que o usuário seleciona um livro, QUANDO altera o status de leitura, ENTAO a mudança é refletida imediatamente na estante.
-- [ ] DADO que o usuário deseja excluir um livro, QUANDO confirma a exclusão, ENTAO o livro e sua avaliação associada são removidos do sistema.
-- [ ] DADO que o usuário deseja excluir um livro, QUANDO clica em exibir, ENTAO o sistema exibe modal de confirmação: "Tem certeza que deseja excluir este livro?"
-- [ ] DADO que o usuário edita um livro com avaliação, QUANDO altera o status para "Quero Ler" ou "Lendo", ENTAO a avaliação associada é removida automaticamente.
+2. **Cadastro/Edição (livro-form.html)**
+   - busca de livro por ISBN na Google Books API;
+   - preenchimento automático quando houver resultado;
+   - preenchimento manual como alternativa;
+   - validação dos campos;
+   - seleção do status de leitura;
+   - criação e edição de livros na API fake.
+
+3. **Detalhes (livro.html)**
+   - capa, título, autores, ISBN e status;
+   - edição e exclusão do livro;
+   - cadastro/edição da avaliação para livros concluídos;
+   - nota de 1 a 5 estrelas e resenha;
+   - modal de confirmação para ações destrutivas.
+
+Além das páginas, o protótipo deverá incluir uma referência visual do Design System e dos principais componentes planejados do Bootstrap.
+
+## 7. Regras de Negócio
+
+- **RN01 — Campos obrigatórios:** todo livro deve possuir ISBN, título, autor(es) e status de leitura.
+- **RN02 — Status permitidos:** o status deve ser um entre "quero-ler", "lendo" ou "lido".
+- **RN03 — ISBN:** o ISBN deve ser normalizado para conter somente dígitos e possuir 10 ou 13 dígitos.
+- **RN04 — ISBN único:** um mesmo ISBN não pode ser cadastrado duas vezes na coleção.
+- **RN05 — Busca externa:** ao solicitar busca por ISBN, a aplicação consulta a Google Books API e, quando houver correspondência, sugere título, autor(es) e capa.
+- **RN06 — Fallback manual:** se a API pública não encontrar a obra ou estiver indisponível, o leitor poderá continuar o cadastro manualmente.
+- **RN07 — Avaliação:** somente livros com status "lido" podem possuir avaliação.
+- **RN08 — Nota:** a nota deve ser um número inteiro entre 1 e 5.
+- **RN09 — Avaliação única:** cada livro pode possuir no máximo uma avaliação.
+- **RN10 — Exclusão:** excluir um livro deve excluir também a avaliação associada, quando existir.
+- **RN11 — Mudança de status:** se um livro avaliado deixar o status "lido", a aplicação deve solicitar confirmação antes de remover a avaliação incompatível.
+- **RN12 — Persistência principal:** livros e avaliações são persistidos pela API fake baseada em JSON Server.
+- **RN13 — Preferências locais:** filtro, ordenação e modo de visualização podem ser persistidos no localStorage.
+- **RN14 — Falhas de integração:** erros de rede ou respostas inválidas das APIs devem gerar feedback legível sem apagar os dados já digitados pelo leitor.
+- **RN15 — Feedback de interface:** operações de cadastro, edição e exclusão devem apresentar confirmação visual de sucesso ou erro.
+
+## 8. Histórias de Usuário
+
+### HU01 — Visualizar e organizar a estante
+
+**Como** leitor,  
+**eu quero** visualizar, buscar, filtrar e ordenar meus livros,  
+**para que** eu encontre rapidamente uma obra e acompanhe o estado das minhas leituras.
+
+**Critérios de aceitação:**
+
+- [ ] Os livros são exibidos em cards com capa, título, autor e status.
+- [ ] É possível filtrar por Todos, Quero ler, Lendo e Lido.
+- [ ] É possível buscar por título ou autor.
+- [ ] É possível ordenar a coleção por título ou inclusão mais recente.
+- [ ] A preferência de filtro/ordenação pode ser restaurada pelo Web Storage.
+- [ ] Quando não houver livros, a página apresenta um estado vazio com ação para cadastrar o primeiro.
+
+### HU02 — Buscar livro por ISBN
+
+**Como** leitor,  
+**eu quero** consultar um ISBN,  
+**para que** os principais dados do livro sejam preenchidos automaticamente.
+
+**Critérios de aceitação:**
+
+- [ ] O campo aceita e valida ISBN-10 ou ISBN-13.
+- [ ] A consulta utiliza a Google Books API.
+- [ ] Quando encontrado, título, autor(es) e capa são preenchidos/sugeridos.
+- [ ] Quando não encontrado, o sistema informa o ocorrido e mantém o preenchimento manual disponível.
+- [ ] Falhas de rede são tratadas com mensagem amigável.
+
+### HU03 — Cadastrar e editar livro
+
+**Como** leitor,  
+**eu quero** cadastrar ou editar um livro,  
+**para que** minha estante represente corretamente minha coleção e meu progresso.
+
+**Critérios de aceitação:**
+
+- [ ] ISBN, título, autor(es) e status são obrigatórios.
+- [ ] ISBN duplicado é recusado.
+- [ ] O status é escolhido por um elemento select.
+- [ ] Os erros são mostrados próximos aos respectivos campos.
+- [ ] Um cadastro válido é persistido na API fake.
+- [ ] Uma edição válida atualiza o registro existente.
+
+### HU04 — Consultar detalhes de um livro
+
+**Como** leitor,  
+**eu quero** abrir os detalhes de um livro,  
+**para que** eu veja suas informações completas e as ações disponíveis.
+
+**Critérios de aceitação:**
+
+- [ ] A página apresenta capa, título, autor(es), ISBN e status.
+- [ ] Há ações para editar e excluir o livro.
+- [ ] A ação de exclusão exige confirmação em modal.
+- [ ] A interface funciona em mobile e desktop.
+
+### HU05 — Avaliar leitura concluída
+
+**Como** leitor,  
+**eu quero** registrar uma nota e uma resenha em um livro concluído,  
+**para que** eu preserve minha opinião sobre a leitura.
+
+**Critérios de aceitação:**
+
+- [ ] A avaliação só é habilitada para livros com status "lido".
+- [ ] A nota aceita somente valores inteiros de 1 a 5.
+- [ ] A resenha possui limite de caracteres informado na interface.
+- [ ] Existe no máximo uma avaliação por livro.
+- [ ] Uma avaliação existente pode ser editada.
+
+### HU06 — Excluir livro
+
+**Como** leitor,  
+**eu quero** excluir um livro que não desejo mais acompanhar,  
+**para que** a estante permaneça atualizada.
+
+**Critérios de aceitação:**
+
+- [ ] A exclusão exige confirmação explícita.
+- [ ] Cancelar a confirmação não altera os dados.
+- [ ] Confirmar remove o livro da API fake.
+- [ ] Se houver avaliação associada, ela também é removida.
+
+## 9. Fora do Escopo
+
+Para manter o projeto compatível com o objetivo e o prazo da disciplina, não fazem parte desta versão:
+
+- autenticação e cadastro de usuários;
+- backend de produção próprio;
+- rede social, seguidores ou comentários públicos;
+- sincronização entre dispositivos;
+- leitura de e-books dentro da aplicação;
+- pagamentos ou assinaturas;
+- recomendações por inteligência artificial.
+
+## 10. Critérios de Sucesso do Projeto
+
+O projeto será considerado funcional quando:
+
+- as três páginas principais estiverem implementadas e responsivas;
+- o fluxo cadastro → listagem → detalhe → edição/avaliação estiver navegável;
+- livros e avaliações forem persistidos e consultados via API fake;
+- a Google Books API for consumida com tratamento de erros;
+- os requisitos técnicos e os 24 Indicadores de Desempenho aplicáveis da disciplina estiverem demonstrados no código e nas evidências de entrega.
