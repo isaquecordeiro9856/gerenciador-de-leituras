@@ -14,8 +14,8 @@ Aplicação web responsiva para organizar uma biblioteca pessoal, acompanhar o s
 ## 🎨 Protótipo e Design
 
 - **Ferramenta:** Google Stitch (WEB, abordagem mobile-first).
-- **Protótipo atual:** será substituído por uma nova versão antes da 1ª Entrega.
-- **Novo link compartilhável:** _adicionar após finalizar o novo protótipo_.
+- **Protótipo oficial:** Google Stitch — versões Mobile e Desktop, com fluxo navegável.
+- **Link compartilhável:** https://stitch.google.com/u/1/projects/18205289966603005290?pli=1
 - **Design System:** [docs/architecture.md#7-design-system](docs/architecture.md#7-design-system)
 
 ### Direção visual
@@ -87,7 +87,7 @@ Estado auditado no repositório:
 
 ### RA1 — Framework CSS e responsividade
 
-- [ ] ID 01 — Protótipo adaptável para mobile e desktop no Stitch.
+- [x] ID 01 — Protótipo adaptável para mobile e desktop no Stitch.
 - [ ] ID 02 — Layout responsivo com Bootstrap usando Grid/Flexbox do framework.
 - [ ] ID 03 — Layout responsivo com CSS próprio usando Flexbox ou Grid.
 - [ ] ID 04 — Componentes prontos do Bootstrap e componente JavaScript do framework.
@@ -138,7 +138,7 @@ Os comandos para JSON Server, Sass, lint, desenvolvimento e deploy serão adicio
 
 ## 🗺️ Roadmap
 
-- **Fundação / 1ª Entrega:** documentação ✅ · novo protótipo ⏳ · vídeo ⏳
+- **Fundação / 1ª Entrega:** documentação ✅ · protótipo Mobile/Desktop navegável ✅ · vídeo ⏳
 - **Atividade 06:** configuração Node/NPM/Git ✅ · evidências/PDF ⏳
 - **Entrega 2:** HTML/CSS responsivo com Bootstrap ⏳
 - **Entrega 3:** JavaScript, Web Storage, APIs e deploy ⏳
