@@ -201,6 +201,7 @@ Os tokens detalhados ficam em [architecture.md](architecture.md). Resumo:
 - Background: `#F5F3EE`
 - Surface: `#FFFFFF`
 - Text: `#20231F`
+- Muted: `#62685F`
 - Títulos: DM Serif Display;
 - Corpo/UI: Inter.
 
@@ -221,3 +222,59 @@ Essas dependências já fazem parte do repositório atual. Dependências das ati
 O GitHub Pages hospedará os arquivos estáticos do front-end.
 
 O JSON Server é uma API de desenvolvimento e não é executado pelo GitHub Pages. Antes da Entrega 3, será definido o modo de demonstração/publicação da API fake de acordo com a orientação da disciplina, sem fingir que `localhost:3000` funciona em produção.
+
+
+## 13. Contrato de Interface Aprovado
+
+A implementação deve usar exclusivamente o conjunto **APPROVED** documentado em `docs/design-brief.md`.
+
+### Páginas reais
+
+Somente três documentos HTML principais:
+
+- `index.html`;
+- `livro-form.html`;
+- `livro.html`.
+
+### Estados obrigatórios
+
+Os seguintes estados devem ser tratados sem criar páginas redundantes:
+
+- estante populada;
+- estante vazia;
+- offcanvas mobile;
+- formulário normal;
+- formulário com erros de validação;
+- API sem resultado;
+- API/preenchimento automático bem-sucedido;
+- detalhes de livro Lido;
+- detalhes de livro não concluído;
+- modal de exclusão;
+- feedback de sucesso;
+- feedback de erro;
+- estado de loading/skeleton.
+
+### Regras de feedback
+
+- erros de campo ficam próximos ao controle correspondente;
+- erro de API não apaga dados já digitados;
+- sucesso de cadastro/edição fornece confirmação legível;
+- loading não deve bloquear toda a interface quando apenas uma parte está carregando;
+- status não depende somente de cor;
+- ações destrutivas exigem confirmação em modal.
+
+### Navegação
+
+O fluxo mobile parte de M1 e o desktop de D1. Ambos devem permitir:
+
+`Estante → Cadastro/Edição → Estante`
+
+`Estante → Detalhes → Editar → Cadastro/Edição`
+
+`Detalhes → Excluir → Modal → Detalhes/Estante`
+
+Nenhuma ação principal pode terminar em tela sem saída.
+
+### Itens proibidos pelo escopo
+
+Não adicionar campos, endpoints ou persistência para perfil/avatar, coleções, citações, notas, diário, metas, streaks, progresso, páginas, formato, ano/data de edição/publicação, upload de capa, social, recomendações ou dashboard.
