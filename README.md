@@ -1,114 +1,147 @@
-# BookTracker - Gerenciador de Leituras
+# BookTracker — Gerenciador de Leituras
 
 **Autor:** Isaque Cordeiro
 
-## 📖 Descrição do Projeto
-O BookTracker é uma aplicação web responsiva para gerenciamento de biblioteca pessoal. O usuário cadastra livros (buscando os dados automaticamente pelo ISBN na **Google Books API**), organiza a estante por status de leitura (`Quero Ler`, `Lendo`, `Lido`) e registra avaliações das obras concluídas. Os dados são persistidos em uma **API Fake (JSON Server)** e no **Web Storage** do navegador.
+Aplicação web responsiva para organizar uma biblioteca pessoal, acompanhar o status das leituras e registrar avaliações. O projeto é desenvolvido progressivamente para a disciplina, seguindo os requisitos de Framework CSS, responsividade, formulários, Web Storage, bibliotecas JavaScript, API fake e API pública.
 
-## 📚 Documentação do Projeto
-* 📄 [Product Requirements Document (PRD)](docs/prd.md) - Escopo, atores, histórias de usuário e regras de negócio.
-* 🛠️ [Especificação Técnica](docs/spec.md) - Versões das tecnologias e contrato da API pública.
-* 🏗️ [Arquitetura e Design System](docs/architecture.md) - Modelo de dados (DER), API fake e Design Tokens.
+## 📚 Documentação
 
-## 🎨 Design
-* 🎨 Design System: [`docs/architecture.md#design-tokens`](docs/architecture.md)
-* 🖼️ Protótipo no Figma: <!-- COLE AQUI O LINK DO SEU PROJETO NO FIGMA --> `_adicionar link_`
-* 🤖 Protótipo no Google Stitch: <!-- COLE AQUI O LINK DO SEU PROJETO NO STITCH --> `_adicionar link_`
+- 📄 [PRD](docs/prd.md) — visão do produto, escopo, regras de negócio e histórias de usuário.
+- 🏗️ [Architecture](docs/architecture.md) — arquitetura, modelo de dados, Design System, responsividade e componentes.
+- 🛠️ [Spec](docs/spec.md) — versões, contratos técnicos, convenções e integrações.
 
-## 🌐 Site em Produção
-<!-- APÓS O DEPLOY, COLE AQUI A URL DO GITHUB PAGES -->
-`_adicionar URL após o deploy no GitHub Pages_`
+## 🎨 Protótipo e Design
+
+- **Ferramenta:** Google Stitch (WEB, abordagem mobile-first).
+- **Protótipo atual:** será substituído por uma nova versão antes da 1ª Entrega.
+- **Novo link compartilhável:** _adicionar após finalizar o novo protótipo_.
+- **Design System:** [docs/architecture.md#7-design-system](docs/architecture.md#7-design-system)
+
+### Direção visual
+
+O novo BookTracker seguirá uma linguagem editorial contemporânea: interface limpa, acolhedora e profissional, com capas de livros como principal elemento visual, fundo neutro quente, verde profundo como cor de identidade e detalhes em terracota.
+
+### Componentes Bootstrap planejados no protótipo
+
+Pelo menos estes componentes serão identificados visualmente para futura implementação:
+
+1. Navbar/Offcanvas;
+2. Cards;
+3. Modal;
+4. Forms/Input Group;
+5. Buttons;
+6. Badges.
+
+## 🧭 Páginas planejadas
+
+1. **Estante** — listagem em cards, busca, filtros e ordenação.
+2. **Cadastro/Edição de livro** — formulário, validação e busca por ISBN.
+3. **Detalhes do livro** — informações completas, avaliação, edição e exclusão.
+
+O escopo não inclui autenticação de usuários. Isso mantém o projeto compatível com a arquitetura acadêmica baseada em front-end + JSON Server e evita simular segurança que a stack não fornece.
 
 ## 💻 Tecnologias e Dependências
+
 | Tecnologia | Uso |
 |---|---|
-| **Bootstrap 5.3.8** | Framework CSS: grid responsivo, navbar, cards, modais, formulários. |
-| **JavaScript (ES6+)** | Lógica de negócio, DOM e requisições assíncronas (`fetch`). |
-| **jQuery** | Manipulação do DOM, eventos e animações. |
-| **jQuery Mask Plugin** | Máscara de entrada no campo ISBN. |
-| **Sass (SCSS)** | Variáveis, mixins e funções para modularizar o CSS. |
-| **JSON Server** | API Fake para simular um backend REST. |
-| **Google Books API v1** | API pública real para busca de livros por ISBN. |
+| **Bootstrap 5.3.8** | Framework CSS principal: Grid/Flexbox, responsividade e componentes. |
+| **HTML5 / CSS3** | Estrutura semântica e estilos próprios. |
+| **JavaScript ES6+** | Lógica, DOM, validações e requisições assíncronas. |
+| **Sass (SCSS)** | Variáveis, mixins, funções e modularização do CSS. |
+| **jQuery** | Manipulação do DOM e interatividade exigida pela disciplina. |
+| **uuid** | Geração de identificadores quando necessária. |
+| **JSON Server** | API fake para livros e avaliações. |
+| **Google Books API v1** | Busca de metadados de livros por ISBN. |
+| **gh-pages / GitHub Pages** | Apoio ao processo de publicação estática. |
 
-### Escolha do framework CSS e da API pública
+### Por que Bootstrap?
 
-O projeto utiliza **Bootstrap 5.3.8** porque seu grid mobile-first e seus componentes prontos (como cards, formulários e modais) atendem às telas planejadas e facilitam adaptar a estante de livros a celulares, tablets e desktops. A versão 5 não depende de jQuery para os componentes interativos. O projeto Bootstrap segue ativo, publica a série 5.3 e usa licença MIT, adequada ao uso neste projeto. [Documentação e versões](https://getbootstrap.com/docs/versions/) · [Repositório e releases](https://github.com/twbs/bootstrap/releases) · [Licença MIT](https://getbootstrap.com/docs/5.3/about/license/) · [Migração para Bootstrap 5](https://getbootstrap.com/docs/5.3/migration/).
+O Bootstrap 5.3 atende diretamente aos objetivos da disciplina: possui grid mobile-first, utilitários de Flexbox, componentes visuais e componentes JavaScript prontos. O design do projeto será personalizado com Sass/CSS, sem alterar os arquivos internos do framework e sem utilizar Tailwind.
 
-A **Google Books API v1** agrega valor ao cadastro: uma busca pelo ISBN pode preencher automaticamente título, autores e capa, reduzindo a digitação manual. A API aceita consultas pelo parâmetro `q` com o operador `isbn:`. [Documentação oficial da busca](https://developers.google.com/books/docs/v1/using).
+### Por que Google Books API?
 
-## Checklist da Atividade 06
+A Google Books API permite pesquisar obras por ISBN e aproveitar título, autoria e capa para reduzir a digitação durante o cadastro. Caso a obra não seja encontrada ou a API falhe, o formulário continuará permitindo preenchimento manual.
 
-- [ ] Configurei minha identidade no Git.
-- [ ] Clonei o repositório do meu projeto.
-- [x] Inicializei o NPM (`package.json`).
-- [x] Configurei o `.gitignore` para ignorar `node_modules` e `.env`.
-- [x] Instalei `jquery` e `uuid` como dependências de produção.
-- [x] Instalei `gh-pages` como dependência de desenvolvimento.
-- [ ] Fiz commit e push para a branch `main`.
-- [ ] Salvei screenshots do terminal e gerei o PDF de entrega.
+## 🌐 Site em Produção
 
-## ✅ Checklist | Indicadores de Desempenho (ID) dos Resultados de Aprendizagem (RA)
+_Ainda não publicado. O deploy faz parte da etapa final do projeto._
 
-### RA1 - Utilizar Frameworks CSS para estilização de elementos HTML e criação de layouts responsivos.
-- [ ] ID 01 - Prototipa interfaces adaptáveis para no mínimo mobile e desktop, usando Figma ou IA (Stitch).
-- [ ] ID 02 - Implementa layout responsivo com Framework CSS (Bootstrap 5) usando Flexbox ou Grid do próprio framework.
-- [ ] ID 03 - Implementa layout responsivo com CSS puro, usando Flexbox ou Grid Layout.
-- [ ] ID 04 - Utiliza componentes prontos do Framework CSS (card, button) e componentes JavaScript (modal).
-- [ ] ID 05 - Cria layout fluido usando unidades relativas (vw, vh, %, em, rem) no lugar de px.
-- [ ] ID 06 - Aplica um Design System consistente (cores, tipografia, padrões de componentes) em toda a aplicação.
-- [ ] ID 07 - Utiliza Sass (SCSS) aplicando variáveis, mixins e funções para modularizar o código.
-- [ ] ID 08 - Aplica tipografia fluida (função clamp() + unidades relativas).
-- [ ] ID 09 - Aplica técnicas de responsividade de imagens usando CSS (object-fit, containers relativos).
-- [ ] ID 10 - Otimiza imagens usando formatos modernos (WebP) e carregamento adaptativo (srcset/picture).
+## ✅ Atividade 06 — Fundamentos de Ecossistema
 
-### RA2 - Realizar tratamento de formulários e aplicar validações customizadas no lado cliente.
-- [ ] ID 11 - Implementa validação HTML nativa (campos obrigatórios, tipos, limites) com mensagens de erro/sucesso.
-- [ ] ID 12 - Aplica expressões regulares (REGEX) para validações customizadas (ISBN).
-- [ ] ID 13 - Utiliza elementos de seleção em formulários (select de status, radio/checkbox de filtros).
-- [ ] ID 14 - Implementa leitura e escrita no Web Storage (localStorage/sessionStorage).
+Estado auditado no repositório:
 
-### RA3 - Aplicar ferramentas para otimização do processo de desenvolvimento web.
-- [ ] ID 15 - Configura ambiente com Node.js e NPM para gerenciamento de pacotes e dependências.
-- [ ] ID 16 - Utiliza boas práticas de versionamento no Git/GitHub (branch main, .gitignore).
-- [x] ID 17 - Mantém um README.md padronizado, conforme template da disciplina, com checklist preenchido.
-- [ ] ID 18 - Organiza arquivos do projeto de forma modular.
-- [ ] ID 19 - Configura linters e formatadores (ESLint, Prettier).
+- [ ] Identidade Git confirmada no computador utilizado para a entrega.
+- [ ] Evidência do clone registrada em screenshot, se necessária.
+- [x] Projeto NPM inicializado (`package.json`).
+- [x] `.gitignore` ignora `node_modules` e `.env`.
+- [x] `jquery` e `uuid` estão em `dependencies`.
+- [x] `gh-pages` está em `devDependencies`.
+- [x] Há commit/push da configuração Node no histórico do GitHub.
+- [ ] Screenshots do terminal preparados.
+- [ ] PDF final da Atividade 06 exportado e enviado.
 
-### RA4 - Aplicar bibliotecas de funções e componentes em JavaScript para aprimorar a interatividade de páginas web.
-- [ ] ID 20 - Utiliza jQuery para manipulação do DOM e interatividade (eventos, animações).
-- [ ] ID 21 - Integra e configura um plugin jQuery relevante (jQuery Mask Plugin).
+> Não marque os itens de evidência acima sem ter os prints exigidos pela atividade.
 
-### RA5 - Efetuar requisições assíncronas para uma API fake e APIs públicas.
-- [ ] ID 22 - Realiza requisições assíncronas para uma API fake (JSON Server) para persistir dados de um formulário.
-- [ ] ID 23 - Realiza requisições assíncronas para uma API fake para exibir dados na página.
-- [ ] ID 24 - Realiza requisições assíncronas para APIs públicas reais (Google Books API), tratando erros.
+## ✅ Checklist | Indicadores de Desempenho
 
-## 🚀 Instruções de Execução
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/<seu-usuario>/gerenciador-de-leituras.git
-   ```
-2. Abra o projeto no VS Code.
-3. Instale as dependências (Node.js e NPM necessários):
-   ```bash
-   npm i
-   ```
-4. Execute a API Fake (JSON Server):
-   ```bash
-   npm run json:server
-   ```
-   Por padrão, a API executa em `http://localhost:3000`.
-5. Abra o arquivo `index.html` no navegador (ou use a extensão *Live Server*).
+### RA1 — Framework CSS e responsividade
 
-> Para a versão em produção (GitHub Pages), as dependências são carregadas via CDN.
+- [ ] ID 01 — Protótipo adaptável para mobile e desktop no Stitch.
+- [ ] ID 02 — Layout responsivo com Bootstrap usando Grid/Flexbox do framework.
+- [ ] ID 03 — Layout responsivo com CSS próprio usando Flexbox ou Grid.
+- [ ] ID 04 — Componentes prontos do Bootstrap e componente JavaScript do framework.
+- [ ] ID 05 — Layout fluido com unidades relativas.
+- [ ] ID 06 — Design System consistente.
+- [ ] ID 07 — Sass com variáveis, mixins e funções.
+- [ ] ID 08 — Tipografia responsiva/fluida.
+- [ ] ID 09 — Imagens responsivas com CSS.
+- [ ] ID 10 — Imagens otimizadas/carregamento adaptativo.
+
+### RA2 — Formulários
+
+- [ ] ID 11 — Validação HTML nativa e mensagens de feedback.
+- [ ] ID 12 — REGEX em validação customizada.
+- [ ] ID 13 — Checkbox, radio ou select.
+- [ ] ID 14 — Leitura e escrita no Web Storage.
+
+### RA3 — Ferramentas de desenvolvimento
+
+- [x] ID 15 — Ambiente Node.js/NPM inicializado no projeto.
+- [x] ID 16 — Git/GitHub e `.gitignore` em uso.
+- [x] ID 17 — README padronizado com checklist.
+- [ ] ID 18 — Organização modular implementada.
+- [ ] ID 19 — ESLint e Prettier configurados.
+
+### RA4 — Bibliotecas JavaScript
+
+- [ ] ID 20 — jQuery usado na aplicação.
+- [ ] ID 21 — Plugin jQuery relevante ou outra biblioteca de funções integrada.
+
+### RA5 — APIs
+
+- [ ] ID 22 — Requisição assíncrona à API fake para persistir formulário.
+- [ ] ID 23 — Requisição assíncrona à API fake para exibir dados.
+- [ ] ID 24 — Requisição assíncrona à Google Books API com tratamento de erros.
+
+## 🚀 Execução atual
+
+Nesta fase ainda não existe aplicação HTML final. Para preparar as dependências já registradas:
+
+```bash
+git clone https://github.com/isaquecordeiro9856/gerenciador-de-leituras.git
+cd gerenciador-de-leituras
+npm install
+```
+
+Os comandos para JSON Server, Sass, lint, desenvolvimento e deploy serão adicionados quando essas dependências forem introduzidas nas respectivas atividades.
+
+## 🗺️ Roadmap
+
+- **Fundação / 1ª Entrega:** documentação ✅ · novo protótipo ⏳ · vídeo ⏳
+- **Atividade 06:** configuração Node/NPM/Git ✅ · evidências/PDF ⏳
+- **Entrega 2:** HTML/CSS responsivo com Bootstrap ⏳
+- **Entrega 3:** JavaScript, Web Storage, APIs e deploy ⏳
 
 ## 📱 Telas da Aplicação
-<!-- INSIRA AQUI PRINTS DAS TELAS ASSIM QUE FOREM IMPLEMENTADAS -->
-`_screenshots serão adicionados durante as Entregas 2 e 3_`
 
----
-
-## 🔮 Roadmap de Entregas
-- **Entrega 1:** Documentação (prd.md + architecture.md) e prototipação no Stitch/Figma. ✅
-- **Entrega 2:** Tradução do protótipo para HTML5/CSS3 com Bootstrap 5 (layout responsivo). ⏳
-- **Entrega 3:** JavaScript (validações, Web Storage, fetch), APIs e deploy no GitHub Pages. ⏳
+As capturas do novo protótipo e, posteriormente, da implementação serão adicionadas conforme as entregas avançarem.
