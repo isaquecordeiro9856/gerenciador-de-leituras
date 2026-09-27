@@ -71,17 +71,16 @@ _Ainda não publicado. O deploy faz parte da etapa final do projeto._
 
 Estado auditado no repositório:
 
-- [ ] Identidade Git confirmada no computador utilizado para a entrega.
-- [ ] Evidência do clone registrada em screenshot, se necessária.
+- [x] Identidade Git confirmada no computador utilizado para a entrega.
+- [x] Repositório do projeto clonado e sincronizado localmente.
 - [x] Projeto NPM inicializado (`package.json`).
 - [x] `.gitignore` ignora `node_modules` e `.env`.
 - [x] `jquery` e `uuid` estão em `dependencies`.
 - [x] `gh-pages` está em `devDependencies`.
 - [x] Há commit/push da configuração Node no histórico do GitHub.
-- [ ] Screenshots do terminal preparados.
-- [ ] PDF final da Atividade 06 exportado e enviado.
-
-> Não marque os itens de evidência acima sem ter os prints exigidos pela atividade.
+- [x] Screenshot do terminal com `npm install` e `git push` preparado.
+- [x] PDF final da Atividade 06 gerado.
+- [ ] PDF enviado no Moodle.
 
 ## ✅ Checklist | Indicadores de Desempenho
 
