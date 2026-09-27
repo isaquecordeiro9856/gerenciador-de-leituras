@@ -215,7 +215,7 @@ Princípios:
 | color-background | #F5F3EE | fundo geral quente |
 | color-surface | #FFFFFF | cards, formulários e modais |
 | color-text | #20231F | texto principal |
-| color-muted | #6F746D | texto secundário |
+| color-muted | #62685F | texto secundário |
 | color-border | #D9DDD6 | divisórias e campos |
 | color-success | #2F7D4A | estado Lido e sucesso |
 | color-info | #3F6F8E | estado Lendo e informação |
@@ -323,3 +323,57 @@ As versões exatas adotadas ficam registradas em `docs/spec.md`.
 - A lógica principal será JavaScript Vanilla ES6+.
 - Bootstrap será o Framework CSS oficial.
 - O projeto deverá permanecer simples o suficiente para que o autor consiga explicar as decisões e o código durante a avaliação.
+
+
+## 14. Protótipo Final Aprovado
+
+O Google Stitch funciona como referência visual e de navegação para a implementação. Somente frames com prefixo **APPROVED** pertencem ao contrato final.
+
+### Design System
+
+- APPROVED DESIGN SYSTEM
+
+### Mobile
+
+- M1 — Minha Estante / Populada
+- M2 — Minha Estante / Vazia
+- M3 — Offcanvas
+- M4 — Adicionar/Editar Livro / Normal
+- M5 — Adicionar/Editar Livro / Validação e API
+- M6 — Detalhes / Lido
+- M7 — Detalhes / Não concluído
+- M8 — Modal de Exclusão
+- M9 — Feedback e Loading
+
+### Desktop
+
+- D1 — Minha Estante / Populada
+- D2 — Minha Estante / Vazia
+- D4 — Adicionar/Editar Livro / Normal
+- D5 — Adicionar/Editar Livro / Validação e API
+- D6 — Detalhes / Lido
+- D7 — Detalhes / Não concluído
+- D8 — Modal de Exclusão
+
+### Regra de implementação
+
+Os frames representam **estados responsivos e estados de interação**, não páginas independentes. A implementação permanece baseada em:
+
+- `index.html` para a Estante;
+- `livro-form.html` para cadastro e edição;
+- `livro.html` para detalhes e avaliação.
+
+Estados vazio, loading, erros, sucesso, modal e offcanvas devem ser construídos como componentes/variações dessas páginas.
+
+### Fluxos de apresentação
+
+Há dois fluxos oficiais:
+
+- **BookTracker Mobile Prototype**, iniciado em M1;
+- **BookTracker Desktop Prototype**, iniciado em D1.
+
+Ambos devem manter navegação fechada entre Estante, Cadastro/Edição, Detalhes, confirmação de exclusão e retornos, evitando ações principais sem destino.
+
+### Restrições de domínio visual
+
+Não implementar funcionalidades que apareçam apenas em explorações antigas do Stitch, incluindo perfil/avatar, coleções, citações, notas, diário, metas, streaks, progresso por páginas, número de páginas, formato, ano de edição, data de publicação, upload, recursos sociais, recomendações ou dashboard.
