@@ -1,237 +1,286 @@
-# Design Brief — BookTracker
+# Design Brief Final — BookTracker
 
-## Objetivo
+## 1. Objetivo
 
-Este documento define a direção visual oficial do novo protótipo do BookTracker no Google Stitch. Ele complementa o PRD e a arquitetura e deve ser usado como referência para evitar divergência entre protótipo, documentação e implementação.
+Este documento é a **fonte de verdade visual** do BookTracker para a implementação das próximas etapas da disciplina.
 
-## Conceito
+O protótipo oficial está no Google Stitch:
+
+https://stitch.google.com/u/1/projects/18205289966603005290?pli=1
+
+O canvas final foi consolidado para manter somente o conjunto aprovado e os fluxos necessários para apresentação e implementação.
+
+## 2. Conceito Visual
 
 **Biblioteca pessoal contemporânea.**
 
-O visual deve transmitir:
+A experiência deve transmitir:
 
 - organização;
 - calma;
-- gosto por leitura;
 - clareza;
 - maturidade;
-- simplicidade.
+- gosto por leitura;
+- simplicidade;
+- sensação editorial sem parecer um site antigo.
 
 Evitar:
 
-- aparência infantil;
-- excesso de gradientes;
-- glassmorphism exagerado;
+- visual infantil;
+- dashboard administrativo;
+- glassmorphism;
+- gradientes chamativos;
 - sombras pesadas;
-- muitas cores concorrentes;
-- visual de dashboard corporativo;
-- elementos que seriam difíceis de reproduzir depois com Bootstrap 5.3 + Sass.
+- excesso de cores;
+- componentes difíceis de reproduzir com Bootstrap 5.3 + Sass;
+- funcionalidades que não pertencem ao PRD.
 
-## Design System
+## 3. Design System Oficial
 
 ### Cores
 
-- Primary: `#3F5144`
-- Primary dark: `#2C3A30`
-- Accent: `#C47A4A`
-- Background: `#F5F3EE`
-- Surface: `#FFFFFF`
-- Text: `#20231F`
-- Muted: `#6F746D`
-- Border: `#D9DDD6`
-- Success: `#2F7D4A`
-- Info: `#3F6F8E`
-- Warning: `#A56A22`
-- Danger: `#B4423C`
+| Token | Valor | Uso |
+|---|---|---|
+| Primary | `#3F5144` | identidade e ações primárias |
+| Primary dark | `#2C3A30` | hover/ênfase |
+| Accent | `#C47A4A` | detalhes editoriais, sem substituir a ação primária |
+| Background | `#F5F3EE` | fundo geral |
+| Surface | `#FFFFFF` | cards, formulários e modal |
+| Text | `#20231F` | texto principal |
+| Muted | `#62685F` | texto secundário com contraste adequado |
+| Border | `#D9DDD6` | divisórias e campos |
+| Success | `#2F7D4A` | sucesso e status Lido |
+| Info | `#3F6F8E` | informação e status Lendo |
+| Warning | `#A56A22` | status Quero ler / atenção |
+| Danger | `#B4423C` | erros e ações destrutivas |
 
 ### Tipografia
 
-- Títulos: **DM Serif Display**
-- Interface/corpo: **Inter**
+- **Títulos:** DM Serif Display, Georgia, serif.
+- **Interface e corpo:** Inter, system-ui, sans-serif.
 
-Títulos devem ter personalidade editorial, mas controles e textos de interface devem permanecer extremamente legíveis.
+### Forma e espaçamento
 
-### Forma
-
-- cantos moderadamente arredondados;
+- ritmo de espaçamento baseado em 8 px;
+- controles com aproximadamente 12–16 px de raio;
+- cards com aproximadamente 16–20 px de raio;
+- sombras leves;
 - bordas discretas;
-- sombras suaves;
-- bastante espaço negativo;
-- capas de livros com proporção consistente;
-- ícones simples e reconhecíveis.
+- alvos de toque confortáveis;
+- capas de livros com proporção consistente.
 
-## Componentes Bootstrap a deixar visualmente identificáveis
+## 4. Componentes Bootstrap Representados
 
-O protótipo deve permitir apontar claramente pelo menos:
+Os frames foram desenhados para corresponder diretamente a componentes do Bootstrap 5.3:
 
-1. Navbar / Offcanvas;
-2. Cards;
-3. Modal;
-4. Form controls / Input group;
-5. Buttons;
-6. Badges;
-7. Alert ou Toast.
+1. Navbar;
+2. Offcanvas;
+3. Card;
+4. Modal;
+5. Forms;
+6. Input Group;
+7. Buttons;
+8. Badges;
+9. Alert/Toast;
+10. Select/Dropdown.
 
-Não escrever "Bootstrap Card" na interface do usuário. A identificação é estrutural: os elementos precisam ser facilmente associáveis aos componentes durante a apresentação.
+Isso permite apontar no vídeo de apresentação pelo menos Navbar/Offcanvas, Cards e Modal, atendendo ao requisito mínimo de três componentes.
 
-## Tela 1 — Estante
+## 5. Inventário Oficial do Stitch
 
-### Objetivo
+Somente este conjunto é considerado oficial.
 
-Ser a tela principal e mais visual do produto.
+### Design System
+
+- **APPROVED DESIGN SYSTEM**
 
 ### Mobile
 
-- header compacto com marca "BookTracker";
-- botão/menu que possa virar Offcanvas;
-- título "Minha estante";
-- texto curto de apoio;
-- CTA "Adicionar livro";
-- campo de busca;
-- filtros de status em chips/botões: Todos, Quero ler, Lendo, Lido;
-- ordenação compacta;
-- cards em uma coluna;
-- capa com destaque;
-- título, autor e badge de status;
-- ação secundária "Ver detalhes";
-- estado vazio previsto.
+- **APPROVED M1 — Minha Estante / Populada**
+- **APPROVED M2 — Minha Estante / Vazia**
+- **APPROVED M3 — Offcanvas**
+- **APPROVED M4 — Adicionar/Editar Livro / Normal**
+- **APPROVED M5 — Adicionar/Editar Livro / Validação e API**
+- **APPROVED M6 — Detalhes / Lido**
+- **APPROVED M7 — Detalhes / Não concluído**
+- **APPROVED M8 — Modal de Exclusão**
+- **APPROVED M9 — Feedback e Loading**
 
 ### Desktop
 
-- navbar horizontal;
-- conteúdo central com largura máxima confortável;
-- topo da estante com título à esquerda e CTA à direita;
-- busca + filtros + ordenação em uma barra organizada;
-- grid de 3 ou 4 cards conforme largura;
-- densidade moderada;
-- hover discreto nos cards.
+- **APPROVED D1 — Minha Estante / Populada**
+- **APPROVED D2 — Minha Estante / Vazia**
+- **APPROVED D4 — Adicionar/Editar Livro / Normal**
+- **APPROVED D5 — Adicionar/Editar Livro / Validação e API**
+- **APPROVED D6 — Detalhes / Lido**
+- **APPROVED D7 — Detalhes / Não concluído**
+- **APPROVED D8 — Modal de Exclusão**
 
-## Tela 2 — Cadastro / Edição
+Os estados são frames de uma mesma aplicação; eles **não representam páginas extras**. O produto continua tendo somente três páginas HTML principais: Estante, Cadastro/Edição e Detalhes.
 
-### Objetivo
+## 6. Estados de Interface
 
-Facilitar o cadastro sem criar um formulário cansativo.
+### Estante populada
 
-### Mobile
+- busca por título/autor;
+- filtro Todos / Quero ler / Lendo / Lido;
+- ordenação;
+- cards com capa, título, autor, status e ação Ver detalhes;
+- avaliação visual somente quando o livro estiver Lido;
+- CTA Adicionar livro.
 
-- botão de voltar;
-- título "Adicionar livro";
-- bloco inicial destacado "Buscar por ISBN";
-- campo ISBN + botão "Buscar";
-- pequeno texto explicando que os dados podem ser preenchidos automaticamente;
-- divisor visual;
-- campos Título, Autor(es), URL/capa quando aplicável e Status;
-- preview de capa compacto;
-- mensagens de validação próximas aos campos;
-- botão primário "Salvar livro";
-- botão secundário "Cancelar".
+### Estante vazia
 
-### Desktop
+- mensagem clara;
+- CTA Adicionar primeiro livro;
+- orientação curta sobre busca por ISBN;
+- sem métricas, objetivos ou dashboard.
 
-- formulário em card/surface amplo;
-- duas áreas: campos principais e preview da capa;
-- ISBN em destaque no início;
-- ações alinhadas ao final;
-- sem excesso de largura nos inputs.
+### Offcanvas mobile
 
-## Tela 3 — Detalhes / Avaliação
+Possui **somente**:
 
-### Objetivo
+- Minha estante;
+- Adicionar livro.
 
-Criar uma página agradável de consulta e concentrar as ações de manutenção.
+Não contém perfil, conta, coleções, notas, citações ou outras áreas.
 
-### Mobile
+### Cadastro/Edição
 
-- voltar à estante;
-- capa em destaque;
-- título e autor;
-- badge de status;
-- ISBN e metadados;
-- botões Editar e Excluir;
-- seção "Minha avaliação";
-- estrelas/nota;
+- ISBN + Buscar;
+- Título;
+- Autor(es);
+- Status da leitura;
+- preview de capa somente leitura;
+- Salvar livro;
+- Cancelar.
+
+A capa é obtida pela Google Books API ou por fallback local. Não existe upload de imagem.
+
+### Validação e API
+
+O protótipo documenta:
+
+- ISBN inválido;
+- campo obrigatório;
+- livro não encontrado na API;
+- preenchimento manual disponível;
+- preenchimento automático bem-sucedido;
+- feedback de salvamento;
+- loading/skeleton.
+
+### Detalhes — Lido
+
+- capa;
+- título;
+- autor;
+- ISBN;
+- status;
+- Editar;
+- Excluir;
+- Minha avaliação;
+- nota de 1 a 5;
 - resenha;
-- estado apropriado quando o livro ainda não estiver Lido.
+- Editar avaliação.
 
-### Desktop
+### Detalhes — Não concluído
 
-- layout em duas colunas no topo: capa / informações;
-- ações claramente secundárias em relação ao conteúdo;
-- avaliação abaixo em surface própria;
-- hierarquia tipográfica forte.
+A área de avaliação informa que a avaliação fica disponível somente quando o status for Lido.
 
-### Modal
+### Exclusão
 
-Projetar estado de modal de confirmação para excluir livro:
+Modal com:
 
 - título direto;
-- texto explicando que a ação não pode ser desfeita;
+- consequência da ação;
 - Cancelar;
-- Excluir em estilo destrutivo.
+- Excluir livro em estilo destrutivo.
 
-## Responsividade
+## 7. Protótipos Interativos Oficiais
 
-Criar primeiro as três telas em **mobile**.
+O Stitch mantém dois fluxos separados para apresentação:
 
-Depois gerar as três versões **desktop** mantendo:
+### BookTracker Mobile Prototype
 
-- mesmos tokens;
-- mesma hierarquia;
-- mesmos componentes;
-- mesma linguagem visual.
+Inicia em **APPROVED M1**.
 
-Não criar uma interface completamente diferente no desktop.
+Fluxo principal:
 
-## Navegação do Protótipo
+- M1 → M4 por Adicionar livro;
+- M1 → M6/M7 por Ver detalhes;
+- M1 → M3 pelo menu;
+- M3 → M1 ou M4;
+- M4 → M1 por Cancelar/Voltar;
+- M4 → M9 → M1 após salvar;
+- M6/M7 → M4 por Editar;
+- M6/M7 → M8 por Excluir;
+- M8 → Detalhes por Cancelar;
+- M8 → M1 por Excluir livro.
 
-Fluxo mínimo navegável:
+### BookTracker Desktop Prototype
 
-- Estante → Adicionar livro;
-- Cadastro → Salvar/voltar → Estante;
-- Estante → Ver detalhes;
-- Detalhes → Editar;
-- Detalhes → Excluir → Modal;
-- Detalhes → Voltar à estante.
+Inicia em **APPROVED D1**.
 
-## Prompt-base para o Google Stitch
+Fluxo principal:
 
-Crie um novo projeto WEB para uma aplicação chamada "BookTracker — Gerenciador de Leituras".
+- D1 → D4 por Adicionar livro;
+- D1 → D6/D7 por Ver detalhes;
+- D4 → D1 por Cancelar/Voltar/Salvar;
+- D6/D7 → D4 por Editar;
+- D6/D7 → D8 por Excluir;
+- D8 → Detalhes por Cancelar;
+- D8 → D1 por Excluir livro.
 
-Projete primeiro as versões MOBILE de três telas principais: (1) Minha Estante, (2) Adicionar/Editar Livro e (3) Detalhes do Livro com Avaliação.
+Os fluxos foram planejados para não possuir dead-ends nas ações principais.
 
-O produto é uma biblioteca pessoal digital simples. Não há login, cadastro de usuário, rede social ou dashboard administrativo.
+## 8. Acessibilidade
 
-Use uma direção visual de "biblioteca pessoal contemporânea": editorial, limpa, acolhedora, elegante e fácil de reproduzir depois com Bootstrap 5.3 + Sass. Evite gradientes chamativos, glassmorphism, excesso de sombras e layouts experimentais difíceis de implementar.
+A implementação deverá preservar:
 
-DESIGN TOKENS:
-- primary #3F5144
-- primary-dark #2C3A30
-- accent #C47A4A
-- background #F5F3EE
-- surface #FFFFFF
-- text #20231F
-- muted #6F746D
-- border #D9DDD6
-- success #2F7D4A
-- info #3F6F8E
-- warning #A56A22
-- danger #B4423C
-- títulos: DM Serif Display
-- corpo/interface: Inter
+- labels visíveis;
+- mensagens de erro em texto junto aos campos;
+- foco de teclado visível;
+- bom contraste;
+- status não comunicados apenas por cor;
+- texto alternativo para capas;
+- alvo de toque confortável;
+- modal com foco e fechamento adequados;
+- feedback de sucesso/erro legível;
+- suporte a `prefers-reduced-motion` em animações customizadas.
 
-TELA 1 — MINHA ESTANTE:
-Crie header/navbar, título, CTA "Adicionar livro", campo de busca, filtros "Todos / Quero ler / Lendo / Lido", controle de ordenação e uma lista de livros em cards. Cada card deve mostrar capa, título, autor, badge de status e ação "Ver detalhes". Inclua também um estado vazio coerente.
+## 9. Fora do Escopo Visual e Funcional
 
-TELA 2 — ADICIONAR/EDITAR LIVRO:
-Inclua botão de voltar, bloco destacado para "Buscar por ISBN", campo ISBN + botão Buscar e texto explicando que título, autor e capa podem vir automaticamente. Abaixo, formulário com Título, Autor(es), Status e preview da capa. Mostre exemplos de validação e ações "Salvar livro" e "Cancelar".
+Não adicionar ao protótipo ou à implementação:
 
-TELA 3 — DETALHES DO LIVRO:
-Mostre capa, título, autor, status, ISBN, botões Editar e Excluir e seção "Minha avaliação" com nota de 1 a 5 estrelas e resenha. Projete também um modal de confirmação de exclusão.
+- autenticação;
+- perfil/avatar;
+- contas de usuário;
+- coleções;
+- citações;
+- notas;
+- diário de leitura;
+- metas;
+- streaks;
+- progresso em páginas ou porcentagem;
+- número de páginas;
+- formato do livro;
+- ano de edição;
+- data de publicação;
+- upload de capa;
+- rede social;
+- recomendações;
+- dashboard ou estatísticas.
 
-Os seguintes componentes devem ser visualmente compatíveis com componentes Bootstrap que serão usados depois: Navbar/Offcanvas, Cards, Modal, Forms/Input Group, Buttons, Badges e Alerts/Toasts.
+Esses itens foram deliberadamente excluídos para manter o produto coerente com o PRD e com o escopo da disciplina.
 
-Garanta boa hierarquia visual, contraste, labels claros, foco em acessibilidade, alvos de toque confortáveis e consistência de espaçamento. Use capas de livros como principal elemento visual, sem deixar a interface carregada.
+## 10. Regra para Implementação
 
-Depois das telas mobile, gere versões DESKTOP correspondentes preservando exatamente o mesmo Design System e a mesma arquitetura de informação. No desktop, use grid de 3–4 cards na estante e layout em duas colunas onde isso melhorar a leitura.
+Ao transformar o protótipo em código:
 
-Por fim, conecte as telas em um protótipo navegável: Estante → Adicionar livro; Estante → Detalhes; Detalhes → Editar; Detalhes → Excluir/Modal; telas secundárias → voltar para Estante.
+- reproduzir o conjunto APPROVED, não versões antigas;
+- reutilizar os mesmos componentes para estados diferentes;
+- não transformar cada frame em um HTML separado;
+- manter as três páginas principais;
+- implementar com Bootstrap 5.3 + Sass/CSS próprio;
+- usar JavaScript Vanilla ES6+ para a lógica principal;
+- não usar Tailwind CSS.
