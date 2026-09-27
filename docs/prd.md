@@ -163,19 +163,46 @@ Além das páginas, o protótipo deverá incluir uma referência visual do Desig
 - [ ] Confirmar remove o livro da API fake.
 - [ ] Se houver avaliação associada, ela também é removida.
 
-## 9. Fora do Escopo
+## 9. Estados de Experiência Obrigatórios
+
+Além das três páginas principais, a implementação deverá contemplar estados de interface que já estão documentados no protótipo aprovado:
+
+- **Estante populada** com busca, filtros, ordenação e cards.
+- **Estante vazia** com orientação e CTA para cadastrar o primeiro livro.
+- **Offcanvas mobile** com somente "Minha estante" e "Adicionar livro".
+- **Formulário normal** de cadastro/edição.
+- **Formulário com validação/API**, incluindo ISBN inválido, campos obrigatórios, livro não encontrado e preenchimento automático bem-sucedido.
+- **Detalhes de livro Lido** com avaliação.
+- **Detalhes de livro não concluído** com avaliação indisponível.
+- **Modal de confirmação de exclusão**.
+- **Feedback e loading**, incluindo sucesso, erro e skeleton/carregamento.
+
+Esses estados reutilizam as mesmas páginas e componentes; eles não representam novas páginas HTML.
+
+## 10. Fora do Escopo
 
 Para manter o projeto compatível com o objetivo e o prazo da disciplina, não fazem parte desta versão:
 
-- autenticação e cadastro de usuários;
+- autenticação, cadastro, perfil ou avatar de usuários;
 - backend de produção próprio;
+- coleções personalizadas;
+- citações e notas;
+- diário de leitura;
+- metas, streaks ou gamificação;
+- progresso por páginas ou porcentagem;
+- número de páginas;
+- formato da edição;
+- ano de edição ou data de publicação como dados do domínio;
+- upload manual de capa;
 - rede social, seguidores ou comentários públicos;
+- recomendações;
+- dashboard ou estatísticas;
 - sincronização entre dispositivos;
 - leitura de e-books dentro da aplicação;
 - pagamentos ou assinaturas;
 - recomendações por inteligência artificial.
 
-## 10. Critérios de Sucesso do Projeto
+## 11. Critérios de Sucesso do Projeto
 
 O projeto será considerado funcional quando:
 
