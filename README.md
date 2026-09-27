@@ -9,6 +9,7 @@ Aplicação web responsiva para organizar uma biblioteca pessoal, acompanhar o s
 - 📄 [PRD](docs/prd.md) — visão do produto, escopo, regras de negócio e histórias de usuário.
 - 🏗️ [Architecture](docs/architecture.md) — arquitetura, modelo de dados, Design System, responsividade e componentes.
 - 🛠️ [Spec](docs/spec.md) — versões, contratos técnicos, convenções e integrações.
+- 🎨 [Design Brief](docs/design-brief.md) — direção visual, telas e prompt oficial do novo protótipo.
 
 ## 🎨 Protótipo e Design
 
