@@ -2,13 +2,13 @@
 
 ## 1. Objetivo
 
-Este documento é a **fonte de verdade visual** do BookTracker para a implementação das próximas etapas da disciplina.
+Este documento é a **fonte de verdade visual** do BookTracker para as próximas etapas da disciplina.
 
-O protótipo oficial está no Google Stitch:
+Protótipo oficial no Google Stitch:
 
 https://stitch.google.com/u/1/projects/18205289966603005290?pli=1
 
-O canvas final foi consolidado para manter somente o conjunto aprovado e os fluxos necessários para apresentação e implementação.
+O conjunto final contempla autenticação acadêmica, estante, cadastro/edição de livros, detalhes, avaliação, estados de validação, feedback e exclusão.
 
 ## 2. Conceito Visual
 
@@ -22,7 +22,7 @@ A experiência deve transmitir:
 - maturidade;
 - gosto por leitura;
 - simplicidade;
-- sensação editorial sem parecer um site antigo.
+- aparência editorial moderna.
 
 Evitar:
 
@@ -32,8 +32,7 @@ Evitar:
 - gradientes chamativos;
 - sombras pesadas;
 - excesso de cores;
-- componentes difíceis de reproduzir com Bootstrap 5.3 + Sass;
-- funcionalidades que não pertencem ao PRD.
+- elementos difíceis de reproduzir com Bootstrap 5.3 + Sass.
 
 ## 3. Design System Oficial
 
@@ -41,246 +40,285 @@ Evitar:
 
 | Token | Valor | Uso |
 |---|---|---|
-| Primary | `#3F5144` | identidade e ações primárias |
+| Primary | `#3F5144` | identidade e ações principais |
 | Primary dark | `#2C3A30` | hover/ênfase |
-| Accent | `#C47A4A` | detalhes editoriais, sem substituir a ação primária |
-| Background | `#F5F3EE` | fundo geral |
-| Surface | `#FFFFFF` | cards, formulários e modal |
+| Accent | `#C47A4A` | detalhes editoriais/estrelas |
+| Background | `#F5F3EE` | fundo |
+| Surface | `#FFFFFF` | cards/formulários/modais |
 | Text | `#20231F` | texto principal |
-| Muted | `#62685F` | texto secundário com contraste adequado |
-| Border | `#D9DDD6` | divisórias e campos |
-| Success | `#2F7D4A` | sucesso e status Lido |
-| Info | `#3F6F8E` | informação e status Lendo |
-| Warning | `#A56A22` | status Quero ler / atenção |
-| Danger | `#B4423C` | erros e ações destrutivas |
+| Muted | `#62685F` | texto secundário |
+| Border | `#D9DDD6` | divisórias/campos |
+| Success | `#2F7D4A` | sucesso / Lido |
+| Info | `#3F6F8E` | informação / Lendo |
+| Warning | `#A56A22` | atenção / Quero ler |
+| Danger | `#B4423C` | erro / destrutivo |
 
 ### Tipografia
 
 - **Títulos:** DM Serif Display, Georgia, serif.
-- **Interface e corpo:** Inter, system-ui, sans-serif.
+- **Interface/corpo:** Inter, system-ui, sans-serif.
 
-### Forma e espaçamento
+### Forma
 
-- ritmo de espaçamento baseado em 8 px;
-- controles com aproximadamente 12–16 px de raio;
-- cards com aproximadamente 16–20 px de raio;
-- sombras leves;
-- bordas discretas;
+- ritmo de 8 px;
+- controles aproximadamente 12–16 px de raio;
+- cards aproximadamente 16–20 px;
+- sombras discretas;
+- bordas leves;
 - alvos de toque confortáveis;
-- capas de livros com proporção consistente.
+- capas em proporção consistente.
 
 ## 4. Componentes Bootstrap Representados
 
-Os frames foram desenhados para corresponder diretamente a componentes do Bootstrap 5.3:
+- Navbar;
+- Offcanvas;
+- Card;
+- Modal;
+- Forms;
+- Input Group;
+- Buttons;
+- Badges;
+- Alert/Toast;
+- Select/Dropdown.
 
-1. Navbar;
-2. Offcanvas;
-3. Card;
-4. Modal;
-5. Forms;
-6. Input Group;
-7. Buttons;
-8. Badges;
-9. Alert/Toast;
-10. Select/Dropdown.
+O protótipo serve como referência visual; a existência de classes Bootstrap/ARIA deve ser comprovada apenas na implementação.
 
-Isso permite apontar no vídeo de apresentação pelo menos Navbar/Offcanvas, Cards e Modal, atendendo ao requisito mínimo de três componentes.
-
-## 5. Inventário Oficial do Stitch
-
-Somente este conjunto é considerado oficial.
+## 5. Inventário Oficial
 
 ### Design System
 
 - **APPROVED DESIGN SYSTEM**
 
+### Autenticação Mobile
+
+- **APPROVED M0A — Login**
+- **APPROVED M0B — Cadastro**
+
 ### Mobile
 
-- **APPROVED M1 — Minha Estante / Populada**
-- **APPROVED M2 — Minha Estante / Vazia**
+- **APPROVED M1 — Minha Estante**
+- **APPROVED M2 — Estante Vazia**
 - **APPROVED M3 — Offcanvas**
-- **APPROVED M4 — Adicionar/Editar Livro / Normal**
-- **APPROVED M5 — Adicionar/Editar Livro / Validação e API**
-- **APPROVED M6 — Detalhes / Lido**
-- **APPROVED M7 — Detalhes / Não concluído**
-- **APPROVED M8 — Modal de Exclusão**
+- **APPROVED M4 — Adicionar/Editar Livro**
+- **APPROVED M5 — Validação e API**
+- **APPROVED M6 — Detalhes Lido**
+- **APPROVED M7 — Detalhes Não Concluído**
+- **APPROVED M8 — Excluir Livro**
 - **APPROVED M9 — Feedback e Loading**
+
+### Autenticação Desktop
+
+- **APPROVED D0A — Login**
+- **APPROVED D0B — Cadastro**
 
 ### Desktop
 
-- **APPROVED D1 — Minha Estante / Populada**
-- **APPROVED D2 — Minha Estante / Vazia**
-- **APPROVED D4 — Adicionar/Editar Livro / Normal**
-- **APPROVED D5 — Adicionar/Editar Livro / Validação e API**
-- **APPROVED D6 — Detalhes / Lido**
-- **APPROVED D7 — Detalhes / Não concluído**
-- **APPROVED D8 — Modal de Exclusão**
+- **APPROVED D1 — Minha Estante**
+- **APPROVED D2 — Estante Vazia**
+- **APPROVED D4 — Adicionar/Editar Livro**
+- **APPROVED D5 — Validação e API**
+- **APPROVED D6 — Detalhes Lido**
+- **APPROVED D7 — Detalhes Não Concluído**
+- **APPROVED D8 — Excluir Livro**
 
-Os estados são frames de uma mesma aplicação; eles **não representam páginas extras**. O produto continua tendo somente três páginas HTML principais: Estante, Cadastro/Edição e Detalhes.
+Total: **1 Design System + 11 estados/telas Mobile + 9 estados/telas Desktop = 21 frames/itens oficiais**, considerando Login/Cadastro dentro de cada conjunto.
 
-## 6. Estados de Interface
+## 6. Telas de Autenticação
 
-### Estante populada
+### Login
 
-- busca por título/autor;
-- filtro Todos / Quero ler / Lendo / Lido;
+- marca BookTracker;
+- Entrar;
+- E-mail;
+- Senha;
+- botão Entrar;
+- link Criar conta;
+- estados de erro.
+
+### Cadastro
+
+- marca BookTracker;
+- Criar conta;
+- Nome;
+- E-mail;
+- Senha;
+- Confirmar senha;
+- regra de senha visível;
+- botão Criar conta;
+- link Entrar.
+
+Não incluir login social, avatar, telefone, endereço ou planos.
+
+## 7. Estante
+
+### Populada
+
+- navbar;
+- título Minha estante;
+- um único CTA Adicionar livro;
+- busca;
+- filtros Todos / Quero ler / Lendo / Lido;
 - ordenação;
-- cards com capa, título, autor, status e ação Ver detalhes;
-- avaliação visual somente quando o livro estiver Lido;
-- CTA Adicionar livro.
+- cards;
+- Ver detalhes.
 
-### Estante vazia
+### Regra de avaliação nos cards
 
-- mensagem clara;
+- Lido + avaliação → estrelas;
+- Lido sem avaliação → “Ainda não avaliado”;
+- Lendo / Quero ler → sem estrelas.
+
+### Vazia
+
+- mesma shell;
+- mensagem de estado vazio;
 - CTA Adicionar primeiro livro;
-- orientação curta sobre busca por ISBN;
-- sem métricas, objetivos ou dashboard.
+- dica sobre ISBN.
 
-### Offcanvas mobile
+## 8. Offcanvas Mobile
 
-Possui **somente**:
+Contém somente:
 
 - Minha estante;
 - Adicionar livro.
 
-Não contém perfil, conta, coleções, notas, citações ou outras áreas.
+Sem perfil, avatar, coleções, notas ou itens extras.
 
-### Cadastro/Edição
+## 9. Cadastro/Edição de Livro
 
+- Voltar à estante;
 - ISBN + Buscar;
+- explicação do preenchimento automático;
 - Título;
 - Autor(es);
-- Status da leitura;
+- Status;
 - preview de capa somente leitura;
 - Salvar livro;
 - Cancelar.
 
-A capa é obtida pela Google Books API ou por fallback local. Não existe upload de imagem.
+Não existe upload manual de capa.
 
-### Validação e API
+## 10. Validação e API
 
-O protótipo documenta:
+Estados previstos:
 
 - ISBN inválido;
 - campo obrigatório;
-- livro não encontrado na API;
+- livro não encontrado;
 - preenchimento manual disponível;
-- preenchimento automático bem-sucedido;
+- busca ISBN bem-sucedida;
+- erro de rede;
 - feedback de salvamento;
 - loading/skeleton.
 
-### Detalhes — Lido
+## 11. Detalhes
+
+### Lido
 
 - capa;
 - título;
 - autor;
 - ISBN;
-- status;
+- badge Lido;
 - Editar;
 - Excluir;
 - Minha avaliação;
-- nota de 1 a 5;
+- estrelas;
 - resenha;
 - Editar avaliação.
 
-### Detalhes — Não concluído
+### Não concluído
 
-A área de avaliação informa que a avaliação fica disponível somente quando o status for Lido.
+- mesmos dados essenciais;
+- status Lendo ou Quero ler;
+- sem estrelas;
+- mensagem de avaliação indisponível;
+- ação opcional “Marcar como Lido agora” pode alterar o status dentro do escopo existente.
 
-### Exclusão
+## 12. Exclusão
 
-Modal com:
+Modal:
 
-- título direto;
-- consequência da ação;
+- “Excluir livro da estante?”;
+- consequência explícita;
 - Cancelar;
-- Excluir livro em estilo destrutivo.
+- Excluir livro em Danger.
 
-## 7. Protótipos Interativos Oficiais
+## 13. Protótipos Interativos
 
-O Stitch mantém dois fluxos separados para apresentação:
+### Mobile
 
-### BookTracker Mobile Prototype
+Início oficial: **M0A Login**.
 
-Inicia em **APPROVED M1**.
+Fluxos:
 
-Fluxo principal:
-
-- M1 → M4 por Adicionar livro;
-- M1 → M6/M7 por Ver detalhes;
-- M1 → M3 pelo menu;
-- M3 → M1 ou M4;
-- M4 → M1 por Cancelar/Voltar;
+- M0A ↔ M0B;
+- M0A/M0B → M1 após sucesso;
+- M1 → M3;
+- M3 → M1/M4;
+- M1 → M4;
+- M1 → M6/M7;
 - M4 → M9 → M1 após salvar;
+- M4 → M1 por Cancelar/Voltar;
 - M6/M7 → M4 por Editar;
 - M6/M7 → M8 por Excluir;
 - M8 → Detalhes por Cancelar;
-- M8 → M1 por Excluir livro.
+- M8 → M1 por confirmar exclusão.
 
-### BookTracker Desktop Prototype
+### Desktop
 
-Inicia em **APPROVED D1**.
+Início oficial: **D0A Login**.
 
-Fluxo principal:
+Fluxos:
 
-- D1 → D4 por Adicionar livro;
-- D1 → D6/D7 por Ver detalhes;
-- D4 → D1 por Cancelar/Voltar/Salvar;
-- D6/D7 → D4 por Editar;
-- D6/D7 → D8 por Excluir;
-- D8 → Detalhes por Cancelar;
-- D8 → D1 por Excluir livro.
+- D0A ↔ D0B;
+- D0A/D0B → D1 após sucesso;
+- D1 → D4;
+- D1 → D6/D7;
+- D4 → D1;
+- D6/D7 → D4;
+- D6/D7 → D8;
+- D8 → Detalhes ou D1.
 
-Os fluxos foram planejados para não possuir dead-ends nas ações principais.
+## 14. Acessibilidade
 
-## 8. Acessibilidade
-
-A implementação deverá preservar:
+O protótipo orienta:
 
 - labels visíveis;
-- mensagens de erro em texto junto aos campos;
-- foco de teclado visível;
-- bom contraste;
-- status não comunicados apenas por cor;
-- texto alternativo para capas;
-- alvo de toque confortável;
-- modal com foco e fechamento adequados;
-- feedback de sucesso/erro legível;
-- suporte a `prefers-reduced-motion` em animações customizadas.
+- feedback textual de erro;
+- foco claramente perceptível;
+- contraste adequado;
+- status não somente por cor;
+- ações destrutivas diferenciadas;
+- alvos de toque confortáveis.
 
-## 9. Fora do Escopo Visual e Funcional
+Na implementação, validar semanticamente `for/id`, ARIA quando necessário, teclado, foco do modal e contraste com ferramentas apropriadas.
 
-Não adicionar ao protótipo ou à implementação:
+## 15. Fora do Escopo
 
-- autenticação;
+Não adicionar:
+
 - perfil/avatar;
-- contas de usuário;
+- OAuth/login social;
 - coleções;
 - citações;
 - notas;
-- diário de leitura;
-- metas;
-- streaks;
-- progresso em páginas ou porcentagem;
-- número de páginas;
-- formato do livro;
-- ano de edição;
-- data de publicação;
+- diário;
+- metas/streaks;
+- progresso/páginas;
+- formato/edição/publicação;
 - upload de capa;
 - rede social;
 - recomendações;
-- dashboard ou estatísticas.
+- dashboard/estatísticas.
 
-Esses itens foram deliberadamente excluídos para manter o produto coerente com o PRD e com o escopo da disciplina.
+## 16. Regra para Implementação
 
-## 10. Regra para Implementação
-
-Ao transformar o protótipo em código:
-
-- reproduzir o conjunto APPROVED, não versões antigas;
-- reutilizar os mesmos componentes para estados diferentes;
-- não transformar cada frame em um HTML separado;
-- manter as três páginas principais;
-- implementar com Bootstrap 5.3 + Sass/CSS próprio;
-- usar JavaScript Vanilla ES6+ para a lógica principal;
-- não usar Tailwind CSS.
+- reproduzir somente o conjunto APPROVED;
+- reutilizar componentes/estados;
+- não transformar cada frame em HTML separado;
+- manter 5 páginas reais;
+- Bootstrap 5.3 + Sass/CSS;
+- JavaScript Vanilla ES6+;
+- sem Tailwind;
+- autenticação tratada como fluxo acadêmico, não segurança de produção.
