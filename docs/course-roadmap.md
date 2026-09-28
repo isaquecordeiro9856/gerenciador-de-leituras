@@ -1,119 +1,258 @@
-# Roadmap da Disciplina — BookTracker
+# Roadmap Completo da Disciplina — BookTracker
 
-Este documento organiza o desenvolvimento do BookTracker de acordo com os **enunciados e atividades da disciplina**. Ele complementa o PRD/SDD sem substituir os requisitos oficiais de cada atividade.
+Este documento organiza o BookTracker considerando **todo o material da disciplina enviado pelo aluno**, incluindo Atividades 03, 04, 05, 06, 07 e 08, as Entregas 1, 2 e 3, o escopo mínimo e o checklist de 24 Indicadores de Desempenho (ID).
 
-## 1. Princípio de Desenvolvimento
+A regra principal é simples: cada atividade deve contribuir para o projeto final, mas um item só é marcado como concluído quando existe implementação/evidência suficiente para explicá-lo ao professor.
 
-O projeto será construído progressivamente: cada atividade semanal deve contribuir para a aplicação final, mas um requisito só será marcado como concluído quando houver **implementação/evidência real**.
+---
 
-Isso evita marcar no checklist algo que existe apenas como intenção de protótipo ou documentação.
+## 1. Atividade 03 — Definição do Tema e Escopo
 
-## 2. 1ª Entrega — Concepção, Prototipação e Documentação
+### Requisitos
 
-### Objetivo
-
-Fundação do produto, sem implementação HTML/CSS/JS da aplicação.
-
-### Estado atual
-
-- [x] Repositório público no GitHub.
-- [x] `docs/prd.md`.
-- [x] `docs/architecture.md`.
-- [x] Framework CSS definido: Bootstrap 5.3.
-- [x] API pública definida: Google Books API v1.
-- [x] Design Tokens documentados.
-- [x] Protótipo responsivo Mobile.
-- [x] Protótipo responsivo Desktop.
-- [x] Fluxos navegáveis no Stitch.
-- [x] Design System consistente no protótipo.
-- [x] Pelo menos três componentes-alvo do Bootstrap planejados/identificados: Navbar/Offcanvas, Card e Modal.
-- [ ] Vídeo 1 gravado.
-- [ ] Vídeo 1 publicado no YouTube como Não listado.
-- [ ] Três links finais testados em janela anônima e enviados no Moodle.
-
-### Vídeo 1
-
-Deve mostrar:
-
-1. GitHub com `prd.md` e `architecture.md`;
-2. tema/escopo do BookTracker;
-3. Bootstrap como Framework CSS;
-4. Google Books API como API pública;
-5. navegação Mobile primeiro;
-6. navegação Desktop depois;
-7. cores e tipografia;
-8. pelo menos três componentes-alvo do Bootstrap.
-
-## 3. Atividade 06 — Node, NPM e Git
+- [x] tema do projeto definido: BookTracker — Gerenciador de Leituras;
+- [x] repositório público criado em dashed-case;
+- [x] README na raiz;
+- [x] checklist dos 24 IDs no README;
+- [x] pasta `docs/`;
+- [x] `docs/prd.md`;
+- [x] identificação e descrição do produto;
+- [x] ator(es) do sistema;
+- [x] User Stories no formato adequado;
+- [x] `docs/architecture.md`;
+- [x] modelo de dados em Mermaid;
+- [x] entidades e relacionamentos documentados.
 
 ### Estado
 
-- [x] Node/NPM configurados.
-- [x] Git/GitHub configurados.
-- [x] `.gitignore` criado antes das dependências.
-- [x] `jquery` instalado em dependencies.
-- [x] `uuid` instalado em dependencies.
-- [x] `gh-pages` instalado em devDependencies.
-- [x] `package-lock.json` versionado.
-- [x] `node_modules` ignorado.
-- [x] Commit/push realizado.
-- [x] Evidências do terminal preparadas.
-- [x] PDF gerado.
-- [x] PDF enviado no Moodle.
+Os requisitos documentais estão atendidos no repositório atual.
 
-## 4. Atividade 07 — Layout Responsivo com Bootstrap
+> Estado de envio no Moodle desta atividade: não registrado neste roadmap, a menos que o aluno confirme explicitamente.
 
-### Requisitos a preservar quando esta atividade for executada
+---
+
+## 2. Atividade 04 — Prototipagem Responsiva e Navegável
+
+### Requisitos
+
+- [x] projeto WEB no Google Stitch;
+- [x] abordagem Mobile-first;
+- [x] telas principais do escopo;
+- [x] versões Mobile;
+- [x] versões Desktop;
+- [x] Design System;
+- [x] Design Tokens de cores e tipografia;
+- [x] protótipo navegável/clicável;
+- [x] link compartilhável registrado no README;
+- [x] protótipo atualizado para a versão atual do BookTracker.
+
+### Regras importantes
+
+- Tailwind não será usado no projeto final;
+- nesta atividade o foco é aparência/protótipo, não o código gerado pelo Stitch;
+- o conjunto oficial é somente o conjunto de frames APPROVED definido no Design Brief.
+
+### Estado
+
+Os requisitos atuais de prototipação estão atendidos pelo protótipo Mobile/Desktop vigente.
+
+> Estado de envio no Moodle desta atividade: não registrado neste roadmap, a menos que o aluno confirme explicitamente.
+
+---
+
+## 3. Atividade 05 — Escolha do Framework CSS e API Pública
+
+### Framework CSS
+
+Escolha oficial:
+
+**Bootstrap 5.3**
+
+Justificativas:
+
+- Grid responsivo;
+- Flexbox e utilitários;
+- Navbar, Offcanvas, Card, Modal, Forms, Buttons, Badges e outros componentes necessários ao BookTracker;
+- componentes JavaScript próprios;
+- boa adequação ao protótipo;
+- compatibilidade com Sass;
+- atende às exigências da disciplina sem Tailwind.
+
+### API pública
+
+Escolha oficial:
+
+**Google Books API v1**
+
+Uso planejado:
+
+- busca por ISBN;
+- título;
+- autor(es);
+- capa.
+
+Fallback:
+
+- livro não encontrado → preenchimento manual;
+- falha de API → feedback sem apagar os dados digitados;
+- sem capa → fallback visual.
+
+### Requisitos da atividade
+
+- [x] Framework CSS escolhido;
+- [x] API pública escolhida;
+- [x] README documenta ambos;
+- [x] justificativa das escolhas no README;
+- [x] `docs/spec.md` registra a stack e API;
+- [x] `docs/architecture.md` registra Framework, API e Design System.
+
+> Estado de envio no Moodle desta atividade: não registrado neste roadmap, a menos que o aluno confirme explicitamente.
+
+---
+
+## 4. 1ª Entrega — Concepção, Prototipação e Documentação
+
+### Objetivo
+
+Fundação do produto, sem codificação da aplicação final.
+
+### Estado atual
+
+- [x] repositório público;
+- [x] `docs/prd.md`;
+- [x] `docs/architecture.md`;
+- [x] escopo;
+- [x] público-alvo;
+- [x] User Stories;
+- [x] regras de negócio;
+- [x] modelo de dados;
+- [x] Bootstrap 5.3 definido;
+- [x] Google Books API definida;
+- [x] Design Tokens;
+- [x] protótipo Mobile;
+- [x] protótipo Desktop;
+- [x] protótipo navegável;
+- [x] Design System consistente no protótipo;
+- [x] pelo menos três componentes-alvo do Bootstrap planejados: Navbar/Offcanvas, Card e Modal;
+- [ ] confirmar visualmente no Stitch que essas identificações aparecem de forma clara;
+- [ ] Vídeo 1 gravado;
+- [ ] Vídeo 1 publicado como Não listado;
+- [ ] GitHub testado em janela anônima;
+- [ ] Stitch testado em janela anônima;
+- [ ] YouTube testado em janela anônima;
+- [ ] três links enviados no Moodle.
+
+### Vídeo 1
+
+Mostrar:
+
+1. GitHub;
+2. `prd.md`;
+3. `architecture.md`;
+4. tema/escopo;
+5. Bootstrap;
+6. Google Books API;
+7. protótipo Mobile primeiro;
+8. protótipo Desktop depois;
+9. cores/tipografia;
+10. pelo menos três componentes Bootstrap identificados.
+
+---
+
+## 5. Atividade 06 — Fundamentos de Ecossistema (Node, NPM e Git)
+
+### Estado
+
+- [x] Git configurado;
+- [x] Node/NPM configurados;
+- [x] repositório clonado;
+- [x] `.gitignore`;
+- [x] `node_modules` ignorado;
+- [x] arquivos de ambiente ignorados;
+- [x] `jquery` em dependencies;
+- [x] `uuid` em dependencies;
+- [x] `gh-pages` em devDependencies;
+- [x] `package-lock.json` versionado;
+- [x] commit/push;
+- [x] checklist no README;
+- [x] screenshots;
+- [x] PDF;
+- [x] **PDF enviado no Moodle**.
+
+Atividade 06 concluída.
+
+---
+
+## 6. Atividade 07 — Layout Responsivo com Bootstrap
+
+### Configuração
 
 - [ ] instalar Bootstrap via NPM;
-- [ ] consumir CSS/JS localmente a partir de `node_modules`;
-- [ ] criar layout usando o Grid do Bootstrap;
-- [ ] demonstrar três linhas com comportamentos de Grid diferentes;
-- [ ] usar coluna automática;
-- [ ] usar `.col-12`;
-- [ ] usar `.col-md-*`;
+- [ ] importar Bootstrap CSS localmente;
+- [ ] importar `bootstrap.bundle.min.js` localmente.
+
+### Grid exigido
+
+- [ ] primeira linha com três colunas automáticas;
+- [ ] terceira coluna oculta em XS/SM;
+- [ ] segunda linha com `.col-12`;
+- [ ] terceira linha com `.col-md-*`;
 - [ ] demonstrar offset;
-- [ ] demonstrar order;
-- [ ] esconder conteúdo em XS/SM com utilidade responsiva;
-- [ ] usar Modal;
-- [ ] usar Card com imagem e texto;
-- [ ] usar pelo menos três utilidades de texto;
-- [ ] demonstrar Flexbox com botões;
-- [ ] usar Bootstrap Icons;
-- [ ] registrar capturas do layout;
-- [ ] registrar Modal aberto;
-- [ ] registrar Card;
-- [ ] registrar Flexbox;
-- [ ] registrar Bootstrap Icons;
-- [ ] entregar PDF com capturas e breve relato.
+- [ ] demonstrar order.
 
-### Estratégia para o BookTracker
+### Componentes e utilitários
 
-Os exercícios específicos de Grid/Flexbox devem ser cumpridos sem degradar o produto final. Quando uma exigência didática não combinar naturalmente com uma tela do BookTracker, ela pode ser demonstrada em uma página/laboratório da atividade e depois os padrões úteis são incorporados à aplicação final.
+- [ ] Button;
+- [ ] Modal;
+- [ ] Card;
+- [ ] imagem responsiva com `.img-fluid`;
+- [ ] personalização de cores;
+- [ ] pelo menos três utilidades de texto;
+- [ ] Flexbox com cinco botões;
+- [ ] Bootstrap Icons.
 
-## 5. Atividade 08 — Do Protótipo ao Código com Bootstrap e IA
+### Entrega
 
-### Implementação
+- [ ] prints dos grids;
+- [ ] Modal aberto;
+- [ ] Card;
+- [ ] Flexbox;
+- [ ] Bootstrap Icons;
+- [ ] breve descrição de experiência/desafios/aprendizado;
+- [ ] PDF;
+- [ ] envio Moodle.
 
-- [ ] instalar/confirmar Bootstrap via NPM;
-- [ ] converter o protótipo APPROVED do Stitch em HTML/CSS;
-- [ ] manter Bootstrap 5.3 como Framework CSS real;
-- [ ] conferir fidelidade visual ao protótipo;
-- [ ] usar arquivos do Bootstrap em `node_modules` durante esta atividade, e não CDN;
-- [ ] executar a aplicação localmente.
+### Estratégia
 
-### Auditoria obrigatória
+Se algum exercício didático específico da Atividade 07 não encaixar naturalmente nas telas finais, ele poderá ser demonstrado em uma página/laboratório separado da atividade, sem deformar o produto final.
 
-- [ ] identificar **10 componentes diferentes do Bootstrap** usados nas telas;
-- [ ] explicar função e classes principais de cada componente;
-- [ ] explicar se o layout usa Grid, Flexbox ou combinação;
-- [ ] explicar as classes responsáveis pelo layout;
-- [ ] implementar/auditar Sticky Footer;
-- [ ] explicar a estratégia do Sticky Footer.
+---
 
-### Dez componentes planejados para o BookTracker
+## 7. Atividade 08 — Do Protótipo ao Código com Bootstrap e IA
 
-O design já permite usar naturalmente:
+### Preparação
+
+- [ ] Bootstrap instalado via NPM;
+- [ ] converter o conjunto APPROVED do Stitch para HTML/CSS;
+- [ ] garantir Bootstrap 5.3;
+- [ ] executar localmente;
+- [ ] comparar código com o protótipo;
+- [ ] confirmar que Bootstrap foi realmente usado.
+
+### IA / MCP
+
+O uso de Antigravity/MCP é opcional segundo o enunciado.
+
+Se não for usado:
+
+- [ ] justificar no relatório;
+- [ ] registrar prints do método alternativo de importação/cópia do Stitch.
+
+### Auditoria Bootstrap
+
+Precisamos ter **10 componentes Bootstrap reais** implementados e explicáveis.
+
+Lista planejada:
 
 1. Navbar;
 2. Offcanvas;
@@ -126,131 +265,162 @@ O design já permite usar naturalmente:
 9. Toast;
 10. Spinner.
 
-Form Controls/Form Select também estarão presentes e podem substituir algum item da lista se necessário durante a auditoria real.
+Outros que podem entrar na lista real:
 
-### Responsividade a validar
+- Form Control;
+- Form Select.
 
-- [ ] xs (<576px);
-- [ ] sm (≥576px);
-- [ ] md (≥768px);
-- [ ] lg (≥992px);
-- [ ] xl (≥1200px);
-- [ ] xxl (≥1400px);
-- [ ] nenhum overflow horizontal indevido;
+### Layout
+
+- [ ] explicar Grid;
+- [ ] explicar Flexbox;
+- [ ] indicar as classes usadas;
+- [ ] auditar/implementar Sticky Footer;
+- [ ] explicar tecnicamente o Sticky Footer.
+
+### Breakpoints
+
+Validar:
+
+- [ ] xs <576px;
+- [ ] sm ≥576px;
+- [ ] md ≥768px;
+- [ ] lg ≥992px;
+- [ ] xl ≥1200px;
+- [ ] xxl ≥1400px;
+- [ ] sem overflow horizontal;
 - [ ] imagens proporcionais;
-- [ ] Offcanvas funcional nos tamanhos menores.
+- [ ] Offcanvas funcional.
 
-### Entrega da Atividade 08
+### NPM x CDN
+
+Durante esta atividade:
+
+- Bootstrap deve ser consumido localmente por `node_modules`;
+- não usar CDN como prova principal da Atividade 08.
+
+### Entrega
 
 - [ ] relatório dos 10 componentes;
 - [ ] análise Grid/Flexbox;
-- [ ] explicação do Sticky Footer;
-- [ ] evidência do fluxo IA/MCP ou justificativa do método alternativo;
-- [ ] prints Mobile (xs) e Desktop (lg);
-- [ ] commit/push da implementação;
-- [ ] PDF enviado no Moodle.
+- [ ] Sticky Footer;
+- [ ] evidência MCP ou justificativa do método alternativo;
+- [ ] prints Mobile xs;
+- [ ] prints Desktop lg;
+- [ ] commit/push;
+- [ ] PDF;
+- [ ] envio Moodle.
 
-## 6. Entrega 2 — A Casca
+---
+
+## 8. Entrega 2 — A Casca
 
 ### Objetivo
 
-Transformar o protótipo aprovado em HTML5/CSS3 responsivo, ainda sem a lógica final de JavaScript.
+Traduzir o protótipo aprovado em HTML5/CSS3 real e responsivo, ainda sem a lógica final da Entrega 3.
 
-### Requisitos planejados
+### Requisitos
 
-- [ ] cinco páginas HTML reais do BookTracker;
-- [ ] Bootstrap aplicado de forma substantiva;
-- [ ] Grid/Flexbox do framework;
-- [ ] CSS próprio com Grid/Flexbox quando necessário;
+- [ ] cinco páginas HTML reais;
+- [ ] Bootstrap aplicado substancialmente;
+- [ ] Grid/Flexbox Bootstrap;
+- [ ] CSS próprio com Grid/Flexbox;
+- [ ] componentes Bootstrap;
 - [ ] Design System implementado;
-- [ ] componentes visuais reais;
-- [ ] responsividade Mobile/Desktop;
+- [ ] Sass;
+- [ ] unidades relativas;
 - [ ] tipografia responsiva/fluida;
 - [ ] imagens responsivas;
-- [ ] Sass;
+- [ ] imagens otimizadas/adaptativas;
 - [ ] Sticky Footer;
-- [ ] Vídeo 2 demonstrando código e responsividade.
+- [ ] Mobile funcional;
+- [ ] Desktop funcional;
+- [ ] Vídeo 2.
 
-## 7. Entrega 3 — O Motor
+---
+
+## 9. Entrega 3 — O Motor
 
 ### Objetivo
 
 Adicionar a lógica de negócio e publicar a aplicação final.
 
-### Requisitos planejados
+### JavaScript e formulários
 
 - [ ] JavaScript Vanilla ES6+;
-- [ ] validação HTML;
-- [ ] validações customizadas com REGEX;
-- [ ] elementos select/checkbox/radio conforme necessário;
+- [ ] validação HTML nativa;
+- [ ] REGEX;
+- [ ] select/checkbox/radio conforme necessário;
 - [ ] Web Storage;
-- [ ] manipulação dinâmica do DOM;
-- [ ] jQuery;
-- [ ] plugin/biblioteca complementar relevante;
+- [ ] DOM dinâmico.
+
+### Bibliotecas
+
+- [ ] jQuery realmente utilizado;
+- [ ] plugin jQuery ou biblioteca complementar relevante.
+
+### API fake
+
 - [ ] JSON Server;
+- [ ] usuários;
+- [ ] livros;
+- [ ] avaliações;
 - [ ] POST assíncrono;
 - [ ] GET assíncrono;
-- [ ] Google Books API;
-- [ ] `fetch` / `async/await`;
-- [ ] tratamento de erros;
-- [ ] deploy no GitHub Pages;
-- [ ] Vídeo 3 com aplicação em produção.
+- [ ] edição;
+- [ ] exclusão;
+- [ ] JSON.
 
-### Bootstrap local x CDN
+### API pública
 
-Há uma diferença de contexto entre as atividades:
+- [ ] Google Books por ISBN;
+- [ ] `fetch`;
+- [ ] `async/await`;
+- [ ] loading;
+- [ ] estado sem resultado;
+- [ ] erros de rede;
+- [ ] fallback manual.
 
-- **Atividade 08:** Bootstrap deve ser consumido localmente a partir de `node_modules` para comprovar a instalação via NPM.
-- **Deploy/fase final:** seguir a orientação geral da disciplina para publicação no GitHub Pages, inclusive uso de CDN quando solicitado.
+### Qualidade e ferramentas
 
-Não misturar os dois contextos durante as evidências.
+- [ ] estrutura modular;
+- [ ] ESLint;
+- [ ] Prettier.
 
-## 8. Checklist Geral — ID01 a ID24
+### Deploy
 
-Estado conservador atual:
+- [ ] aplicação publicada no GitHub Pages;
+- [ ] seguir orientação final da disciplina para dependências/CDN;
+- [ ] site em produção registrado no README;
+- [ ] Vídeo 3.
 
-### RA1 — Framework CSS e Responsividade
+---
 
-- [x] **ID01** — protótipo Mobile/Desktop.
-- [ ] **ID02** — Bootstrap Grid/Flexbox implementado.
-- [ ] **ID03** — CSS puro Grid/Flexbox implementado.
-- [ ] **ID04** — componentes Bootstrap reais implementados.
-- [ ] **ID05** — layout fluido implementado com unidades relativas.
-- [ ] **ID06** — Design System aplicado em toda a aplicação implementada.
-- [ ] **ID07** — Sass com variáveis/mixins/funções.
-- [ ] **ID08** — tipografia responsiva/fluida.
-- [ ] **ID09** — imagens responsivas.
-- [ ] **ID10** — imagens otimizadas/adaptativas.
+## 10. README Final Exigido
 
-### RA2 — Formulários
+Ao longo do semestre, o README deve evoluir até conter:
 
-- [ ] **ID11** — validação HTML nativa.
-- [ ] **ID12** — REGEX.
-- [ ] **ID13** — elementos de seleção.
-- [ ] **ID14** — Web Storage.
+- [x] título/nome;
+- [x] autor;
+- [x] descrição;
+- [x] link do protótipo Stitch;
+- [x] Design System/documentação;
+- [x] Framework CSS;
+- [x] dependências atuais;
+- [ ] site em produção;
+- [x] checklist;
+- [x] instruções de execução da fase atual;
+- [ ] screenshots da aplicação implementada.
 
-### RA3 — Ferramentas
+---
 
-- [x] **ID15** — Node/NPM configurado.
-- [x] **ID16** — Git/GitHub e `.gitignore`.
-- [x] **ID17** — README com checklist/documentação.
-- [ ] **ID18** — organização modular implementada.
-- [ ] **ID19** — ESLint/Prettier configurados.
+## 11. Escopo Mínimo do Projeto Final
 
-### RA4 — Bibliotecas JavaScript
+### Páginas
 
-- [ ] **ID20** — jQuery utilizado na aplicação.
-- [ ] **ID21** — plugin/biblioteca complementar.
+Mínimo exigido: 3.
 
-### RA5 — APIs
-
-- [ ] **ID22** — POST assíncrono para API fake.
-- [ ] **ID23** — GET assíncrono da API fake.
-- [ ] **ID24** — API pública Google Books com tratamento de erros.
-
-## 9. Escopo Mínimo Final
-
-O BookTracker excede o mínimo de três páginas e está planejado com cinco páginas:
+BookTracker planejado: 5.
 
 1. Login;
 2. Cadastro;
@@ -258,19 +428,90 @@ O BookTracker excede o mínimo de três páginas e está planejado com cinco pá
 4. Adicionar/Editar Livro;
 5. Detalhes.
 
-A aplicação final também deverá demonstrar:
+### Funcionalidades mínimas
 
-- formulário com validação;
-- persistência via Web Storage;
-- listagem em cards;
-- API fake;
-- pelo menos duas entidades (o BookTracker planeja três: usuários, livros e avaliações);
-- requisições assíncronas;
-- manipulação JSON;
-- API pública real.
+- [ ] páginas responsivas;
+- [ ] componentes do Framework CSS;
+- [ ] formulário com campos obrigatórios;
+- [ ] validação;
+- [ ] Web Storage;
+- [ ] listagem em cards;
+- [ ] edição/exclusão;
+- [ ] API fake;
+- [ ] requisições assíncronas;
+- [ ] JSON;
+- [ ] API pública.
 
-## 10. Regra de Evidência
+---
 
-Nunca marcar como concluído um requisito que exista apenas no protótipo, na documentação ou no planejamento.
+## 12. Checklist Oficial — ID01 a ID24
 
-Cada item de implementação só deve ser marcado após existir no código e poder ser explicado na avaliação.
+### RA1 — Framework CSS e Responsividade
+
+- [x] **ID01** — protótipo Mobile/Desktop.
+- [ ] **ID02** — layout responsivo com Bootstrap Grid/Flexbox.
+- [ ] **ID03** — CSS puro com Grid/Flexbox.
+- [ ] **ID04** — componentes Bootstrap e componente JavaScript do framework.
+- [ ] **ID05** — unidades relativas.
+- [ ] **ID06** — Design System aplicado consistentemente na aplicação.
+- [ ] **ID07** — Sass com variáveis, mixins e funções.
+- [ ] **ID08** — tipografia responsiva/fluida.
+- [ ] **ID09** — imagens responsivas.
+- [ ] **ID10** — imagens modernas/adaptativas.
+
+### RA2 — Formulários
+
+- [ ] **ID11** — validação HTML nativa.
+- [ ] **ID12** — REGEX.
+- [ ] **ID13** — select/checkbox/radio.
+- [ ] **ID14** — Web Storage.
+
+### RA3 — Ferramentas
+
+- [x] **ID15** — Node/NPM.
+- [x] **ID16** — Git/GitHub/.gitignore.
+- [x] **ID17** — README padronizado com checklist.
+- [ ] **ID18** — organização modular.
+- [ ] **ID19** — ESLint/Prettier.
+
+### RA4 — Bibliotecas JavaScript
+
+- [ ] **ID20** — jQuery.
+- [ ] **ID21** — plugin jQuery/outra biblioteca.
+
+### RA5 — APIs
+
+- [ ] **ID22** — API fake POST.
+- [ ] **ID23** — API fake GET.
+- [ ] **ID24** — API pública real com tratamento de erros.
+
+---
+
+## 13. Regra de Evidência
+
+Nunca marcar um ID como concluído só porque:
+
+- está planejado;
+- existe no Stitch;
+- está escrito no PRD/SDD;
+- uma IA disse que foi feito.
+
+Para marcar como concluído, deve existir:
+
+1. implementação real quando o ID exigir código;
+2. comportamento verificável;
+3. evidência exigida pela atividade;
+4. capacidade de explicar a solução.
+
+---
+
+## 14. Ordem Recomendada de Continuidade
+
+1. fechar a 1ª Entrega e Vídeo 1;
+2. manter Atividade 06 como concluída;
+3. executar Atividade 07 exatamente conforme o enunciado;
+4. executar Atividade 08 aproveitando o protótipo final;
+5. consolidar Entrega 2;
+6. implementar Entrega 3;
+7. auditar ID01–ID24;
+8. finalizar GitHub Pages, README, evidências, vídeos e apresentação final.
