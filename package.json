@@ -1,15 +1,20 @@
 {
-  "name": "gerenciador-de-leituras-main",
+  "name": "booktracker",
   "version": "1.0.0",
-  "description": "Gerenciador pessoal de leituras e biblioteca.",
-  "main": "index.js",
+  "private": true,
+  "description": "BookTracker — gerenciador pessoal de leituras.",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Sem testes automatizados nesta etapa\""
   },
-  "keywords": [],
+  "keywords": [
+    "booktracker",
+    "bootstrap",
+    "javascript",
+    "utfpr"
+  ],
   "author": "Isaque Cordeiro",
   "license": "ISC",
   "type": "commonjs",
