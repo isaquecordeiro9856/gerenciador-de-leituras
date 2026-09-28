@@ -1,39 +1,77 @@
-# Especificação Técnica
+# Especificação Técnica — BookTracker
 
-Este documento registra o contrato técnico oficial do **BookTracker**. O escopo funcional está em [prd.md](prd.md) e as decisões de arquitetura/design em [architecture.md](architecture.md).
+Este documento registra os contratos técnicos oficiais do **BookTracker**. O escopo funcional está em [prd.md](prd.md) e as decisões de arquitetura em [architecture.md](architecture.md).
 
 ## 1. Stack Oficial
 
 | Tecnologia | Versão/linha | Uso |
 |---|---|---|
 | HTML | HTML5 | Estrutura semântica. |
-| CSS | CSS3 | Estilos próprios e responsividade. |
-| Bootstrap | **5.3.8** | Grid/Flexbox, responsividade e componentes. |
-| JavaScript | ES6+ | Lógica, DOM, validações e requisições. |
-| Sass | a definir na instalação | Variáveis, mixins, funções e modularização. |
-| jQuery | versão do `package.json` | Requisito de manipulação/interatividade da disciplina. |
+| CSS | CSS3 | Estilos próprios. |
+| Bootstrap | **5.3.8** | Framework CSS principal. |
+| JavaScript | ES6+ | Lógica, DOM, validações e requisições assíncronas. |
+| Sass | definida na instalação | Tokens, mixins, funções e organização do CSS. |
+| jQuery | versão do package.json | Requisito da disciplina. |
 | Biblioteca/plugin complementar | a definir | Atendimento ao ID 21. |
-| JSON Server | a definir na instalação | API fake para usuários, livros e avaliações. |
+| JSON Server | definida na instalação | API fake acadêmica. |
 | Google Books API | **v1** | Busca por ISBN. |
-| Node.js | linha LTS | Ambiente. |
-| NPM | versão fornecida pelo Node | Pacotes. |
-| GitHub Pages | serviço | Hospedagem estática final. |
+| Node.js | linha LTS | Ambiente de desenvolvimento. |
+| NPM | versão fornecida pelo Node | Dependências. |
+| GitHub Pages | serviço | Publicação estática posterior. |
 
-> Tailwind CSS não será utilizado.
+Tailwind CSS não será utilizado.
 
 ## 2. Páginas Reais
 
-- `login.html`
-- `cadastro.html`
-- `index.html`
-- `livro-form.html`
-- `livro.html`
+A implementação terá cinco documentos HTML principais:
 
-Os demais frames do Stitch representam estados de interface, não páginas HTML independentes.
+- login.html
+- cadastro.html
+- index.html
+- livro-form.html
+- livro.html
 
-## 3. Bootstrap
+Estados como vazio, loading, validação, modal e feedback não devem ser implementados como páginas redundantes.
 
-Versão oficial: **5.3.8**.
+## 3. Contrato de Adicionar/Editar Livro
+
+livro-form.html é uma única página reutilizada.
+
+### Modo Adicionar
+
+Condição: ausência de identificador de livro.
+
+Comportamento:
+
+- campos vazios;
+- título da interface “Adicionar livro”;
+- botão principal “Salvar livro”;
+- sucesso retorna para a Estante com feedback.
+
+### Modo Editar
+
+Condição: identificador do livro informado, por exemplo livro-form.html?id={livroId}.
+
+Comportamento:
+
+1. verificar sessão;
+2. carregar o livro;
+3. confirmar que usuario_id corresponde ao usuário atual;
+4. preencher ISBN, título, autor(es), status e capa;
+5. permitir alterações;
+6. “Salvar alterações” usa PATCH;
+7. sucesso retorna ao Detalhes atualizado;
+8. “Cancelar” retorna ao Detalhes sem persistir.
+
+Não criar M4B, D4B ou outra página de edição.
+
+### Avaliação
+
+O formulário de livro não contém estrelas, resenha ou notas pessoais.
+
+A avaliação pertence somente aos Detalhes.
+
+## 4. Bootstrap 5.3
 
 Componentes-alvo:
 
@@ -48,179 +86,207 @@ Componentes-alvo:
 - Alert/Toast;
 - Select/Dropdown.
 
-Durante atividades que exigirem instalação local via NPM, usar os arquivos locais conforme instrução do professor. O formato final de entrega estática será ajustado à etapa de deploy.
+Para a 1ª Entrega, o protótipo deve permitir identificar visualmente pelo menos:
 
-## 4. API Fake — JSON Server
+1. Navbar/Offcanvas;
+2. Card;
+3. Modal.
 
-Base local:
+Durante atividades que exigirem Bootstrap via NPM, serão usados os arquivos locais conforme orientação do professor.
 
-`http://localhost:3000`
+## 5. API Fake — JSON Server
+
+Base local planejada: http://localhost:3000
 
 Recursos:
 
-- `/usuarios`
-- `/livros`
-- `/avaliacoes`
+- /usuarios
+- /livros
+- /avaliacoes
 
-### Usuário
+### Contrato de Usuário
 
-```json
-{
-  "id": "uuid-ou-id-gerado",
-  "nome": "Leitor Exemplo",
-  "email": "leitor@example.test",
-  "senha": "senha-ficticia-de-demonstracao",
-  "data_criacao": "2026-09-27T00:00:00.000Z"
-}
-```
+Campos:
 
-> As credenciais são exclusivamente fictícias. O JSON Server não transforma esse contrato em autenticação segura de produção.
+- id
+- nome
+- email
+- senha
+- data_criacao
 
-### Livro
+As credenciais devem ser fictícias. JSON Server não fornece autenticação segura de produção.
 
-```json
-{
-  "id": "uuid-ou-id-gerado",
-  "usuario_id": "id-do-usuario",
-  "isbn": "9780000000000",
-  "titulo": "Título do livro",
-  "autor": "Autor",
-  "capa_url": "https://...",
-  "status_leitura": "quero-ler",
-  "data_criacao": "2026-09-27T00:00:00.000Z",
-  "data_atualizacao": "2026-09-27T00:00:00.000Z"
-}
-```
+### Contrato de Livro
 
-### Avaliação
+Campos:
 
-```json
-{
-  "id": "uuid-ou-id-gerado",
-  "livro_id": "id-do-livro",
-  "nota_estrelas": 5,
-  "resenha": "Comentário do leitor.",
-  "data_avaliacao": "2026-09-27T00:00:00.000Z"
-}
-```
+- id
+- usuario_id
+- isbn
+- titulo
+- autor
+- capa_url
+- status_leitura
+- data_criacao
+- data_atualizacao
 
-## 5. Contratos de Autenticação Acadêmica
+### Contrato de Avaliação
+
+Campos:
+
+- id
+- livro_id
+- nota_estrelas
+- resenha
+- data_avaliacao
+
+## 6. Rotas da API Fake
+
+### Usuários
+
+- GET /usuarios?email={email}
+- POST /usuarios
+- GET /usuarios/{id}
+
+### Livros
+
+- GET /livros?usuario_id={usuarioId}
+- GET /livros/{id}
+- GET /livros?usuario_id={usuarioId}&isbn={isbn}
+- POST /livros
+- PATCH /livros/{id}
+- DELETE /livros/{id}
+
+### Avaliações
+
+- GET /avaliacoes?livro_id={livroId}
+- POST /avaliacoes
+- PATCH /avaliacoes/{id}
+- DELETE /avaliacoes/{id}
+
+## 7. Autenticação Acadêmica
 
 ### Cadastro
 
-Fluxo conceitual:
-
-1. validar campos;
-2. `GET /usuarios?email={email}`;
-3. se existir usuário, rejeitar;
-4. senão, `POST /usuarios`;
-5. iniciar sessão acadêmica ou direcionar para Login.
+1. validar nome, e-mail e senha;
+2. verificar e-mail duplicado;
+3. criar usuário na API fake;
+4. iniciar sessão acadêmica ou direcionar para Login.
 
 ### Login
 
-Fluxo conceitual:
-
-1. validar e-mail/senha;
-2. localizar usuário por e-mail;
+1. validar campos;
+2. localizar usuário pelo e-mail;
 3. comparar credenciais no ambiente de demonstração;
-4. armazenar apenas `userId` da sessão;
+4. armazenar somente o userId;
 5. redirecionar para Estante.
 
 ### Sessão
 
-Usar preferencialmente:
+Usar preferencialmente sessionStorage com a chave:
 
-`sessionStorage["booktracker.session.userId"]`
+booktracker.session.userId
 
-Nunca armazenar senha em Web Storage.
+Nunca armazenar senha no Web Storage.
 
-Páginas da estante/livro devem redirecionar para Login quando não houver sessão.
-
-## 6. Google Books API v1
+## 8. Google Books API v1
 
 Endpoint:
 
-`GET https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}`
+GET https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}
 
 Campos consumidos:
 
-- `items[0].volumeInfo.title`;
-- `items[0].volumeInfo.authors`;
-- `items[0].volumeInfo.imageLinks.thumbnail`.
+- items[0].volumeInfo.title
+- items[0].volumeInfo.authors
+- items[0].volumeInfo.imageLinks.thumbnail
 
 Tratamento:
 
 - nenhum resultado → informar e manter preenchimento manual;
 - sem capa → fallback local;
-- falha HTTP/rede → feedback sem apagar dados;
-- resultado → dados continuam editáveis antes de salvar.
+- falha de rede/HTTP → feedback sem apagar campos;
+- resultado → dados editáveis antes de salvar.
 
-Nenhuma chave secreta deve ser versionada.
+No modo Editar, uma nova busca por ISBN pode atualizar título, autoria e capa antes do usuário salvar.
 
-## 7. Web Storage
+Não existe upload manual de capa.
+
+## 9. Web Storage
 
 ### Sessão
 
-- `booktracker.session.userId` → `sessionStorage`.
+- booktracker.session.userId em sessionStorage.
 
 ### Preferências
 
-- `booktracker.filters.status`;
-- `booktracker.sort`;
-- busca textual, se adotada.
+Exemplos:
 
-Preferências não contêm credenciais.
+- booktracker.filters.status
+- booktracker.sort
+- busca textual, se adotada
 
-## 8. Validações
+Nenhuma credencial deve ser persistida no Web Storage.
 
-### Cadastro de usuário
+## 10. Validações
+
+### Cadastro
 
 - nome obrigatório;
-- e-mail obrigatório e formato válido;
+- e-mail obrigatório e válido;
 - e-mail único;
-- senha: mínimo 8 caracteres, contendo letras e números;
-- confirmação idêntica à senha.
+- senha com no mínimo 8 caracteres, letras e números;
+- confirmação igual à senha.
 
 ### Login
 
 - e-mail obrigatório;
 - senha obrigatória;
-- credenciais inválidas → mensagem genérica e legível.
+- credenciais inválidas → feedback genérico e claro.
 
 ### ISBN
 
-1. remover espaços/hífens;
+1. remover espaços e hífens;
 2. aceitar somente dígitos;
-3. 10 ou 13 dígitos;
-4. verificar duplicidade para o mesmo `usuario_id`.
+3. comprimento 10 ou 13;
+4. verificar duplicidade para o mesmo usuário.
 
-Regex de formato:
-
-`^(?:\d{10}|\d{13})$`
+Regex de formato: ^(?:\d{10}|\d{13})$
 
 ### Livro
 
 - título obrigatório;
-- autor obrigatório;
+- autor(es) obrigatório(s);
 - status obrigatório.
 
 ### Avaliação
 
-- somente para `lido`;
-- nota inteira 1–5;
+- disponível somente para status lido;
+- nota inteira entre 1 e 5;
 - uma avaliação por livro;
 - resenha até 1000 caracteres.
 
-## 9. Regra de Estrelas
+## 11. Regra de Status e Avaliação
 
-- `lido` + avaliação → mostrar nota correspondente;
-- `lido` sem avaliação → mostrar “Ainda não avaliado”;
-- `lendo` → não mostrar estrelas;
-- `quero-ler` → não mostrar estrelas.
+- lido + avaliação → mostrar estrelas correspondentes;
+- lido sem avaliação → “Ainda não avaliado”;
+- lendo / quero-ler → não mostrar estrelas;
+- avaliação não aparece em M4/D4;
+- mudar um livro avaliado de lido para outro status exige confirmação antes de remover a avaliação incompatível.
 
-Não exibir estrelas fictícias.
+## 12. Navegação do Formulário
 
-## 10. Responsividade
+### Adicionar
+
+Estante → Adicionar → livro-form.html → Salvar livro → Estante
+
+### Editar
+
+Detalhes → Editar → livro-form.html?id={id} → Salvar alterações → Detalhes
+
+Detalhes → Editar → Cancelar → Detalhes
+
+## 13. Responsividade
 
 Breakpoints Bootstrap 5.3:
 
@@ -231,42 +297,40 @@ Breakpoints Bootstrap 5.3:
 - xl: ≥1200px;
 - xxl: ≥1400px.
 
-Estratégia mobile-first.
+Estratégia: mobile-first.
 
-## 11. Design Tokens
+## 14. Design Tokens
 
-- Primary: `#3F5144`
-- Primary dark: `#2C3A30`
-- Accent: `#C47A4A`
-- Background: `#F5F3EE`
-- Surface: `#FFFFFF`
-- Text: `#20231F`
-- Muted: `#62685F`
-- Border: `#D9DDD6`
-- Success: `#2F7D4A`
-- Info: `#3F6F8E`
-- Warning: `#A56A22`
-- Danger: `#B4423C`
+- Primary: #3F5144
+- Primary dark: #2C3A30
+- Accent: #C47A4A
+- Background: #F5F3EE
+- Surface: #FFFFFF
+- Text: #20231F
+- Muted: #62685F
+- Border: #D9DDD6
+- Success: #2F7D4A
+- Info: #3F6F8E
+- Warning: #A56A22
+- Danger: #B4423C
 - Títulos: DM Serif Display
 - Corpo/UI: Inter
 
-## 12. Acessibilidade — Critérios para o Código
+## 15. Acessibilidade — Critérios para Implementação
 
-O protótipo orienta o design, mas a implementação ainda deve comprovar:
+O protótipo não comprova código acessível por si só. A implementação deverá validar:
 
-- `label for/id`;
-- feedback associado a campos;
+- labels corretamente associados;
+- mensagens de erro ligadas aos campos;
+- navegação por teclado;
 - foco visível;
-- teclado;
-- contraste suficiente;
-- alt text;
-- modal com foco correto;
-- status não apenas por cor;
-- ARIA apenas quando semanticamente necessário.
+- contraste adequado;
+- texto alternativo;
+- foco do Modal/Offcanvas;
+- status não comunicado somente por cor;
+- ARIA apenas quando necessário.
 
-Não considerar atributos/classes como existentes até o código ser implementado e auditado.
-
-## 13. Contrato de Interface Aprovado
+## 16. Inventário Oficial do Protótipo
 
 ### Design System
 
@@ -279,11 +343,11 @@ Não considerar atributos/classes como existentes até o código ser implementad
 - M1 Estante
 - M2 Estante Vazia
 - M3 Offcanvas
-- M4 Adicionar/Editar
+- M4 Adicionar/Editar Livro
 - M5 Validação/API
 - M6 Detalhes Lido
 - M7 Detalhes Não Concluído
-- M8 Exclusão
+- M8 Modal de Exclusão
 - M9 Feedback/Loading
 
 ### Desktop
@@ -292,30 +356,46 @@ Não considerar atributos/classes como existentes até o código ser implementad
 - D0B Cadastro
 - D1 Estante
 - D2 Estante Vazia
-- D4 Adicionar/Editar
+- D4 Adicionar/Editar Livro
 - D5 Validação/API
 - D6 Detalhes Lido
 - D7 Detalhes Não Concluído
-- D8 Exclusão
+- D8 Modal de Exclusão
 
-## 14. Itens Fora do Escopo
+Não existem M4B/D4B no contrato final.
 
-Não criar persistência/endpoints para:
+## 17. Fora do Escopo
+
+Não criar campos, endpoints ou persistência para:
 
 - perfil/avatar;
 - OAuth/login social;
 - coleções;
-- citações/notas/diário;
+- citações/notas pessoais;
+- diário;
 - metas/streaks;
 - progresso/páginas;
-- formato/edição/publicação;
+- número de páginas;
+- formato;
+- editora;
+- ano/data de edição/publicação;
 - upload de capa;
 - recursos sociais;
 - recomendações;
 - dashboard/estatísticas.
 
-## 15. Deploy
+## 18. Dependências da Atividade 06
 
-GitHub Pages hospeda arquivos estáticos.
+Já registradas:
 
-O JSON Server não roda dentro do GitHub Pages. Antes da Entrega 3 será definido, conforme orientação da disciplina, como demonstrar/hospedar a API fake sem fingir que `localhost:3000` funciona em produção.
+- jquery;
+- uuid;
+- gh-pages como dependência de desenvolvimento.
+
+Dependências futuras serão adicionadas somente nas atividades correspondentes.
+
+## 19. Deploy
+
+GitHub Pages hospedará a interface estática.
+
+JSON Server não roda dentro do GitHub Pages. Antes da Entrega 3 será definido, conforme orientação da disciplina, como demonstrar/hospedar a API fake sem tratar localhost:3000 como produção.
