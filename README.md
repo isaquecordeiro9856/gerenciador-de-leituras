@@ -29,7 +29,7 @@ O BookTracker usa uma linguagem de **biblioteca pessoal contemporânea**: editor
 
 **Desktop:** D0A Login · D0B Cadastro · D1 Estante populada · D2 Estante vazia · D4 Cadastro/Edição normal · D5 Validação/API · D6 Detalhes Lido · D7 Detalhes não concluído · D8 Modal de exclusão.
 
-Os estados acima não criam páginas adicionais: o produto continua com três páginas HTML principais.
+Os estados acima não criam páginas adicionais: o produto final possui cinco páginas HTML principais (Login, Cadastro, Estante, Cadastro/Edição de Livro e Detalhes).
 
 ### Protótipos de apresentação
 
