@@ -36,6 +36,7 @@ Antes da entrega no Moodle, os links do GitHub, Stitch e YouTube devem ser testa
 - [Architecture](docs/architecture.md) — SDD, modelo de dados, Design System, responsividade e arquitetura.
 - [Spec](docs/spec.md) — contratos técnicos, validações, integrações e convenções.
 - [Design Brief](docs/design-brief.md) — contrato visual e inventário oficial do protótipo.
+- [Roadmap da Disciplina](docs/course-roadmap.md) — requisitos e estado das atividades/entregas ao longo do semestre.
 
 ## 🎨 Protótipo e Design
 
@@ -188,7 +189,7 @@ A API pública oficial é a **Google Books API v1**, consultada por ISBN. Quando
 - [x] Commit/push da configuração Node.
 - [x] Screenshot de `npm install` + `git push`.
 - [x] PDF final gerado.
-- [ ] PDF enviado no Moodle.
+- [x] PDF enviado no Moodle.
 
 ## ✅ Checklist | Indicadores de Desempenho
 
@@ -199,7 +200,7 @@ A API pública oficial é a **Google Books API v1**, consultada por ISBN. Quando
 - [ ] ID 03 — CSS próprio usando Flexbox/Grid.
 - [ ] ID 04 — Componentes Bootstrap implementados no código.
 - [ ] ID 05 — Layout fluido com unidades relativas.
-- [x] ID 06 — Design System definido e consistente no protótipo/documentação.
+- [ ] ID 06 — Design System aplicado consistentemente na aplicação implementada.
 - [ ] ID 07 — Sass com variáveis, mixins e funções.
 - [ ] ID 08 — Tipografia responsiva/fluida implementada.
 - [ ] ID 09 — Imagens responsivas implementadas.
@@ -243,9 +244,15 @@ cd gerenciador-de-leituras
 npm install
 ```
 
-## 🗺️ Roadmap
+## 🗺️ Roadmap da Disciplina
 
-- **1ª Entrega:** documentação ✅ · Design System ✅ · protótipo Mobile/Desktop navegável ✅ · vídeo ⏳
-- **Atividade 06:** Node/NPM/Git ✅ · evidências e PDF ✅ · envio Moodle ⏳
-- **Entrega 2:** HTML/CSS responsivo + Bootstrap ⏳
-- **Entrega 3:** JavaScript, Web Storage, APIs e deploy ⏳
+O planejamento completo está em [docs/course-roadmap.md](docs/course-roadmap.md).
+
+- **1ª Entrega:** documentação ✅ · Design System/protótipo ✅ · Mobile/Desktop navegável ✅ · Vídeo 1 ⏳
+- **Atividade 06:** Node/NPM/Git ✅ · evidências ✅ · PDF ✅ · Moodle ✅
+- **Atividade 07:** Bootstrap via NPM · Grid · Modal · Card · Flexbox · Bootstrap Icons · PDF ⏳
+- **Atividade 08:** protótipo → código Bootstrap · 10 componentes · Grid/Flexbox · Sticky Footer · breakpoints · PDF ⏳
+- **Entrega 2:** HTML/CSS responsivo + Bootstrap + Sass · Vídeo 2 ⏳
+- **Entrega 3:** JavaScript ES6+ · validações · Web Storage · jQuery · JSON Server · Google Books · deploy · Vídeo 3 ⏳
+
+> Os requisitos são marcados somente quando há implementação/evidência real. O protótipo não substitui a comprovação no código.
