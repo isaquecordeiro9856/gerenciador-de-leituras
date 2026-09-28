@@ -1,84 +1,87 @@
 # Especificação Técnica
 
-Este documento registra as versões e contratos técnicos oficiais do **BookTracker**. O escopo funcional está em [prd.md](prd.md) e as decisões de arquitetura/design estão em [architecture.md](architecture.md).
+Este documento registra o contrato técnico oficial do **BookTracker**. O escopo funcional está em [prd.md](prd.md) e as decisões de arquitetura/design em [architecture.md](architecture.md).
 
 ## 1. Stack Oficial
 
 | Tecnologia | Versão/linha | Uso |
 |---|---|---|
-| HTML | HTML5 | Estrutura semântica das páginas. |
-| CSS | CSS3 | Ajustes próprios e requisitos de responsividade fora do framework. |
-| Bootstrap | **5.3.8** | Framework CSS principal: Grid, Flexbox, utilitários e componentes. |
-| JavaScript | ES6+ | Lógica de negócio, DOM, validações e fetch/async-await. |
-| Sass | versão definida na instalação | Variáveis, mixins, funções e modularização do CSS. |
-| jQuery | versão instalada no package.json | Manipulação do DOM/interatividade exigida pela disciplina. |
-| Biblioteca/plugin complementar | a definir após teste de compatibilidade | Atendimento ao ID 21 sem forçar dependência incompatível. |
-| JSON Server | versão definida na instalação | API fake REST para livros e avaliações. |
-| Google Books API | **v1** | Busca de livros por ISBN. |
-| Node.js | **linha LTS vigente no ambiente da disciplina** | Ambiente e gerenciamento de dependências. |
-| NPM | versão fornecida pelo Node | Gerenciamento de pacotes. |
-| GitHub Pages | serviço | Hospedagem estática final da interface. |
+| HTML | HTML5 | Estrutura semântica. |
+| CSS | CSS3 | Estilos próprios e responsividade. |
+| Bootstrap | **5.3.8** | Grid/Flexbox, responsividade e componentes. |
+| JavaScript | ES6+ | Lógica, DOM, validações e requisições. |
+| Sass | a definir na instalação | Variáveis, mixins, funções e modularização. |
+| jQuery | versão do `package.json` | Requisito de manipulação/interatividade da disciplina. |
+| Biblioteca/plugin complementar | a definir | Atendimento ao ID 21. |
+| JSON Server | a definir na instalação | API fake para usuários, livros e avaliações. |
+| Google Books API | **v1** | Busca por ISBN. |
+| Node.js | linha LTS | Ambiente. |
+| NPM | versão fornecida pelo Node | Pacotes. |
+| GitHub Pages | serviço | Hospedagem estática final. |
 
-> Não será usado Tailwind CSS.
+> Tailwind CSS não será utilizado.
 
-## 2. Bootstrap
+## 2. Páginas Reais
 
-- **Versão oficial adotada:** Bootstrap 5.3.8.
-- **Documentação:** Bootstrap 5.3.
-- **Recursos planejados:** container, row/col, Flex utilities, Navbar/Offcanvas, Cards, Modal, Forms, Buttons, Badges e componentes de feedback.
-- **Estratégia:** durante atividades que exigirem prova de instalação via NPM, os arquivos locais instalados serão usados conforme instrução da disciplina. No deploy estático final, a forma de entrega será ajustada ao procedimento pedido pelo professor.
+- `login.html`
+- `cadastro.html`
+- `index.html`
+- `livro-form.html`
+- `livro.html`
 
-## 3. API Pública — Google Books API v1
+Os demais frames do Stitch representam estados de interface, não páginas HTML independentes.
 
-### Endpoint de busca
+## 3. Bootstrap
 
-`GET https://www.googleapis.com/books/v1/volumes`
+Versão oficial: **5.3.8**.
 
-### Consulta por ISBN
+Componentes-alvo:
 
-Parâmetro:
+- Navbar;
+- Offcanvas;
+- Card;
+- Modal;
+- Forms;
+- Input Group;
+- Button;
+- Badge;
+- Alert/Toast;
+- Select/Dropdown.
 
-`q=isbn:{isbn}`
-
-Exemplo conceitual:
-
-`GET https://www.googleapis.com/books/v1/volumes?q=isbn:9788535902778`
-
-### Campos consumidos
-
-- `items[0].volumeInfo.title`
-- `items[0].volumeInfo.authors`
-- `items[0].volumeInfo.imageLinks.thumbnail`
-
-### Tratamento
-
-- `totalItems === 0` ou ausência de `items`: informar que o livro não foi encontrado;
-- ausência de capa: usar fallback local;
-- falha HTTP/rede: exibir erro sem apagar o formulário;
-- dados retornados são sugestões editáveis antes de salvar.
-
-### Identificação da aplicação
-
-A implementação seguirá a orientação vigente da documentação oficial da API. Nenhuma chave secreta será versionada no GitHub.
+Durante atividades que exigirem instalação local via NPM, usar os arquivos locais conforme instrução do professor. O formato final de entrega estática será ajustado à etapa de deploy.
 
 ## 4. API Fake — JSON Server
 
-### Base local
+Base local:
 
 `http://localhost:3000`
 
-### Recursos
+Recursos:
 
+- `/usuarios`
 - `/livros`
 - `/avaliacoes`
 
-### Contratos mínimos
-
-#### Livro
+### Usuário
 
 ```json
 {
   "id": "uuid-ou-id-gerado",
+  "nome": "Leitor Exemplo",
+  "email": "leitor@example.test",
+  "senha": "senha-ficticia-de-demonstracao",
+  "data_criacao": "2026-09-27T00:00:00.000Z"
+}
+```
+
+> As credenciais são exclusivamente fictícias. O JSON Server não transforma esse contrato em autenticação segura de produção.
+
+### Livro
+
+```json
+{
+  "id": "uuid-ou-id-gerado",
+  "usuario_id": "id-do-usuario",
   "isbn": "9780000000000",
   "titulo": "Título do livro",
   "autor": "Autor",
@@ -89,7 +92,7 @@ A implementação seguirá a orientação vigente da documentação oficial da A
 }
 ```
 
-#### Avaliação
+### Avaliação
 
 ```json
 {
@@ -101,55 +104,97 @@ A implementação seguirá a orientação vigente da documentação oficial da A
 }
 ```
 
-## 5. Web Storage
+## 5. Contratos de Autenticação Acadêmica
 
-Chaves sugeridas:
+### Cadastro
 
-- `booktracker.filters.status`
-- `booktracker.filters.search` — opcional;
-- `booktracker.sort`
+Fluxo conceitual:
 
-Nenhum dado sensível será armazenado no Web Storage.
+1. validar campos;
+2. `GET /usuarios?email={email}`;
+3. se existir usuário, rejeitar;
+4. senão, `POST /usuarios`;
+5. iniciar sessão acadêmica ou direcionar para Login.
 
-## 6. Convenções
+### Login
 
-### Nomes
+Fluxo conceitual:
 
-- arquivos: dashed-case;
-- variáveis e funções JS: camelCase;
-- classes CSS próprias: kebab-case;
-- constantes JS: UPPER_SNAKE_CASE quando realmente constantes;
-- IDs HTML: kebab-case.
+1. validar e-mail/senha;
+2. localizar usuário por e-mail;
+3. comparar credenciais no ambiente de demonstração;
+4. armazenar apenas `userId` da sessão;
+5. redirecionar para Estante.
 
-### Git
+### Sessão
 
-Commits curtos e específicos, por exemplo:
+Usar preferencialmente:
 
-- `docs: ajusta arquitetura do projeto`
-- `feat: cria grid responsivo da estante`
-- `feat: adiciona formulário de livro`
-- `fix: corrige validação de isbn`
+`sessionStorage["booktracker.session.userId"]`
 
-### JavaScript
+Nunca armazenar senha em Web Storage.
 
-- preferir `const` e `let`;
-- evitar variáveis globais;
-- usar `async/await` para chamadas assíncronas;
-- tratar erros com `try/catch`;
-- separar acesso a API, validação, storage e renderização;
-- evitar HTML grande concatenado sem necessidade;
-- preservar separação clara entre dados e interface.
+Páginas da estante/livro devem redirecionar para Login quando não houver sessão.
 
-## 7. Validações Previstas
+## 6. Google Books API v1
+
+Endpoint:
+
+`GET https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}`
+
+Campos consumidos:
+
+- `items[0].volumeInfo.title`;
+- `items[0].volumeInfo.authors`;
+- `items[0].volumeInfo.imageLinks.thumbnail`.
+
+Tratamento:
+
+- nenhum resultado → informar e manter preenchimento manual;
+- sem capa → fallback local;
+- falha HTTP/rede → feedback sem apagar dados;
+- resultado → dados continuam editáveis antes de salvar.
+
+Nenhuma chave secreta deve ser versionada.
+
+## 7. Web Storage
+
+### Sessão
+
+- `booktracker.session.userId` → `sessionStorage`.
+
+### Preferências
+
+- `booktracker.filters.status`;
+- `booktracker.sort`;
+- busca textual, se adotada.
+
+Preferências não contêm credenciais.
+
+## 8. Validações
+
+### Cadastro de usuário
+
+- nome obrigatório;
+- e-mail obrigatório e formato válido;
+- e-mail único;
+- senha: mínimo 8 caracteres, contendo letras e números;
+- confirmação idêntica à senha.
+
+### Login
+
+- e-mail obrigatório;
+- senha obrigatória;
+- credenciais inválidas → mensagem genérica e legível.
 
 ### ISBN
 
-1. remover espaços e hífens;
+1. remover espaços/hífens;
 2. aceitar somente dígitos;
-3. permitir comprimento 10 ou 13;
-4. verificar duplicidade na API fake.
+3. 10 ou 13 dígitos;
+4. verificar duplicidade para o mesmo `usuario_id`.
 
-Regex inicial de formato:
+Regex de formato:
 
 `^(?:\d{10}|\d{13})$`
 
@@ -157,18 +202,27 @@ Regex inicial de formato:
 
 - título obrigatório;
 - autor obrigatório;
-- status obrigatório;
-- limites de comprimento no HTML e JS.
+- status obrigatório.
 
 ### Avaliação
 
-- nota: inteiro 1–5;
-- resenha: até 1000 caracteres;
-- somente para livro com status `lido`.
+- somente para `lido`;
+- nota inteira 1–5;
+- uma avaliação por livro;
+- resenha até 1000 caracteres.
 
-## 8. Responsividade
+## 9. Regra de Estrelas
 
-Breakpoints serão os do Bootstrap 5.3:
+- `lido` + avaliação → mostrar nota correspondente;
+- `lido` sem avaliação → mostrar “Ainda não avaliado”;
+- `lendo` → não mostrar estrelas;
+- `quero-ler` → não mostrar estrelas.
+
+Não exibir estrelas fictícias.
+
+## 10. Responsividade
+
+Breakpoints Bootstrap 5.3:
 
 - xs: <576px;
 - sm: ≥576px;
@@ -177,104 +231,91 @@ Breakpoints serão os do Bootstrap 5.3:
 - xl: ≥1200px;
 - xxl: ≥1400px.
 
-O design será mobile-first.
+Estratégia mobile-first.
 
-## 9. Componentes Bootstrap-alvo
-
-Pelo menos estes componentes serão reconhecíveis no protótipo e depois implementados:
-
-1. Navbar/Offcanvas;
-2. Card;
-3. Modal;
-4. Forms/Input Group;
-5. Button;
-6. Badge;
-7. Alert/Toast;
-8. Dropdown/Select.
-
-## 10. Design Tokens Oficiais
-
-Os tokens detalhados ficam em [architecture.md](architecture.md). Resumo:
+## 11. Design Tokens
 
 - Primary: `#3F5144`
+- Primary dark: `#2C3A30`
 - Accent: `#C47A4A`
 - Background: `#F5F3EE`
 - Surface: `#FFFFFF`
 - Text: `#20231F`
 - Muted: `#62685F`
-- Títulos: DM Serif Display;
-- Corpo/UI: Inter.
+- Border: `#D9DDD6`
+- Success: `#2F7D4A`
+- Info: `#3F6F8E`
+- Warning: `#A56A22`
+- Danger: `#B4423C`
+- Títulos: DM Serif Display
+- Corpo/UI: Inter
 
-Esses valores devem ser replicados no Design System do Stitch e posteriormente nas variáveis Sass/CSS do projeto.
+## 12. Acessibilidade — Critérios para o Código
 
-## 11. Dependências da Atividade 06
+O protótipo orienta o design, mas a implementação ainda deve comprovar:
 
-A Atividade 06 exige especificamente a inicialização do NPM e instalação de:
+- `label for/id`;
+- feedback associado a campos;
+- foco visível;
+- teclado;
+- contraste suficiente;
+- alt text;
+- modal com foco correto;
+- status não apenas por cor;
+- ARIA apenas quando semanticamente necessário.
 
-- `jquery` como dependência de produção;
-- `uuid` como dependência de produção;
-- `gh-pages` como dependência de desenvolvimento.
-
-Essas dependências já fazem parte do repositório atual. Dependências das atividades posteriores serão adicionadas somente quando forem necessárias.
-
-## 12. Deploy
-
-O GitHub Pages hospedará os arquivos estáticos do front-end.
-
-O JSON Server é uma API de desenvolvimento e não é executado pelo GitHub Pages. Antes da Entrega 3, será definido o modo de demonstração/publicação da API fake de acordo com a orientação da disciplina, sem fingir que `localhost:3000` funciona em produção.
-
+Não considerar atributos/classes como existentes até o código ser implementado e auditado.
 
 ## 13. Contrato de Interface Aprovado
 
-A implementação deve usar exclusivamente o conjunto **APPROVED** documentado em `docs/design-brief.md`.
+### Design System
 
-### Páginas reais
+- APPROVED DESIGN SYSTEM
 
-Somente três documentos HTML principais:
+### Mobile
 
-- `index.html`;
-- `livro-form.html`;
-- `livro.html`.
+- M0A Login
+- M0B Cadastro
+- M1 Estante
+- M2 Estante Vazia
+- M3 Offcanvas
+- M4 Adicionar/Editar
+- M5 Validação/API
+- M6 Detalhes Lido
+- M7 Detalhes Não Concluído
+- M8 Exclusão
+- M9 Feedback/Loading
 
-### Estados obrigatórios
+### Desktop
 
-Os seguintes estados devem ser tratados sem criar páginas redundantes:
+- D0A Login
+- D0B Cadastro
+- D1 Estante
+- D2 Estante Vazia
+- D4 Adicionar/Editar
+- D5 Validação/API
+- D6 Detalhes Lido
+- D7 Detalhes Não Concluído
+- D8 Exclusão
 
-- estante populada;
-- estante vazia;
-- offcanvas mobile;
-- formulário normal;
-- formulário com erros de validação;
-- API sem resultado;
-- API/preenchimento automático bem-sucedido;
-- detalhes de livro Lido;
-- detalhes de livro não concluído;
-- modal de exclusão;
-- feedback de sucesso;
-- feedback de erro;
-- estado de loading/skeleton.
+## 14. Itens Fora do Escopo
 
-### Regras de feedback
+Não criar persistência/endpoints para:
 
-- erros de campo ficam próximos ao controle correspondente;
-- erro de API não apaga dados já digitados;
-- sucesso de cadastro/edição fornece confirmação legível;
-- loading não deve bloquear toda a interface quando apenas uma parte está carregando;
-- status não depende somente de cor;
-- ações destrutivas exigem confirmação em modal.
+- perfil/avatar;
+- OAuth/login social;
+- coleções;
+- citações/notas/diário;
+- metas/streaks;
+- progresso/páginas;
+- formato/edição/publicação;
+- upload de capa;
+- recursos sociais;
+- recomendações;
+- dashboard/estatísticas.
 
-### Navegação
+## 15. Deploy
 
-O fluxo mobile parte de M1 e o desktop de D1. Ambos devem permitir:
+GitHub Pages hospeda arquivos estáticos.
 
-`Estante → Cadastro/Edição → Estante`
-
-`Estante → Detalhes → Editar → Cadastro/Edição`
-
-`Detalhes → Excluir → Modal → Detalhes/Estante`
-
-Nenhuma ação principal pode terminar em tela sem saída.
-
-### Itens proibidos pelo escopo
-
-Não adicionar campos, endpoints ou persistência para perfil/avatar, coleções, citações, notas, diário, metas, streaks, progresso, páginas, formato, ano/data de edição/publicação, upload de capa, social, recomendações ou dashboard.
+O JSON Server não roda dentro do GitHub Pages. Antes da Entrega 3 será definido, conforme orientação da disciplina, como demonstrar/hospedar a API fake sem fingir que `localhost:3000` funciona em produção.
