@@ -25,18 +25,18 @@ O BookTracker usa uma linguagem de **biblioteca pessoal contemporânea**: editor
 
 ### Conjunto final aprovado
 
-**Mobile:** M1 Estante populada · M2 Estante vazia · M3 Offcanvas · M4 Cadastro/Edição normal · M5 Validação/API · M6 Detalhes Lido · M7 Detalhes não concluído · M8 Modal de exclusão · M9 Feedback/Loading.
+**Mobile:** M0A Login · M0B Cadastro · M1 Estante populada · M2 Estante vazia · M3 Offcanvas · M4 Cadastro/Edição normal · M5 Validação/API · M6 Detalhes Lido · M7 Detalhes não concluído · M8 Modal de exclusão · M9 Feedback/Loading.
 
-**Desktop:** D1 Estante populada · D2 Estante vazia · D4 Cadastro/Edição normal · D5 Validação/API · D6 Detalhes Lido · D7 Detalhes não concluído · D8 Modal de exclusão.
+**Desktop:** D0A Login · D0B Cadastro · D1 Estante populada · D2 Estante vazia · D4 Cadastro/Edição normal · D5 Validação/API · D6 Detalhes Lido · D7 Detalhes não concluído · D8 Modal de exclusão.
 
 Os estados acima não criam páginas adicionais: o produto continua com três páginas HTML principais.
 
 ### Protótipos de apresentação
 
-- **BookTracker Mobile Prototype** — inicia em M1.
-- **BookTracker Desktop Prototype** — inicia em D1.
+- **BookTracker Mobile Prototype** — inicia em M0A (Login).
+- **BookTracker Desktop Prototype** — inicia em D0A (Login).
 
-Os fluxos cobrem Estante → Adicionar/Editar → Detalhes → Exclusão/retorno e os estados necessários de validação, vazio, feedback e loading.
+Os fluxos cobrem Login/Cadastro → Estante → Adicionar/Editar → Detalhes → Exclusão/retorno, além dos estados de validação, vazio, feedback e loading.
 
 ### Componentes Bootstrap planejados no protótipo
 
@@ -51,11 +51,13 @@ Os fluxos cobrem Estante → Adicionar/Editar → Detalhes → Exclusão/retorno
 
 ## 🧭 Páginas planejadas
 
-1. **Estante** — listagem em cards, busca, filtros e ordenação.
-2. **Cadastro/Edição de livro** — formulário, validação e busca por ISBN.
-3. **Detalhes do livro** — informações completas, avaliação, edição e exclusão.
+1. **Login** — acesso acadêmico por e-mail e senha.
+2. **Cadastro** — criação de conta de demonstração.
+3. **Estante** — listagem em cards, busca, filtros e ordenação.
+4. **Cadastro/Edição de livro** — formulário, validação e busca por ISBN.
+5. **Detalhes do livro** — informações, avaliação, edição e exclusão.
 
-O escopo não inclui autenticação de usuários. Isso mantém o projeto compatível com a arquitetura acadêmica baseada em front-end + JSON Server e evita simular segurança que a stack não fornece.
+A autenticação faz parte do fluxo final, mas será uma **simulação acadêmica sobre JSON Server**. Não será apresentada como segurança de produção e não armazenará senha no Web Storage.
 
 ## 💻 Tecnologias e Dependências
 
@@ -67,7 +69,7 @@ O escopo não inclui autenticação de usuários. Isso mantém o projeto compat�
 | **Sass (SCSS)** | Variáveis, mixins, funções e modularização do CSS. |
 | **jQuery** | Manipulação do DOM e interatividade exigida pela disciplina. |
 | **uuid** | Geração de identificadores quando necessária. |
-| **JSON Server** | API fake para livros e avaliações. |
+| **JSON Server** | API fake para usuários, livros e avaliações. |
 | **Google Books API v1** | Busca de metadados de livros por ISBN. |
 | **gh-pages / GitHub Pages** | Apoio ao processo de publicação estática. |
 
@@ -153,7 +155,7 @@ Os comandos para JSON Server, Sass, lint, desenvolvimento e deploy serão adicio
 
 ## 🗺️ Roadmap
 
-- **Fundação / 1ª Entrega:** documentação ✅ · Design System ✅ · protótipo final Mobile/Desktop navegável ✅ · vídeo ⏳
+- **Fundação / 1ª Entrega:** documentação atualizada ✅ · Design System ✅ · protótipo final Mobile/Desktop com Login/Cadastro ✅ · vídeo ⏳
 - **Atividade 06:** configuração Node/NPM/Git ✅ · evidências/PDF ⏳
 - **Entrega 2:** HTML/CSS responsivo com Bootstrap ⏳
 - **Entrega 3:** JavaScript, Web Storage, APIs e deploy ⏳
