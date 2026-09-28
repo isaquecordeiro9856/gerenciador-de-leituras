@@ -178,18 +178,6 @@ O framework oficial é **Bootstrap 5.3**. Tailwind CSS não será utilizado.
 
 A API pública oficial é a **Google Books API v1**, consultada por ISBN. Quando não houver resultado ou ocorrer falha, o formulário continua disponível para preenchimento manual.
 
-## ✅ Atividade 06 — Node, NPM e Git
-
-- [x] Identidade Git confirmada.
-- [x] Repositório clonado e sincronizado.
-- [x] Projeto NPM inicializado.
-- [x] `.gitignore` ignora `node_modules` e arquivos de ambiente.
-- [x] `jquery` e `uuid` em dependencies.
-- [x] `gh-pages` em devDependencies.
-- [x] Commit/push da configuração Node.
-- [x] Screenshot de `npm install` + `git push`.
-- [x] PDF final gerado.
-- [x] PDF enviado no Moodle.
 
 ## ✅ Checklist | Indicadores de Desempenho
 
