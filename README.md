@@ -248,6 +248,9 @@ npm install
 
 O planejamento completo está em [docs/course-roadmap.md](docs/course-roadmap.md).
 
+- **Atividade 03:** tema/escopo · README · PRD · Architecture ✅
+- **Atividade 04:** protótipo responsivo e navegável Mobile/Desktop ✅
+- **Atividade 05:** Bootstrap 5.3 + Google Books API definidos/documentados ✅
 - **1ª Entrega:** documentação ✅ · Design System/protótipo ✅ · Mobile/Desktop navegável ✅ · Vídeo 1 ⏳
 - **Atividade 06:** Node/NPM/Git ✅ · evidências ✅ · PDF ✅ · Moodle ✅
 - **Atividade 07:** Bootstrap via NPM · Grid · Modal · Card · Flexbox · Bootstrap Icons · PDF ⏳
