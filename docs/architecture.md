@@ -13,9 +13,9 @@ Arquitetura-alvo:
 - JSON Server como API fake acadêmica;
 - Google Books API v1 para busca por ISBN;
 - Web Storage para sessão acadêmica e preferências;
-- GitHub Pages para a interface estática final.
+- GitHub Pages para hospedagem estática da interface final.
 
-A autenticação deste projeto é **didática**, construída sobre a API fake exigida pela disciplina. Não deve ser tratada como autenticação segura de produção.
+A autenticação é **didática**, construída sobre a API fake exigida pela disciplina. Não deve ser apresentada como autenticação segura de produção.
 
 ## 2. Páginas Principais
 
@@ -44,35 +44,55 @@ Responsabilidades:
 - exigir sessão válida;
 - carregar somente livros do usuário atual;
 - renderizar cards;
-- buscar, filtrar e ordenar;
+- buscar por título/autor;
+- filtrar por status;
+- ordenar;
 - exibir estado vazio;
-- restaurar preferências locais;
-- direcionar para cadastro e detalhes.
+- restaurar preferências;
+- direcionar para Adicionar Livro e Detalhes.
 
-### 2.4 Cadastro/Edição — `livro-form.html`
+### 2.4 Adicionar/Editar Livro — `livro-form.html`
 
-Responsabilidades:
+Esta página é **reutilizada em dois modos**.
 
-- validar ISBN;
-- consultar Google Books;
-- preencher dados encontrados;
-- permitir fallback manual;
-- validar formulário;
-- criar/editar livro associado ao usuário atual.
+#### Modo Adicionar
+
+- campos inicialmente vazios;
+- busca por ISBN;
+- preenchimento automático por Google Books;
+- fallback manual;
+- seleção de status;
+- ação principal `Salvar livro`.
+
+#### Modo Editar
+
+- carregar o livro atual;
+- preencher ISBN, título, autor(es), status e preview de capa;
+- permitir alterar ISBN, título, autor(es) e status;
+- permitir nova busca por ISBN;
+- atualizar a capa somente a partir da Google Books API/fallback;
+- ação principal `Salvar alterações`;
+- cancelar retorna ao Detalhes sem persistir mudanças;
+- salvar retorna ao Detalhes atualizado.
+
+> Não existem páginas/telas separadas M4B/D4B. M4/D4 representam o mesmo formulário em contextos diferentes.
+
+> Avaliação e resenha não pertencem ao formulário de livro. Elas são gerenciadas nos Detalhes.
 
 ### 2.5 Detalhes — `livro.html`
 
 Responsabilidades:
 
 - exibir livro do usuário atual;
-- editar/excluir;
+- mostrar capa, título, autor, ISBN e status;
+- abrir o formulário em modo Editar;
+- excluir livro com confirmação;
 - criar/editar avaliação quando status for Lido;
-- impedir avaliação em livro não concluído;
-- confirmar exclusão.
+- informar indisponibilidade de avaliação para livros não concluídos.
 
 ## 3. Modelo de Dados
 
-A API fake terá três entidades: **USUARIO**, **LIVRO** e **AVALIACAO**.
+A API fake terá três entidades principais: **USUARIO**, **LIVRO** e **AVALIACAO**.
 
 ```mermaid
 erDiagram
@@ -112,23 +132,25 @@ erDiagram
 
 - um usuário possui zero ou muitos livros;
 - cada livro pertence a exatamente um usuário;
-- ISBN é único **dentro da estante do mesmo usuário**;
+- ISBN é único dentro da estante do mesmo usuário;
 - cada livro possui no máximo uma avaliação;
-- somente livro com status `lido` pode possuir avaliação;
-- excluir livro remove a avaliação associada via lógica JavaScript.
+- somente livro `lido` pode possuir avaliação;
+- excluir livro remove também a avaliação associada via lógica JavaScript.
 
-### Observação sobre senha
+### Credenciais de demonstração
 
-O JSON Server não fornece autenticação segura, hashing confiável de credenciais no servidor, sessão protegida ou autorização real. Portanto:
+JSON Server não fornece autenticação real, hashing seguro, autorização no servidor ou sessão protegida.
 
-- usar somente credenciais fictícias de demonstração;
-- nunca reutilizar senha pessoal real;
-- não afirmar que esse fluxo é seguro para produção;
+Portanto:
+
+- usar somente credenciais fictícias;
+- nunca reutilizar senha pessoal;
+- não afirmar segurança de produção;
 - nunca guardar senha em `localStorage` ou `sessionStorage`.
 
 ## 4. API Fake
 
-Base local de desenvolvimento:
+Base local:
 
 `http://localhost:3000`
 
@@ -136,31 +158,31 @@ Base local de desenvolvimento:
 
 | Método | Rota | Uso |
 |---|---|---|
-| GET | /usuarios?email={email} | localizar conta / verificar duplicidade |
-| POST | /usuarios | criar usuário |
-| GET | /usuarios/{id} | recuperar usuário da sessão quando necessário |
+| GET | `/usuarios?email={email}` | localizar conta/verificar duplicidade |
+| POST | `/usuarios` | criar usuário |
+| GET | `/usuarios/{id}` | recuperar usuário da sessão quando necessário |
 
 ### Livros
 
 | Método | Rota | Uso |
 |---|---|---|
-| GET | /livros?usuario_id={id} | listar estante do usuário |
-| GET | /livros/{id} | obter livro |
-| GET | /livros?usuario_id={id}&isbn={isbn} | verificar duplicidade |
-| POST | /livros | cadastrar |
-| PATCH | /livros/{id} | editar |
-| DELETE | /livros/{id} | excluir |
+| GET | `/livros?usuario_id={id}` | listar estante |
+| GET | `/livros/{id}` | carregar livro |
+| GET | `/livros?usuario_id={id}&isbn={isbn}` | verificar duplicidade |
+| POST | `/livros` | adicionar |
+| PATCH | `/livros/{id}` | salvar alterações |
+| DELETE | `/livros/{id}` | excluir |
 
 ### Avaliações
 
 | Método | Rota | Uso |
 |---|---|---|
-| GET | /avaliacoes?livro_id={id} | consultar |
-| POST | /avaliacoes | criar |
-| PATCH | /avaliacoes/{id} | editar |
-| DELETE | /avaliacoes/{id} | excluir |
+| GET | `/avaliacoes?livro_id={id}` | consultar |
+| POST | `/avaliacoes` | criar |
+| PATCH | `/avaliacoes/{id}` | editar |
+| DELETE | `/avaliacoes/{id}` | excluir |
 
-> O front-end sempre deve confirmar que o livro carregado pertence ao usuário da sessão antes de permitir ações. Isso é uma proteção didática de interface, não autorização segura de backend.
+> O front-end deve verificar que o livro carregado pertence ao usuário da sessão antes de permitir ações. Isso é apenas uma proteção didática no cliente, não autorização segura de backend.
 
 ## 5. Sessão e Web Storage
 
@@ -170,28 +192,29 @@ Preferência: `sessionStorage`.
 
 Chave:
 
-- `booktracker.session.userId`
+`booktracker.session.userId`
 
-A sessão armazena apenas o identificador do usuário, nunca a senha.
+Fluxo:
 
-Ao abrir páginas protegidas:
+1. Login válido define o `userId`;
+2. páginas protegidas verificam a chave;
+3. ausência de sessão redireciona para Login;
+4. dados são filtrados pelo `usuario_id`;
+5. encerrar sessão remove a chave.
 
-1. ler `userId`;
-2. se ausente, redirecionar para Login;
-3. carregar dados usando `usuario_id`;
-4. ao sair da sessão, remover a chave.
+Nenhuma senha é armazenada no Web Storage.
 
 ### Preferências
 
 `localStorage` pode armazenar:
 
-- `booktracker.filters.status`;
-- `booktracker.sort`;
-- busca textual, se fizer sentido.
+- filtro de status;
+- ordenação;
+- busca textual, se adotada.
 
 ## 6. Google Books API
 
-Consulta:
+Consulta prevista:
 
 `GET https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}`
 
@@ -203,12 +226,15 @@ Campos principais:
 
 Comportamento:
 
-- encontrado → sugerir/preencher dados;
-- não encontrado → permitir preenchimento manual;
-- erro → feedback sem apagar campos;
-- sem capa → fallback visual local.
+- resultado encontrado → preencher/sugerir dados;
+- sem resultado → manter entrada manual;
+- sem capa → fallback local;
+- falha → feedback sem apagar campos;
+- nova busca no modo Editar pode atualizar título, autoria e capa antes do salvamento.
 
-## 7. Estrutura de Front-end
+A capa não terá upload manual.
+
+## 7. Estrutura Planejada
 
 ```text
 /
@@ -225,7 +251,7 @@ Comportamento:
     ├── js/
     │   ├── api/
     │   │   ├── auth-api.js
-    │   │   ├── books-api.js
+    │   │   ├── google-books-api.js
     │   │   └── library-api.js
     │   ├── pages/
     │   │   ├── login.js
@@ -250,38 +276,50 @@ Comportamento:
 
 ### Conceito
 
-**Biblioteca pessoal contemporânea**: editorial, limpa, acolhedora, moderna e fácil de reproduzir com Bootstrap.
+**Biblioteca pessoal contemporânea**: editorial, limpa, acolhedora, moderna e reproduzível com Bootstrap 5.3 + Sass.
 
 ### Tokens
 
-| Token | Valor |
-|---|---|
-| Primary | `#3F5144` |
-| Primary dark | `#2C3A30` |
-| Accent | `#C47A4A` |
-| Background | `#F5F3EE` |
-| Surface | `#FFFFFF` |
-| Text | `#20231F` |
-| Muted | `#62685F` |
-| Border | `#D9DDD6` |
-| Success | `#2F7D4A` |
-| Info | `#3F6F8E` |
-| Warning | `#A56A22` |
-| Danger | `#B4423C` |
+| Token | Valor | Uso |
+|---|---|---|
+| Primary | `#3F5144` | identidade e CTA principal |
+| Primary dark | `#2C3A30` | hover/ênfase |
+| Accent | `#C47A4A` | acentos e estrelas |
+| Background | `#F5F3EE` | fundo geral |
+| Surface | `#FFFFFF` | cards/formulários/modais |
+| Text | `#20231F` | texto principal |
+| Muted | `#62685F` | texto secundário |
+| Border | `#D9DDD6` | divisórias/campos |
+| Success | `#2F7D4A` | sucesso/Lido |
+| Info | `#3F6F8E` | informação/Lendo |
+| Warning | `#A56A22` | atenção/Quero ler |
+| Danger | `#B4423C` | erro/exclusão |
 
 Tipografia:
 
 - títulos: **DM Serif Display**;
 - corpo/interface: **Inter**.
 
-Terracota é acento; ações primárias usam verde profundo.
+### Princípios
 
-## 9. Componentes Bootstrap Planejados
+- ritmo de espaçamento baseado em 8 px;
+- controles com raio aproximado de 12–16 px;
+- cards com raio aproximado de 16–20 px;
+- sombras discretas;
+- capas em proporção consistente;
+- alvos de toque confortáveis;
+- terracota como acento, não como CTA principal.
 
-- Navbar;
-- Offcanvas;
-- Card;
-- Modal;
+## 9. Mapeamento para Bootstrap 5.3
+
+O Design System/protótipo deve permitir identificar visualmente, no mínimo:
+
+1. **Navbar / Offcanvas** — navegação;
+2. **Card** — livro da estante;
+3. **Modal** — confirmação de exclusão.
+
+Também serão usados:
+
 - Forms;
 - Input Group;
 - Buttons;
@@ -289,79 +327,92 @@ Terracota é acento; ações primárias usam verde profundo.
 - Alert/Toast;
 - Select/Dropdown.
 
+Essas identificações pertencem ao contrato de protótipo; as classes reais serão comprovadas apenas na fase de implementação.
+
 ## 10. Responsividade
 
 Estratégia mobile-first:
 
 - xs: uma coluna e navegação compacta;
-- sm/md: filtros/formulários reorganizados;
-- lg+: grade de cards e layouts em duas colunas.
+- sm/md: reorganização de filtros e formulários;
+- lg+: grade de múltiplos cards e formulários/detalhes com melhor uso horizontal.
 
 Combinar:
 
 - Grid/Flexbox Bootstrap;
-- CSS Grid/Flexbox próprio onde apropriado;
+- CSS Grid/Flexbox próprio quando apropriado;
 - unidades relativas;
-- `clamp()` para tipografia;
-- imagens responsivas com `object-fit`;
-- técnicas adaptativas para imagens locais quando aplicáveis.
+- tipografia fluida com `clamp()`;
+- imagens responsivas e `object-fit`.
 
 ## 11. Acessibilidade — Requisitos de Implementação
 
-O protótipo representa a intenção visual. O código ainda deverá implementar e validar:
+O protótipo define a intenção visual; o código ainda deverá comprovar:
 
 - HTML semântico;
-- `label` associado a cada controle;
-- mensagens ligadas aos campos;
+- labels associados aos controles;
+- mensagens de erro junto aos campos;
 - navegação por teclado;
 - foco visível;
 - contraste suficiente;
 - texto alternativo;
-- status não dependentes somente de cor;
-- modal com gerenciamento adequado de foco;
-- `prefers-reduced-motion` em animações customizadas.
+- status não dependentes apenas de cor;
+- foco adequado em Modal/Offcanvas;
+- suporte a `prefers-reduced-motion` em animações customizadas.
 
-Não considerar atributos ARIA ou classes Bootstrap como implementados antes de existirem no código.
+Não considerar ARIA, classes Bootstrap ou contraste medido como implementados antes de existirem/serem validados no código.
 
-## 12. Protótipo Final Aprovado
+## 12. Regra de Avaliação
+
+- `lido` com avaliação → mostrar estrelas correspondentes;
+- `lido` sem avaliação → `Ainda não avaliado`;
+- `lendo` e `quero-ler` → sem estrelas falsas;
+- estrelas/resenha aparecem somente nos Detalhes;
+- formulário M4/D4 não contém avaliação;
+- ao mudar um livro avaliado de `lido` para outro status, solicitar confirmação antes de remover a avaliação incompatível.
+
+## 13. Protótipo Final Aprovado
+
+Somente frames **APPROVED** fazem parte do contrato.
 
 ### Design System
 
 - APPROVED DESIGN SYSTEM
 
-### Autenticação Mobile
+### Mobile
 
 - APPROVED M0A — Login
 - APPROVED M0B — Cadastro
-
-### Mobile
-
-- APPROVED M1 — Estante
+- APPROVED M1 — Minha Estante
 - APPROVED M2 — Estante Vazia
 - APPROVED M3 — Offcanvas
 - APPROVED M4 — Adicionar/Editar Livro
 - APPROVED M5 — Validação e API
 - APPROVED M6 — Detalhes Lido
 - APPROVED M7 — Detalhes Não Concluído
-- APPROVED M8 — Modal Exclusão
-- APPROVED M9 — Feedback/Loading
-
-### Autenticação Desktop
-
-- APPROVED D0A — Login
-- APPROVED D0B — Cadastro
+- APPROVED M8 — Modal de Exclusão
+- APPROVED M9 — Feedback e Loading
 
 ### Desktop
 
-- APPROVED D1 — Estante
+- APPROVED D0A — Login
+- APPROVED D0B — Cadastro
+- APPROVED D1 — Minha Estante
 - APPROVED D2 — Estante Vazia
 - APPROVED D4 — Adicionar/Editar Livro
 - APPROVED D5 — Validação e API
 - APPROVED D6 — Detalhes Lido
 - APPROVED D7 — Detalhes Não Concluído
-- APPROVED D8 — Modal Exclusão
+- APPROVED D8 — Modal de Exclusão
 
-## 13. Fluxos
+### Regra de inventário
+
+- não criar M4B/D4B;
+- M4/D4 atendem Adicionar e Editar;
+- estados de erro/loading/modal não viram páginas independentes;
+- versões antigas/exploratórias do Stitch não fazem parte da implementação.
+
+## 14. Fluxos de Navegação
 
 ### Mobile
 
@@ -369,40 +420,54 @@ Não considerar atributos ARIA ou classes Bootstrap como implementados antes de 
 
 `M1 → M3 Offcanvas → M1/M4`
 
-`M1 → M4 → M9 → M1`
+`M1 → M4 (Adicionar) → M9 → M1`
 
-`M1 → M6/M7 → M4`
+`M1 → M6/M7 Detalhes`
 
-`M6/M7 → M8 → M1 ou Detalhes`
+`M6/M7 → M4 (Editar preenchido) → M6/M7 atualizado`
+
+`M4 Editar → Cancelar → Detalhes sem alteração`
+
+`M6/M7 → M8 Excluir → Detalhes ou M1`
 
 ### Desktop
 
 `D0A Login ↔ D0B Cadastro → D1 Estante`
 
-`D1 → D4 → D1`
+`D1 → D4 (Adicionar) → D1`
 
-`D1 → D6/D7 → D4`
+`D1 → D6/D7 Detalhes`
 
-`D6/D7 → D8 → D1 ou Detalhes`
+`D6/D7 → D4 (Editar preenchido) → D6/D7 atualizado`
 
-## 14. Restrições
+`D4 Editar → Cancelar → Detalhes sem alteração`
+
+`D6/D7 → D8 Excluir → Detalhes ou D1`
+
+## 15. Fora do Escopo
 
 Não adicionar:
 
 - perfil/avatar;
-- login social;
-- coleções/citações/notas/diário;
+- OAuth/login social;
+- coleções;
+- citações/notas pessoais;
+- diário;
 - metas/streaks;
 - progresso/páginas;
-- formato/edição/publicação;
-- upload de capa;
-- recursos sociais;
+- número de páginas;
+- formato;
+- editora;
+- ano/data de edição/publicação;
+- upload manual de capa;
+- rede social;
 - recomendações;
 - dashboard/estatísticas.
 
-Também:
+## 16. Restrições Técnicas
 
-- Tailwind não será usado;
+- Tailwind CSS não será usado;
 - não haverá React/Vue;
-- lógica principal será JavaScript Vanilla ES6+;
-- Bootstrap será o Framework CSS oficial.
+- lógica principal em JavaScript Vanilla ES6+;
+- Bootstrap será o Framework CSS oficial;
+- o projeto deve permanecer simples o suficiente para ser explicado durante a avaliação.
