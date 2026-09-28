@@ -121,7 +121,7 @@ erDiagram
 
     AVALIACAO {
         string id PK
-        string livro_id FK UK
+        string livro_id FK
         int nota_estrelas
         string resenha
         string data_avaliacao
