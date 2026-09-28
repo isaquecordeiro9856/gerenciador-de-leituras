@@ -471,3 +471,52 @@ Não adicionar:
 - lógica principal em JavaScript Vanilla ES6+;
 - Bootstrap será o Framework CSS oficial;
 - o projeto deve permanecer simples o suficiente para ser explicado durante a avaliação.
+
+
+## 17. Compatibilidade com as Atividades da Disciplina
+
+O desenvolvimento deve seguir também o [Roadmap da Disciplina](course-roadmap.md).
+
+### Atividade 07
+
+Quando o código Bootstrap for iniciado, preservar evidências de:
+
+- Grid responsivo;
+- colunas automáticas e `.col-12`;
+- classes `.col-md-*`;
+- offset e order;
+- utilidades responsivas de display;
+- Modal;
+- Card;
+- utilidades de texto;
+- Flexbox;
+- Bootstrap Icons.
+
+Requisitos didáticos muito específicos que não se encaixem naturalmente no produto podem ser demonstrados em uma página/laboratório da atividade, sem deformar as telas finais do BookTracker.
+
+### Atividade 08
+
+A conversão do protótipo APPROVED para código deverá permitir auditoria clara de pelo menos dez componentes Bootstrap. O conjunto planejado é:
+
+1. Navbar;
+2. Offcanvas;
+3. Card;
+4. Modal;
+5. Button;
+6. Badge;
+7. Input Group;
+8. Alert;
+9. Toast;
+10. Spinner.
+
+Form Controls e Form Select também serão utilizados e podem compor a lista final conforme o código realmente implementado.
+
+A aplicação também deverá possuir **Sticky Footer**, preferencialmente com uma estrutura flex vertical baseada em classes/utilitários equivalentes a `min-vh-100`, `flex-grow-1` e/ou `mt-auto`, desde que a implementação final seja auditada e explicável.
+
+A responsividade deverá ser testada nos breakpoints xs, sm, md, lg, xl e xxl, incluindo verificação de overflow, proporção das imagens e funcionamento do Offcanvas.
+
+### Bootstrap local e deploy
+
+- durante a Atividade 08, Bootstrap deve ser consumido a partir da instalação NPM local para comprovar o uso de `node_modules`;
+- no deploy final, seguir a orientação específica da disciplina para GitHub Pages, inclusive CDN quando solicitado;
+- as evidências de uma fase não devem ser confundidas com as exigências da outra.
