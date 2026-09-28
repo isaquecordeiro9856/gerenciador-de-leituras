@@ -2,13 +2,13 @@
 
 ## 1. Objetivo
 
-Este documento é a **fonte de verdade visual** do BookTracker para as próximas etapas da disciplina.
+Este documento é a **fonte de verdade visual** do BookTracker para a implementação das próximas etapas da disciplina.
 
 Protótipo oficial no Google Stitch:
 
 https://stitch.google.com/u/1/projects/18205289966603005290?pli=1
 
-O conjunto final contempla autenticação acadêmica, estante, cadastro/edição de livros, detalhes, avaliação, estados de validação, feedback e exclusão.
+O conjunto final contempla autenticação acadêmica, estante, adicionar/editar livro, detalhes, avaliação, validação, feedback e exclusão em versões Mobile e Desktop.
 
 ## 2. Conceito Visual
 
@@ -32,7 +32,7 @@ Evitar:
 - gradientes chamativos;
 - sombras pesadas;
 - excesso de cores;
-- elementos difíceis de reproduzir com Bootstrap 5.3 + Sass.
+- componentes difíceis de reproduzir com Bootstrap 5.3 + Sass.
 
 ## 3. Design System Oficial
 
@@ -40,40 +40,46 @@ Evitar:
 
 | Token | Valor | Uso |
 |---|---|---|
-| Primary | `#3F5144` | identidade e ações principais |
-| Primary dark | `#2C3A30` | hover/ênfase |
-| Accent | `#C47A4A` | detalhes editoriais/estrelas |
-| Background | `#F5F3EE` | fundo |
-| Surface | `#FFFFFF` | cards/formulários/modais |
-| Text | `#20231F` | texto principal |
-| Muted | `#62685F` | texto secundário |
-| Border | `#D9DDD6` | divisórias/campos |
-| Success | `#2F7D4A` | sucesso / Lido |
-| Info | `#3F6F8E` | informação / Lendo |
-| Warning | `#A56A22` | atenção / Quero ler |
-| Danger | `#B4423C` | erro / destrutivo |
+| Primary | #3F5144 | identidade e CTA principal |
+| Primary dark | #2C3A30 | hover/ênfase |
+| Accent | #C47A4A | detalhes editoriais e estrelas |
+| Background | #F5F3EE | fundo geral |
+| Surface | #FFFFFF | cards, formulários e modal |
+| Text | #20231F | texto principal |
+| Muted | #62685F | texto secundário |
+| Border | #D9DDD6 | divisórias/campos |
+| Success | #2F7D4A | sucesso/Lido |
+| Info | #3F6F8E | informação/Lendo |
+| Warning | #A56A22 | atenção/Quero ler |
+| Danger | #B4423C | erro/exclusão |
 
 ### Tipografia
 
 - **Títulos:** DM Serif Display, Georgia, serif.
-- **Interface/corpo:** Inter, system-ui, sans-serif.
+- **Interface e corpo:** Inter, system-ui, sans-serif.
 
-### Forma
+### Forma e Espaçamento
 
-- ritmo de 8 px;
-- controles aproximadamente 12–16 px de raio;
-- cards aproximadamente 16–20 px;
-- sombras discretas;
-- bordas leves;
+- ritmo baseado em 8 px;
+- controles com aproximadamente 12–16 px de raio;
+- cards com aproximadamente 16–20 px;
+- bordas discretas;
+- sombras leves;
 - alvos de toque confortáveis;
-- capas em proporção consistente.
+- capas com proporção consistente;
+- verde como cor principal;
+- terracota como acento.
 
-## 4. Componentes Bootstrap Representados
+## 4. Componentes Bootstrap Identificados
 
-- Navbar;
-- Offcanvas;
-- Card;
-- Modal;
+Para atender à 1ª Entrega, o Design System/protótipo deve identificar visualmente pelo menos três componentes que serão implementados com Bootstrap 5.3:
+
+1. **Navbar / Offcanvas**
+2. **Card**
+3. **Modal**
+
+Também fazem parte do contrato:
+
 - Forms;
 - Input Group;
 - Buttons;
@@ -81,64 +87,62 @@ Evitar:
 - Alert/Toast;
 - Select/Dropdown.
 
-O protótipo serve como referência visual; a existência de classes Bootstrap/ARIA deve ser comprovada apenas na implementação.
+Essas identificações são documentação visual. As classes Bootstrap reais serão introduzidas na fase de código.
 
-## 5. Inventário Oficial
+## 5. Inventário Oficial do Stitch
+
+Somente frames com prefixo **APPROVED** pertencem ao contrato final.
 
 ### Design System
 
-- **APPROVED DESIGN SYSTEM**
-
-### Autenticação Mobile
-
-- **APPROVED M0A — Login**
-- **APPROVED M0B — Cadastro**
+- APPROVED DESIGN SYSTEM
 
 ### Mobile
 
-- **APPROVED M1 — Minha Estante**
-- **APPROVED M2 — Estante Vazia**
-- **APPROVED M3 — Offcanvas**
-- **APPROVED M4 — Adicionar/Editar Livro**
-- **APPROVED M5 — Validação e API**
-- **APPROVED M6 — Detalhes Lido**
-- **APPROVED M7 — Detalhes Não Concluído**
-- **APPROVED M8 — Excluir Livro**
-- **APPROVED M9 — Feedback e Loading**
-
-### Autenticação Desktop
-
-- **APPROVED D0A — Login**
-- **APPROVED D0B — Cadastro**
+- APPROVED M0A — Login
+- APPROVED M0B — Cadastro
+- APPROVED M1 — Minha Estante
+- APPROVED M2 — Estante Vazia
+- APPROVED M3 — Offcanvas
+- APPROVED M4 — Adicionar/Editar Livro
+- APPROVED M5 — Validação e API
+- APPROVED M6 — Detalhes Lido
+- APPROVED M7 — Detalhes Não Concluído
+- APPROVED M8 — Excluir Livro
+- APPROVED M9 — Feedback e Loading
 
 ### Desktop
 
-- **APPROVED D1 — Minha Estante**
-- **APPROVED D2 — Estante Vazia**
-- **APPROVED D4 — Adicionar/Editar Livro**
-- **APPROVED D5 — Validação e API**
-- **APPROVED D6 — Detalhes Lido**
-- **APPROVED D7 — Detalhes Não Concluído**
-- **APPROVED D8 — Excluir Livro**
+- APPROVED D0A — Login
+- APPROVED D0B — Cadastro
+- APPROVED D1 — Minha Estante
+- APPROVED D2 — Estante Vazia
+- APPROVED D4 — Adicionar/Editar Livro
+- APPROVED D5 — Validação e API
+- APPROVED D6 — Detalhes Lido
+- APPROVED D7 — Detalhes Não Concluído
+- APPROVED D8 — Excluir Livro
 
-Total: **1 Design System + 11 estados/telas Mobile + 9 estados/telas Desktop = 21 frames/itens oficiais**, considerando Login/Cadastro dentro de cada conjunto.
+### Regra de inventário
 
-## 6. Telas de Autenticação
+Não existem M4B/D4B no conjunto final. A edição utiliza o próprio M4/D4 em modo preenchido.
+
+## 6. Login e Cadastro
 
 ### Login
 
 - marca BookTracker;
-- Entrar;
+- título “Entrar”;
 - E-mail;
 - Senha;
 - botão Entrar;
 - link Criar conta;
-- estados de erro.
+- estados de erro claros.
 
 ### Cadastro
 
 - marca BookTracker;
-- Criar conta;
+- título “Criar conta”;
 - Nome;
 - E-mail;
 - Senha;
@@ -147,58 +151,113 @@ Total: **1 Design System + 11 estados/telas Mobile + 9 estados/telas Desktop = 2
 - botão Criar conta;
 - link Entrar.
 
-Não incluir login social, avatar, telefone, endereço ou planos.
+Não incluir OAuth, avatar, telefone, endereço ou planos.
 
 ## 7. Estante
 
-### Populada
+### Estante Populada
 
-- navbar;
-- título Minha estante;
-- um único CTA Adicionar livro;
+- Navbar;
+- título “Minha estante”;
+- exatamente um CTA principal “Adicionar livro”;
 - busca;
 - filtros Todos / Quero ler / Lendo / Lido;
 - ordenação;
 - cards;
-- Ver detalhes.
+- ação “Ver detalhes”.
 
-### Regra de avaliação nos cards
+### Regra de estrelas nos cards
 
 - Lido + avaliação → estrelas;
 - Lido sem avaliação → “Ainda não avaliado”;
-- Lendo / Quero ler → sem estrelas.
+- Lendo / Quero ler → nenhuma estrela falsa.
 
-### Vazia
+### Estante Vazia
 
-- mesma shell;
-- mensagem de estado vazio;
-- CTA Adicionar primeiro livro;
-- dica sobre ISBN.
+- mesma estrutura visual;
+- mensagem “Sua estante ainda está vazia”;
+- CTA “Adicionar primeiro livro”;
+- orientação curta sobre ISBN;
+- sem outro CTA duplicado.
 
 ## 8. Offcanvas Mobile
 
-Contém somente:
+Conteúdo permitido:
 
 - Minha estante;
 - Adicionar livro.
 
-Sem perfil, avatar, coleções, notas ou itens extras.
+Sem:
 
-## 9. Cadastro/Edição de Livro
+- perfil;
+- avatar;
+- coleções;
+- notas;
+- citações;
+- contadores;
+- configurações extras.
 
-- Voltar à estante;
+## 9. Adicionar/Editar Livro — M4/D4
+
+M4 e D4 representam **um mesmo formulário** em dois contextos.
+
+### Modo Adicionar
+
+- título “Adicionar livro”;
+- campos vazios;
 - ISBN + Buscar;
-- explicação do preenchimento automático;
 - Título;
 - Autor(es);
 - Status;
-- preview de capa somente leitura;
-- Salvar livro;
+- preview de capa;
+- “Salvar livro”;
 - Cancelar.
 
-Não existe upload manual de capa.
+Após salvar:
 
-## 10. Validação e API
+- Mobile pode passar por M9 para mostrar feedback e então voltar à Estante;
+- Desktop retorna à Estante com feedback.
+
+### Modo Editar
+
+Ao acessar pelo botão “Editar” dos Detalhes:
+
+- título muda para “Editar livro”;
+- ISBN vem preenchido;
+- Título vem preenchido;
+- Autor(es) vêm preenchidos;
+- Status atual vem selecionado;
+- capa atual aparece no preview;
+- ação principal muda para “Salvar alterações”;
+- Cancelar retorna aos Detalhes;
+- Salvar retorna aos Detalhes atualizado.
+
+O usuário pode alterar:
+
+- ISBN;
+- título;
+- autor(es);
+- status.
+
+Uma nova busca por ISBN pode atualizar título, autoria e capa antes do salvamento.
+
+### Restrições do formulário
+
+Não incluir:
+
+- estrelas;
+- resenha;
+- notas pessoais;
+- editora;
+- ano/data de edição;
+- formato;
+- número de páginas;
+- progresso;
+- upload manual de capa.
+
+A capa vem apenas da Google Books API ou do fallback visual.
+
+## 10. Validação e API — M5/D5
 
 Estados previstos:
 
@@ -207,13 +266,15 @@ Estados previstos:
 - livro não encontrado;
 - preenchimento manual disponível;
 - busca ISBN bem-sucedida;
-- erro de rede;
+- falha de rede;
 - feedback de salvamento;
-- loading/skeleton.
+- loading.
 
-## 11. Detalhes
+Erros não devem apagar dados já digitados.
 
-### Lido
+## 11. Detalhes — M6/M7/D6/D7
+
+### Livro Lido
 
 - capa;
 - título;
@@ -222,79 +283,113 @@ Estados previstos:
 - badge Lido;
 - Editar;
 - Excluir;
-- Minha avaliação;
+- seção “Minha avaliação”;
 - estrelas;
 - resenha;
-- Editar avaliação.
+- ação Editar avaliação.
 
-### Não concluído
+### Livro Não Concluído
 
-- mesmos dados essenciais;
+- capa;
+- título;
+- autor;
+- ISBN;
 - status Lendo ou Quero ler;
-- sem estrelas;
-- mensagem de avaliação indisponível;
-- ação opcional “Marcar como Lido agora” pode alterar o status dentro do escopo existente.
+- Editar;
+- Excluir;
+- mensagem: “A avaliação fica disponível quando o livro for marcado como Lido.”
 
-## 12. Exclusão
+Não exibir estrelas ou avaliação falsa.
 
-Modal:
+Mudança de status deve acontecer pelo formulário M4/D4.
+
+## 12. Avaliação
+
+A avaliação pertence aos Detalhes, não ao formulário de livro.
+
+Regras:
+
+- apenas Lido pode ser avaliado;
+- nota de 1 a 5;
+- uma avaliação por livro;
+- resenha editável;
+- ao remover o status Lido de um livro avaliado, a implementação deve pedir confirmação antes de remover a avaliação incompatível.
+
+## 13. Exclusão — M8/D8
+
+Modal com:
 
 - “Excluir livro da estante?”;
 - consequência explícita;
 - Cancelar;
-- Excluir livro em Danger.
+- “Excluir livro” em estilo Danger.
 
-## 13. Protótipos Interativos
+Cancelar retorna aos Detalhes. Confirmar retorna à Estante.
 
-### Mobile
+## 14. Feedback e Loading — M9
 
-Início oficial: **M0A Login**.
+Estados:
 
-Fluxos:
+- sucesso ao salvar;
+- erro de salvamento;
+- busca por ISBN em andamento;
+- skeletons de cards.
+
+Esses elementos são estados/componentes, não novas funcionalidades.
+
+## 15. Fluxo Interativo Mobile
+
+Início: **APPROVED M0A — Login**
+
+Fluxos principais:
 
 - M0A ↔ M0B;
 - M0A/M0B → M1 após sucesso;
 - M1 → M3;
-- M3 → M1/M4;
-- M1 → M4;
+- M3 → M1 ou M4;
+- M1 → M4 em modo Adicionar;
+- M4 Adicionar → M9 → M1;
 - M1 → M6/M7;
-- M4 → M9 → M1 após salvar;
-- M4 → M1 por Cancelar/Voltar;
-- M6/M7 → M4 por Editar;
-- M6/M7 → M8 por Excluir;
-- M8 → Detalhes por Cancelar;
-- M8 → M1 por confirmar exclusão.
+- M6/M7 → M4 em modo Editar;
+- M4 Editar → Salvar alterações → M6/M7 atualizado;
+- M4 Editar → Cancelar → M6/M7;
+- M6/M7 → M8;
+- M8 Cancelar → Detalhes;
+- M8 Excluir → M1.
 
-### Desktop
+## 16. Fluxo Interativo Desktop
 
-Início oficial: **D0A Login**.
+Início: **APPROVED D0A — Login**
 
-Fluxos:
+Fluxos principais:
 
 - D0A ↔ D0B;
 - D0A/D0B → D1 após sucesso;
-- D1 → D4;
+- D1 → D4 em modo Adicionar;
+- D4 Adicionar → D1;
 - D1 → D6/D7;
-- D4 → D1;
-- D6/D7 → D4;
+- D6/D7 → D4 em modo Editar;
+- D4 Editar → Salvar alterações → D6/D7 atualizado;
+- D4 Editar → Cancelar → D6/D7;
 - D6/D7 → D8;
-- D8 → Detalhes ou D1.
+- D8 Cancelar → Detalhes;
+- D8 Excluir → D1.
 
-## 14. Acessibilidade
+## 17. Acessibilidade
 
-O protótipo orienta:
+O protótipo deve orientar:
 
 - labels visíveis;
-- feedback textual de erro;
-- foco claramente perceptível;
-- contraste adequado;
-- status não somente por cor;
-- ações destrutivas diferenciadas;
+- mensagens de erro em texto;
+- foco visual;
+- bom contraste;
+- status não comunicados somente por cor;
+- hierarquia clara para ação destrutiva;
 - alvos de toque confortáveis.
 
-Na implementação, validar semanticamente `for/id`, ARIA quando necessário, teclado, foco do modal e contraste com ferramentas apropriadas.
+A implementação futura deverá comprovar semanticamente labels, teclado, foco, contraste e ARIA quando necessário.
 
-## 15. Fora do Escopo
+## 18. Fora do Escopo
 
 Não adicionar:
 
@@ -302,23 +397,29 @@ Não adicionar:
 - OAuth/login social;
 - coleções;
 - citações;
-- notas;
+- notas pessoais;
 - diário;
 - metas/streaks;
 - progresso/páginas;
-- formato/edição/publicação;
+- número de páginas;
+- formato;
+- editora;
+- ano/data de edição/publicação;
 - upload de capa;
 - rede social;
 - recomendações;
 - dashboard/estatísticas.
 
-## 16. Regra para Implementação
+## 19. Regra para Implementação
 
-- reproduzir somente o conjunto APPROVED;
-- reutilizar componentes/estados;
-- não transformar cada frame em HTML separado;
-- manter 5 páginas reais;
-- Bootstrap 5.3 + Sass/CSS;
-- JavaScript Vanilla ES6+;
-- sem Tailwind;
-- autenticação tratada como fluxo acadêmico, não segurança de produção.
+Ao transformar o protótipo em código:
+
+- usar somente o conjunto APPROVED;
+- não recriar versões antigas;
+- reutilizar M4/D4 para Adicionar e Editar;
+- manter avaliação nos Detalhes;
+- manter cinco páginas HTML reais;
+- usar Bootstrap 5.3 + Sass/CSS;
+- usar JavaScript Vanilla ES6+;
+- não usar Tailwind CSS;
+- tratar Login/Cadastro como autenticação acadêmica de demonstração.
