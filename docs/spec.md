@@ -399,3 +399,74 @@ Dependências futuras serão adicionadas somente nas atividades correspondentes.
 GitHub Pages hospedará a interface estática.
 
 JSON Server não roda dentro do GitHub Pages. Antes da Entrega 3 será definido, conforme orientação da disciplina, como demonstrar/hospedar a API fake sem tratar localhost:3000 como produção.
+
+
+## 20. Dependências e Requisitos Planejados por Fase
+
+A instalação atual contém somente as dependências já exigidas/concluídas na Atividade 06. Dependências futuras não devem ser adicionadas apenas para “antecipar” uma atividade.
+
+### Atividade 07 / 08
+
+Quando essas atividades forem iniciadas, instalar e registrar conforme o enunciado:
+
+- Bootstrap via NPM;
+- Bootstrap Icons quando necessário para a evidência visual;
+- manter o uso local dos arquivos do Bootstrap a partir de `node_modules` durante a Atividade 08.
+
+### Fases posteriores
+
+Adicionar somente quando efetivamente utilizados:
+
+- Sass;
+- JSON Server;
+- ESLint;
+- Prettier;
+- biblioteca/plugin complementar para o ID21.
+
+## 21. Auditoria Bootstrap Planejada
+
+A implementação deverá possibilitar identificar e explicar pelo menos dez componentes Bootstrap reais. A lista-alvo é:
+
+1. Navbar;
+2. Offcanvas;
+3. Card;
+4. Modal;
+5. Button;
+6. Badge;
+7. Input Group;
+8. Alert;
+9. Toast;
+10. Spinner.
+
+Form Controls e Form Select também estarão presentes no produto, mas a lista final deverá refletir **o que realmente existir no código**.
+
+Além dos componentes, a auditoria deverá documentar:
+
+- uso de Grid e Flexbox;
+- classes principais de layout;
+- Sticky Footer;
+- responsividade nos breakpoints xs, sm, md, lg, xl e xxl.
+
+## 22. Estratégia de Sticky Footer
+
+Planejar a estrutura das páginas para que o rodapé permaneça no final da viewport quando o conteúdo for curto.
+
+Estratégia preferencial:
+
+- body/container raiz com altura mínima de viewport;
+- layout flex em coluna;
+- main ocupando o espaço restante;
+- footer empurrado para baixo.
+
+A implementação concreta poderá usar utilitários Bootstrap como `min-vh-100`, `d-flex`, `flex-column`, `flex-grow-1` e/ou `mt-auto`, desde que a solução final seja validada no navegador e explicada no relatório da atividade.
+
+## 23. Regra de Evidência
+
+Nenhum item de implementação deve ser considerado concluído apenas porque está planejado neste documento ou representado no Stitch.
+
+Para marcar um indicador como concluído, deve existir:
+
+1. implementação no repositório;
+2. comportamento verificável;
+3. evidência quando a atividade exigir;
+4. capacidade de explicar a solução.
