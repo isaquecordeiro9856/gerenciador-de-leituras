@@ -232,6 +232,13 @@ cd gerenciador-de-leituras
 npm install
 ```
 
+### Visualizar a Atividade 07
+
+1. Execute `npm install` após clonar o projeto, caso `node_modules` ainda não exista.
+2. Abra `atividade-07.html` diretamente no navegador.
+
+Não é necessário iniciar servidor: a página funciona via `file://`, carregando Bootstrap, Bootstrap Icons, CSS próprio e imagem a partir de caminhos relativos.
+
 ## 🗺️ Roadmap da Disciplina
 
 O planejamento completo está em [docs/course-roadmap.md](docs/course-roadmap.md).
@@ -241,7 +248,7 @@ O planejamento completo está em [docs/course-roadmap.md](docs/course-roadmap.md
 - **Atividade 05:** Bootstrap 5.3 + Google Books API definidos/documentados ✅
 - **1ª Entrega:** documentação ✅ · Design System/protótipo ✅ · Mobile/Desktop navegável ✅ · Vídeo 1 ⏳
 - **Atividade 06:** Node/NPM/Git ✅ · evidências ✅ · PDF ✅ · Moodle ✅
-- **Atividade 07:** Bootstrap via NPM · Grid · Modal · Card · Flexbox · Bootstrap Icons · PDF ⏳
+- **Atividade 07:** laboratório Bootstrap via NPM (`atividade-07.html` + `atividade-07.css`) · Grid · Modal · Card · Flexbox · Bootstrap Icons implementados · prints/PDF/Moodle ⏳
 - **Atividade 08:** protótipo → código Bootstrap · 10 componentes · Grid/Flexbox · Sticky Footer · breakpoints · PDF ⏳
 - **Entrega 2:** HTML/CSS responsivo + Bootstrap + Sass · Vídeo 2 ⏳
 - **Entrega 3:** JavaScript ES6+ · validações · Web Storage · jQuery · JSON Server · Google Books · deploy · Vídeo 3 ⏳

@@ -187,29 +187,29 @@ Atividade 06 concluída.
 
 ### Configuração
 
-- [ ] instalar Bootstrap via NPM;
-- [ ] importar Bootstrap CSS localmente;
-- [ ] importar `bootstrap.bundle.min.js` localmente.
+- [x] instalar Bootstrap via NPM;
+- [x] importar Bootstrap CSS localmente;
+- [x] importar `bootstrap.bundle.min.js` localmente.
 
 ### Grid exigido
 
-- [ ] primeira linha com três colunas automáticas;
-- [ ] terceira coluna oculta em XS/SM;
-- [ ] segunda linha com `.col-12`;
-- [ ] terceira linha com `.col-md-*`;
-- [ ] demonstrar offset;
-- [ ] demonstrar order.
+- [x] primeira linha com três colunas automáticas;
+- [x] terceira coluna oculta em XS/SM;
+- [x] segunda linha com `.col-12`;
+- [x] terceira linha com `.col-md-*`;
+- [x] demonstrar offset;
+- [x] demonstrar order.
 
 ### Componentes e utilitários
 
-- [ ] Button;
-- [ ] Modal;
-- [ ] Card;
-- [ ] imagem responsiva com `.img-fluid`;
-- [ ] personalização de cores;
-- [ ] pelo menos três utilidades de texto;
-- [ ] Flexbox com cinco botões;
-- [ ] Bootstrap Icons.
+- [x] Button;
+- [x] Modal;
+- [x] Card;
+- [x] imagem responsiva com `.img-fluid`;
+- [x] personalização de cores;
+- [x] pelo menos três utilidades de texto;
+- [x] Flexbox com cinco botões;
+- [x] Bootstrap Icons.
 
 ### Entrega
 
@@ -218,7 +218,7 @@ Atividade 06 concluída.
 - [ ] Card;
 - [ ] Flexbox;
 - [ ] Bootstrap Icons;
-- [ ] breve descrição de experiência/desafios/aprendizado;
+- [x] breve descrição de experiência/desafios/aprendizado;
 - [ ] PDF;
 - [ ] envio Moodle.
 
