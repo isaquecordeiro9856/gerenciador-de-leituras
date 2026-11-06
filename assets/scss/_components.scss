@@ -1,0 +1,64 @@
+// ============================================================
+// COMPONENTES do BookTracker construídos sobre o Bootstrap
+// ============================================================
+
+// Barra de busca e filtros
+.toolbar { @include superficie(0.9rem); }
+
+// Pills de filtro (botões do Bootstrap personalizados via variáveis CSS do próprio .btn)
+.filter-pill {
+  --bs-btn-color: #{$bt-muted};
+  --bs-btn-bg: #{$bt-chip-bg};
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: #{$bt-text};
+  --bs-btn-hover-bg: #{$bt-border};
+  border-radius: $border-radius-pill;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  &.active {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #{$bt-primary};
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #{$bt-primary-dark};
+    font-weight: 600;
+  }
+}
+
+// Selos de status (o mixin selo-status é usado 3 vezes)
+.badge-status { font-weight: 600; font-size: 0.75rem; }
+.badge-lido      { @include selo-status($bt-success); }
+.badge-lendo     { @include selo-status($bt-info); }
+.badge-quero-ler { @include selo-status($bt-warning); }
+
+// Card de livro: horizontal no celular (M1), vertical a partir de sm (D1)
+.book-card {
+  @include superficie(1rem);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  &:hover { box-shadow: $box-shadow-lg; transform: translateY(-0.125rem); }
+}
+
+// Capa: caixa com proporção fixa; a imagem preenche sem distorcer (ID 09)
+.book-cover {
+  width: 7rem;
+  flex-shrink: 0;
+  aspect-ratio: 2 / 3;
+  background-color: $bt-chip-bg;
+  // <picture> é inline por padrão; em bloco ele deixa a <img> ocupar 100% da altura
+  picture { display: block; width: 100%; height: 100%; }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  @include media-breakpoint-up(sm) { width: 100%; }
+}
+
+.book-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.book-rating { color: $bt-accent; min-height: 1.5rem; }
