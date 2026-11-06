@@ -6,20 +6,18 @@
   <meta name="description" content="BookTracker — Minha estante: organize seus livros por status de leitura.">
   <title>Minha estante — BookTracker</title>
 
-  <!-- Bootstrap 5.3 e Bootstrap Icons consumidos LOCALMENTE (node_modules), sem CDN -->
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-
-  <!-- Tipografia do Design System (com fallbacks locais caso offline) -->
+  <!-- Fontes do Design System: DM Serif Display (títulos) e Inter (corpo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/booktracker.css">
+  <!-- Bootstrap Icons (via NPM) e o CSS único gerado pelo Sass (inclui o Bootstrap customizado) -->
+  <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body class="min-vh-100 d-flex flex-column">
 
-  <!-- 1. NAVBAR: navegação principal; no mobile o toggler abre o Offcanvas -->
+  <!-- COMPONENTE: Navbar. No celular o botão abre o Offcanvas (componente com JavaScript do Bootstrap) -->
   <header class="navbar navbar-expand-lg navbar-bt sticky-top">
     <div class="container">
       <a class="navbar-brand font-serif-bt fs-4" href="index.html">BookTracker</a>
@@ -29,15 +27,14 @@
       </button>
       <nav class="collapse navbar-collapse" aria-label="Navegação principal">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Minha estante</a>
-          </li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Minha estante</a></li>
+          <li class="nav-item"><a class="nav-link" href="livro-form.html">Adicionar livro</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- 2. OFFCANVAS: navegação móvel (frame M3) -->
+  <!-- COMPONENTE: Offcanvas (menu do celular, frame M3) -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="navMobile" aria-labelledby="navMobileLabel">
     <div class="offcanvas-header">
       <h2 class="offcanvas-title font-serif-bt fs-5" id="navMobileLabel">BookTracker</h2>
@@ -48,61 +45,55 @@
         <a class="nav-link link-bt active" aria-current="page" href="index.html">
           <i class="bi bi-collection me-2" aria-hidden="true"></i>Minha estante
         </a>
-        <a class="nav-link link-bt" href="#" data-demo-toast>
+        <a class="nav-link link-bt" href="livro-form.html">
           <i class="bi bi-bookmark-plus me-2" aria-hidden="true"></i>Adicionar livro
         </a>
       </nav>
     </div>
   </div>
 
-  <!-- Conteúdo cresce e empurra o rodapé para baixo (Sticky Footer) -->
-  <main class="flex-fill">
+  <!-- O main cresce (flex-grow-1) e empurra o rodapé para o fim da página: Sticky Footer -->
+  <main class="flex-grow-1">
     <div class="container py-4 py-lg-5 d-flex flex-column gap-4">
 
-      <!-- Cabeçalho editorial (D1/M1) -->
+      <!-- Cabeçalho da página -->
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
         <div class="col-md-8">
           <span class="eyebrow d-block mb-1">Coleção pessoal</span>
-          <h1 class="font-serif-bt display-6 mb-2">Minha estante</h1>
-          <p class="text-secondary mb-0">Sua coleção pessoal de leituras contemporâneas, organizada de forma clara e objetiva para acompanhamento do seu acervo.</p>
+          <h1 class="titulo-pagina mb-2">Minha estante</h1>
+          <p class="text-secondary mb-0">Sua coleção pessoal de leituras, organizada de forma clara para acompanhar o seu acervo.</p>
         </div>
-        <!-- 5. BUTTON primário (largura total no XS, como M1; auto do MD em diante, como D1) -->
+        <!-- Botão: largura total no celular (d-grid), automática a partir de md -->
         <div class="d-grid d-md-block">
-          <a href="#" class="btn btn-bt-primary" data-demo-toast>
+          <a href="livro-form.html" class="btn btn-primary">
             <i class="bi bi-plus-lg me-1" aria-hidden="true"></i>Adicionar livro
           </a>
         </div>
       </div>
 
-      <!-- Toolbar: busca (Input Group) + filtros + ordenação (Select) -->
+      <!-- Busca (Input Group), filtros e ordenação (Select) -->
       <section class="toolbar d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 p-2 p-sm-3" aria-label="Filtros da estante">
-        <!-- 7. INPUT GROUP com spinner de busca -->
-        <div class="toolbar-search">
-        <div class="input-group">
-          <span class="input-group-text search-field border-end-0" id="busca-addon">
-            <i class="bi bi-search" aria-hidden="true"></i>
-          </span>
-          <input type="search" class="form-control search-field border-start-0" id="busca"
-                 placeholder="Buscar por título, autor ou ISBN..." aria-label="Buscar por título, autor ou ISBN"
-                 aria-describedby="busca-addon busca-spinner" autocomplete="off">
-          <span class="input-group-text search-field border-start-0 d-none" id="busca-spinner">
-            <!-- 10. SPINNER: feedback de busca em andamento (estado M9) -->
-            <span class="spinner-border spinner-border-sm text-secondary" role="status" aria-label="Buscando..."></span>
-          </span>
-        </div>
+        <div class="flex-grow-1">
+          <div class="input-group">
+            <span class="input-group-text campo-bt border-end-0" id="busca-addon">
+              <i class="bi bi-search" aria-hidden="true"></i>
+            </span>
+            <input type="search" class="form-control campo-bt border-start-0" id="busca"
+                   placeholder="Buscar por título, autor ou ISBN..." aria-label="Buscar por título, autor ou ISBN"
+                   aria-describedby="busca-addon" autocomplete="off">
+          </div>
         </div>
         <div class="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
           <nav class="d-flex flex-wrap gap-1" aria-label="Filtrar por status">
-            <button type="button" class="btn filter-pill active" data-filter="all">Todos (4)</button>
-            <button type="button" class="btn filter-pill" data-filter="quero-ler">Quero ler (1)</button>
-            <button type="button" class="btn filter-pill" data-filter="lendo">Lendo (1)</button>
-            <button type="button" class="btn filter-pill" data-filter="lido">Lido (2)</button>
+            <button type="button" class="btn filter-pill active" aria-pressed="true">Todos (4)</button>
+            <button type="button" class="btn filter-pill" aria-pressed="false">Quero ler (1)</button>
+            <button type="button" class="btn filter-pill" aria-pressed="false">Lendo (1)</button>
+            <button type="button" class="btn filter-pill" aria-pressed="false">Lido (2)</button>
           </nav>
           <div class="d-flex align-items-center gap-1 ms-lg-2">
             <label for="ordenacao" class="visually-hidden">Ordenar acervo</label>
             <i class="bi bi-arrow-down-up text-secondary" aria-hidden="true"></i>
-            <!-- Form Select -->
-            <select class="form-select form-select-sm search-field w-auto" id="ordenacao">
+            <select class="form-select form-select-sm campo-bt w-auto" id="ordenacao">
               <option value="recentes" selected>Mais recentes</option>
               <option value="az">Título A–Z</option>
             </select>
@@ -110,15 +101,20 @@
         </div>
       </section>
 
-      <!-- 3. GRID de CARDS: 1 col (XS) → 2 (SM) → 4 (LG), como M1/D1 -->
+      <!-- GRID do Bootstrap: 1 coluna (celular), 2 (sm), 4 (lg). Cada .col guarda um Card -->
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4" id="grade-livros">
 
-        <!-- Card 1 -->
-        <div class="col" data-title="torto arado" data-author="itamar vieira junior" data-status="lido">
+        <div class="col">
           <article class="card book-card h-100 flex-row flex-sm-column">
             <div class="book-cover position-relative">
-              <img src="assets/images/capas/capa-d1-1.jpg" class="card-img-top" alt="Capa do livro Torto Arado, de Itamar Vieira Junior, em tons terrosos">
-              <!-- 6. BADGE de status -->
+              <!-- Imagem otimizada: WebP em dois tamanhos (srcset) com o JPG como alternativa -->
+              <picture>
+                <source type="image/webp"
+                        srcset="assets/images/capas/capa-d1-1-256.webp 256w, assets/images/capas/capa-d1-1-full.webp 286w"
+                        sizes="(min-width: 992px) 16rem, (min-width: 576px) 40vw, 7rem">
+                <img src="assets/images/capas/capa-d1-1.jpg" class="card-img-top" width="286" height="512" loading="lazy"
+                     alt="Capa do livro Torto Arado, de Itamar Vieira Junior, em tons terrosos">
+              </picture>
               <span class="badge badge-status badge-lido position-absolute top-0 start-0 m-2">
                 <i class="bi bi-check-lg me-1" aria-hidden="true"></i>Lido
               </span>
@@ -134,11 +130,16 @@
           </article>
         </div>
 
-        <!-- Card 2 -->
-        <div class="col" data-title="a hora da estrela" data-author="clarice lispector" data-status="lendo">
+        <div class="col">
           <article class="card book-card h-100 flex-row flex-sm-column">
             <div class="book-cover position-relative">
-              <img src="assets/images/capas/capa-d1-2.jpg" class="card-img-top" alt="Capa do livro A Hora da Estrela, de Clarice Lispector, em fundo bege com ilustração">
+              <picture>
+                <source type="image/webp"
+                        srcset="assets/images/capas/capa-d1-2-256.webp 256w, assets/images/capas/capa-d1-2-full.webp 512w"
+                        sizes="(min-width: 992px) 16rem, (min-width: 576px) 40vw, 7rem">
+                <img src="assets/images/capas/capa-d1-2.jpg" class="card-img-top" width="512" height="279" loading="lazy"
+                     alt="Capa do livro A Hora da Estrela, de Clarice Lispector, em fundo bege com ilustração">
+              </picture>
               <span class="badge badge-status badge-lendo position-absolute top-0 start-0 m-2">
                 <i class="bi bi-book-half me-1" aria-hidden="true"></i>Lendo
               </span>
@@ -152,11 +153,16 @@
           </article>
         </div>
 
-        <!-- Card 3 -->
-        <div class="col" data-title="cem anos de solidão" data-author="gabriel garcía márquez" data-status="quero-ler">
+        <div class="col">
           <article class="card book-card h-100 flex-row flex-sm-column">
             <div class="book-cover position-relative">
-              <img src="assets/images/capas/capa-d1-3.jpg" class="card-img-top" alt="Capa do livro Cem Anos de Solidão, de Gabriel García Márquez, com motivos tropicais">
+              <picture>
+                <source type="image/webp"
+                        srcset="assets/images/capas/capa-d1-3-256.webp 256w, assets/images/capas/capa-d1-3-full.webp 343w"
+                        sizes="(min-width: 992px) 16rem, (min-width: 576px) 40vw, 7rem">
+                <img src="assets/images/capas/capa-d1-3.jpg" class="card-img-top" width="343" height="425" loading="lazy"
+                     alt="Capa do livro Cem Anos de Solidão, de Gabriel García Márquez, com motivos tropicais">
+              </picture>
               <span class="badge badge-status badge-quero-ler position-absolute top-0 start-0 m-2">
                 <i class="bi bi-bookmark me-1" aria-hidden="true"></i>Quero ler
               </span>
@@ -170,11 +176,16 @@
           </article>
         </div>
 
-        <!-- Card 4 -->
-        <div class="col" data-title="ensaio sobre a cegueira" data-author="josé saramago" data-status="lido">
+        <div class="col">
           <article class="card book-card h-100 flex-row flex-sm-column">
             <div class="book-cover position-relative">
-              <img src="assets/images/capas/capa-d1-4.jpg" class="card-img-top" alt="Capa do livro Ensaio sobre a Cegueira, de José Saramago, minimalista em alto contraste">
+              <picture>
+                <source type="image/webp"
+                        srcset="assets/images/capas/capa-d1-4-256.webp 256w, assets/images/capas/capa-d1-4-full.webp 512w"
+                        sizes="(min-width: 992px) 16rem, (min-width: 576px) 40vw, 7rem">
+                <img src="assets/images/capas/capa-d1-4.jpg" class="card-img-top" width="512" height="512" loading="lazy"
+                     alt="Capa do livro Ensaio sobre a Cegueira, de José Saramago, minimalista em alto contraste">
+              </picture>
               <span class="badge badge-status badge-lido position-absolute top-0 start-0 m-2">
                 <i class="bi bi-check-lg me-1" aria-hidden="true"></i>Lido
               </span>
@@ -191,37 +202,27 @@
         </div>
       </div>
 
-      <!-- 8. ALERT: estado vazio / sem resultados (frames M2/D2) -->
+      <!-- Estado vazio (frames M2/D2): escondido por enquanto; a Entrega 3 o mostra quando não houver livros -->
       <div class="alert alert-light border d-none align-items-start gap-3" id="estado-vazio" role="status">
         <i class="bi bi-journal-bookmark fs-4 text-secondary" aria-hidden="true"></i>
         <div>
-          <h2 class="fs-6 mb-1">Nenhum livro encontrado</h2>
-          <p class="mb-0 small text-secondary">Tente ajustar a busca ou os filtros para encontrar seus títulos.</p>
+          <h2 class="fs-6 mb-1">Sua estante ainda está vazia</h2>
+          <p class="mb-2 small text-secondary">Adicione um livro pelo ISBN para começar a organizar suas leituras.</p>
+          <a href="livro-form.html" class="btn btn-primary btn-sm">Adicionar primeiro livro</a>
         </div>
       </div>
 
     </div>
   </main>
 
-  <!-- Sticky Footer: empurrado para a base via mt-auto (main usa flex-fill) -->
-  <footer class="footer-bt mt-auto py-4">
-    <div class="container text-center small">
-      <p class="mb-0">BookTracker — Gerenciador de Leituras • Biblioteca pessoal contemporânea</p>
+  <footer class="footer-bt">
+    <div class="container footer-conteudo">
+      <span>BookTracker — Gerenciador de Leituras</span>
+      <span>Biblioteca pessoal contemporânea</span>
     </div>
   </footer>
 
-  <!-- 9. TOAST: feedback de ação indisponível neste slice estático -->
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="aviso-slice" class="toast" role="status" aria-live="polite">
-      <div class="toast-header">
-        <strong class="me-auto font-serif-bt">BookTracker</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar aviso"></button>
-      </div>
-      <div class="toast-body">O formulário de livro chega no próximo slice (<code>livro-form.html</code>).</div>
-    </div>
-  </div>
-
+  <!-- JavaScript do Bootstrap: necessário apenas para os componentes (Offcanvas, Modal) -->
   <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/estante.js"></script>
 </body>
 </html>
