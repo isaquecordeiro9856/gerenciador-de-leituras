@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BookTracker — detalhes do livro e a sua avaliação.">
+  <title>Detalhes do livro — BookTracker</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body class="min-vh-100 d-flex flex-column">
+
+  <header class="navbar navbar-expand-lg navbar-bt sticky-top">
+    <div class="container">
+      <a class="navbar-brand font-serif-bt fs-4" href="index.html">BookTracker</a>
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#navMobile" aria-controls="navMobile" aria-label="Abrir navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <nav class="collapse navbar-collapse" aria-label="Navegação principal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Minha estante</a></li>
+          <li class="nav-item"><a class="nav-link" href="livro-form.html">Adicionar livro</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="navMobile" aria-labelledby="navMobileLabel">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title font-serif-bt fs-5" id="navMobileLabel">BookTracker</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar navegação"></button>
+    </div>
+    <div class="offcanvas-body">
+      <nav class="nav flex-column gap-1" aria-label="Navegação móvel">
+        <a class="nav-link link-bt" href="index.html"><i class="bi bi-collection me-2" aria-hidden="true"></i>Minha estante</a>
+        <a class="nav-link link-bt" href="livro-form.html"><i class="bi bi-bookmark-plus me-2" aria-hidden="true"></i>Adicionar livro</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="flex-grow-1">
+    <div class="container py-4 py-lg-5 d-flex flex-column gap-4">
+
+      <nav aria-label="Voltar">
+        <a href="index.html" class="link-bt small"><i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Voltar para a estante</a>
+      </nav>
+
+      <!-- Layout próprio em CSS Grid (.detalhes): capa + informações -->
+      <article class="detalhes">
+        <div class="book-cover mx-auto mx-md-0 w-100">
+          <picture>
+            <source type="image/webp"
+                    srcset="assets/images/capas/capa-d1-1-256.webp 256w, assets/images/capas/capa-d1-1-full.webp 286w"
+                    sizes="(min-width: 768px) 16rem, 70vw">
+            <img src="assets/images/capas/capa-d1-1.jpg" width="286" height="512"
+                 alt="Capa do livro Torto Arado, de Itamar Vieira Junior, em tons terrosos">
+          </picture>
+        </div>
+
+        <div class="d-flex flex-column gap-3">
+          <div>
+            <span class="badge badge-status badge-lido mb-2"><i class="bi bi-check-lg me-1" aria-hidden="true"></i>Lido</span>
+            <h1 class="titulo-pagina mb-1">Torto Arado</h1>
+            <p class="text-secondary mb-1">Itamar Vieira Junior</p>
+            <p class="small text-secondary mb-0">ISBN 9788569020318</p>
+          </div>
+
+          <div class="d-flex flex-column flex-sm-row gap-2">
+            <a href="livro-form.html" class="btn btn-outline-primary"><i class="bi bi-pencil me-1" aria-hidden="true"></i>Editar</a>
+            <!-- COMPONENTE com JavaScript do Bootstrap: o botão abre o Modal só com atributos data-bs-* -->
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalExcluir">
+              <i class="bi bi-trash me-1" aria-hidden="true"></i>Excluir
+            </button>
+          </div>
+
+          <!-- Minha avaliação (livro Lido). Para Lendo/Quero ler, a Entrega 3 troca esta seção pela mensagem
+               "A avaliação fica disponível quando o livro for marcado como Lido." -->
+          <section class="painel" aria-labelledby="titulo-avaliacao">
+            <h2 id="titulo-avaliacao" class="titulo-secao mb-3">Minha avaliação</h2>
+            <div class="book-rating mb-2" role="img" aria-label="Avaliação: 5 de 5 estrelas">
+              <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
+            </div>
+            <p class="mb-3">Uma leitura marcante, com personagens fortes e uma linguagem que prende do começo ao fim.</p>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Editar avaliação</button>
+          </section>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <!-- COMPONENTE: Modal de confirmação de exclusão (frames M8/D8) -->
+  <div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="modalExcluirLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-5" id="modalExcluirLabel">Excluir livro da estante?</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0">O livro <strong>Torto Arado</strong> e a sua avaliação serão removidos da estante. Esta ação não pode ser desfeita.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <a href="index.html" class="btn btn-danger">Excluir livro</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-bt">
+    <div class="container footer-conteudo">
+      <span>BookTracker — Gerenciador de Leituras</span>
+      <span>Biblioteca pessoal contemporânea</span>
+    </div>
+  </footer>
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

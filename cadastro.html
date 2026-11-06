@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BookTracker — crie sua conta para organizar suas leituras.">
+  <title>Criar conta — BookTracker</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <div class="auth-page">
+
+    <aside class="auth-marca" aria-hidden="true">
+      <span class="eyebrow text-white opacity-75">Biblioteca pessoal</span>
+      <p class="font-serif-bt titulo-pagina mb-0">BookTracker</p>
+      <p class="lead mb-0">Crie sua conta e comece a montar a sua estante.</p>
+    </aside>
+
+    <main class="auth-form">
+      <div class="auth-card">
+        <p class="font-serif-bt fs-4 text-primary mb-1">BookTracker</p>
+        <h1 class="titulo-secao mb-4">Criar conta</h1>
+
+        <form action="index.html">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control campo-bt" id="nome" name="nome" autocomplete="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control campo-bt" id="email" name="email" placeholder="voce@exemplo.com" autocomplete="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control campo-bt" id="senha" name="senha" aria-describedby="senha-regra" autocomplete="new-password" required>
+            <div id="senha-regra" class="form-text">Mínimo de 8 caracteres, com letras e números.</div>
+          </div>
+          <div class="mb-4">
+            <label for="confirmar-senha" class="form-label">Confirmar senha</label>
+            <input type="password" class="form-control campo-bt" id="confirmar-senha" name="confirmar-senha" autocomplete="new-password" required>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Criar conta</button>
+          </div>
+        </form>
+
+        <p class="text-secondary small text-center mt-4 mb-0">
+          Já tem conta? <a class="link-bt" href="login.html">Entrar</a>
+        </p>
+      </div>
+    </main>
+
+  </div>
+</body>
+</html>
