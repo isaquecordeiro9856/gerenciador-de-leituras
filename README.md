@@ -12,9 +12,9 @@ Aplicação web responsiva para organizar uma biblioteca pessoal: criar uma cont
 ## Links
 
 - **Protótipo (Google Stitch):** https://stitch.google.com/u/1/projects/18205289966603005290?pli=1
-- **Design System:** [docs/architecture.md#8-design-system](docs/architecture.md#8-design-system)
+- **Design System:** [docs/design-system.md](docs/design-system.md)
 - **Site em produção:** a partir da Entrega 3
-- **Vídeos:** Vídeo 1 e Vídeo 2 na entrega do Moodle; Vídeo 3 na Entrega 3
+- **Vídeos:** os links do Vídeo 1 e do Vídeo 2 são entregues no Moodle; o Vídeo 3 é da Entrega 3
 
 ## Tecnologias
 
@@ -41,11 +41,13 @@ Aplicação web responsiva para organizar uma biblioteca pessoal: criar uma cont
 
 ```
 assets/
-  scss/        _functions, _variables, _mixins, _base, _components, _paginas, main.scss
-  css/         main.css (gerado pelo Sass e versionado)
-  images/      capas em JPG e WebP, ilustração de capa
-docs/          prd.md, architecture.md, spec.md, design-brief.md, course-roadmap.md
-*.html         as cinco páginas
+  scss/        main.scss + parciais: _functions, _variables, _mixins, _base, _components, _paginas
+  css/         main.css (gerado pelo Sass e versionado, como pede a Entrega 2)
+  images/      capas em JPG e WebP e a ilustração de capa
+docs/          prd, architecture, spec, design-brief, design-system, course-roadmap e as capturas em telas/
+index.html, login.html, cadastro.html, livro-form.html, livro.html   as cinco páginas
+package.json   dependências (Bootstrap, Bootstrap Icons, Sass...) e scripts do Sass
+.gitignore     node_modules/, .env, logs e arquivos de editor
 ```
 
 ## Instruções de execução
@@ -69,7 +71,7 @@ O `assets/css/main.css` já vem compilado no repositório.
 
 ## Telas da aplicação
 
-Capturas reais das páginas, em desktop (1440 px) e celular:
+Capturas reais das páginas, em desktop (1440 × 900) e celular (390 × 844):
 
 | Página | Desktop | Celular |
 |---|---|---|
@@ -128,6 +130,7 @@ Menu (Offcanvas) aberto no celular: ![Offcanvas aberto](docs/telas/mobile-offcan
 - [Architecture](docs/architecture.md) — modelo de dados, Design System, responsividade e arquitetura.
 - [Spec](docs/spec.md) — contratos técnicos, validações, integrações e convenções.
 - [Design Brief](docs/design-brief.md) — contrato visual e inventário do protótipo.
+- [Design System](docs/design-system.md) — paleta, tipografia, componentes e como os tokens viram código.
 - [Roadmap da disciplina](docs/course-roadmap.md) — planejamento do semestre.
 
 ## Regras de produto

@@ -234,43 +234,34 @@ Comportamento:
 
 A capa não terá upload manual.
 
-## 7. Estrutura Planejada
+## 7. Estrutura do Projeto
+
+### Estrutura atual (Entrega 2: a casca)
 
 ```text
 /
-├── login.html
-├── cadastro.html
-├── index.html
-├── livro-form.html
-├── livro.html
-├── db.json
-├── package.json
-├── README.md
-├── docs/
-└── src/
-    ├── js/
-    │   ├── api/
-    │   │   ├── auth-api.js
-    │   │   ├── google-books-api.js
-    │   │   └── library-api.js
-    │   ├── pages/
-    │   │   ├── login.js
-    │   │   ├── cadastro.js
-    │   │   ├── estante.js
-    │   │   ├── livro-form.js
-    │   │   └── livro-detalhe.js
-    │   ├── session.js
-    │   ├── storage.js
-    │   ├── validation.js
-    │   └── ui.js
-    ├── scss/
-    │   ├── _tokens.scss
-    │   ├── _components.scss
-    │   ├── _utilities.scss
-    │   └── main.scss
-    └── assets/
-        └── images/
+├── login.html  cadastro.html  index.html  livro-form.html  livro.html
+├── package.json  package-lock.json  .gitignore  README.md
+├── assets/
+│   ├── scss/   main.scss, _functions, _variables, _mixins, _base, _components, _paginas
+│   ├── css/    main.css (gerado pelo Sass)
+│   └── images/ capas (JPG e WebP) e livro-capa.svg
+└── docs/       prd, architecture, spec, design-brief, design-system, course-roadmap, telas/
 ```
+
+### Estrutura planejada para a Entrega 3 (JavaScript e API)
+
+```text
+/
+├── db.json
+└── assets/
+    └── js/
+        ├── api/       auth-api.js, google-books-api.js, library-api.js
+        ├── pages/     login.js, cadastro.js, estante.js, livro-form.js, livro-detalhe.js
+        └── session.js, storage.js, validation.js, ui.js
+```
+
+A pasta de estilos continua `assets/scss`. Nada da estrutura planejada existe ainda.
 
 ## 8. Design System
 
@@ -299,6 +290,8 @@ Tipografia:
 
 - títulos: **DM Serif Display**;
 - corpo/interface: **Inter**.
+
+A descrição completa (escala fluida, contraste, componentes e a tabela "dos tokens ao código") está em [design-system.md](design-system.md).
 
 ### Princípios
 
