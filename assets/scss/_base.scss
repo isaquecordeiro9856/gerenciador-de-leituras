@@ -15,6 +15,9 @@
 .titulo-pagina { @include titulo-fluido(1.75rem, 2.75rem); }
 .titulo-secao  { @include titulo-fluido(1.25rem, 1.75rem); }
 
+// Largura de leitura confortável: 60ch = largura de 60 caracteres "0" da fonte (ID 05).
+.medida { max-width: 60ch; }
+
 .link-bt {
   color: $bt-primary;
   font-weight: 600;
