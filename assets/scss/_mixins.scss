@@ -12,7 +12,7 @@
 // Sombra suave em duas camadas, na cor do texto: dá "peso" de objeto a cards, capas e painéis.
 // Usada no hover dos cards de livro, na capa dos detalhes e no card de login/cadastro.
 @mixin sombra-livro {
-  box-shadow: 0 0.125rem 0.25rem rgba($bt-text, 0.06), 0 0.75rem 1.75rem rgba($bt-text, 0.12);
+  box-shadow: 0 0.125rem 0.25rem rgba($bt-text, 0.05), 0 0.5rem 1rem rgba($bt-text, 0.08); // sombra leve (Design Brief)
 }
 
 // Título fluido (ID 08): cresce de $min a $max conforme a largura da tela.
@@ -26,7 +26,7 @@
 // tint-color() e shade-color() são FUNÇÕES do Bootstrap.
 @mixin selo-status($cor) {
   background-color: tint-color($cor, 85%);
-  color: shade-color($cor, 10%);
+  color: shade-color($cor, 20%); // 20% garante contraste mínimo 4,5:1 (WCAG AA) nos três selos
 }
 
 // Anel de foco para teclado, na cor da identidade.

@@ -11957,8 +11957,7 @@ textarea.form-control-lg {
 }
 
 .navbar-bt {
-  background-color: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(0.5rem);
+  background-color: #ffffff;
   border-bottom: var(--bs-border-width) solid #d9ddd6;
 }
 .navbar-bt .navbar-brand {
@@ -12026,43 +12025,17 @@ textarea.form-control-lg {
 
 .badge-lido {
   background-color: rgb(87.7647058824%, 92.3529411765%, 89.3529411765%);
-  color: rgb(16.5882352941%, 44.1176470588%, 26.1176470588%);
+  color: rgb(14.7450980392%, 39.2156862745%, 23.2156862745%);
 }
 
 .badge-lendo {
   background-color: rgb(88.7058823529%, 91.5294117647%, 93.3529411765%);
-  color: rgb(22.2352941176%, 39.1764705882%, 50.1176470588%);
+  color: rgb(19.7647058824%, 34.8235294118%, 44.5490196078%);
 }
 
 .badge-quero-ler {
   background-color: rgb(94.7058823529%, 91.2352941176%, 87%);
-  color: rgb(58.2352941176%, 37.4117647059%, 12%);
-}
-
-.resumo {
-  background-color: #ffffff;
-  border: var(--bs-border-width) solid #d9ddd6;
-  border-radius: 1rem;
-  padding: 1.5rem;
-}
-.resumo .progress-stacked {
-  height: 0.625rem;
-  background-color: #edefe8;
-}
-
-.resumo-numero {
-  font-family: "DM Serif Display", Georgia, "Times New Roman", serif;
-  font-size: 2.25rem;
-  line-height: 1;
-  color: #3f5144;
-}
-
-.legenda-ponto {
-  display: inline-block;
-  width: 0.625rem;
-  height: 0.625rem;
-  margin-right: 0.5rem;
-  border-radius: 50%;
+  color: rgb(51.7647058824%, 33.2549019608%, 10.6666666667%);
 }
 
 .book-card {
@@ -12073,7 +12046,7 @@ textarea.form-control-lg {
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 .book-card:hover {
-  box-shadow: 0 0.125rem 0.25rem rgba(32, 35, 31, 0.06), 0 0.75rem 1.75rem rgba(32, 35, 31, 0.12);
+  box-shadow: 0 0.125rem 0.25rem rgba(32, 35, 31, 0.05), 0 0.5rem 1rem rgba(32, 35, 31, 0.08);
   transform: translateY(-0.25rem);
 }
 .book-card:has(:focus-visible) {
@@ -12137,7 +12110,7 @@ textarea.form-control-lg {
   gap: 2rem;
   padding: 4rem;
   color: #fff;
-  background: radial-gradient(circle at 15% 0%, rgba(196, 122, 74, 0.35), transparent 45%), linear-gradient(160deg, #3f5144, #2c3a30);
+  background: linear-gradient(160deg, #3f5144, #2c3a30);
 }
 @media (min-width: 992px) {
   .auth-marca {
@@ -12177,7 +12150,7 @@ textarea.form-control-lg {
   background-color: #ffffff;
   border: var(--bs-border-width) solid #d9ddd6;
   border-radius: 1rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(32, 35, 31, 0.06), 0 0.75rem 1.75rem rgba(32, 35, 31, 0.12);
+  box-shadow: 0 0.125rem 0.25rem rgba(32, 35, 31, 0.05), 0 0.5rem 1rem rgba(32, 35, 31, 0.08);
   width: 100%;
   max-width: 28rem;
   padding: 2rem;
@@ -12194,9 +12167,9 @@ textarea.form-control-lg {
   gap: 1.5rem;
   align-items: end;
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .masthead {
-    grid-template-columns: minmax(0, 1fr) 22rem;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 3rem;
   }
 }
@@ -12266,7 +12239,7 @@ textarea.form-control-lg {
 }
 .detalhes .book-cover {
   border-radius: 1rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(32, 35, 31, 0.06), 0 0.75rem 1.75rem rgba(32, 35, 31, 0.12);
+  box-shadow: 0 0.125rem 0.25rem rgba(32, 35, 31, 0.05), 0 0.5rem 1rem rgba(32, 35, 31, 0.08);
 }
 @media (min-width: 768px) {
   .detalhes .book-cover {

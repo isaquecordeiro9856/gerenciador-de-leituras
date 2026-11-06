@@ -423,3 +423,17 @@ Ao transformar o protótipo em código:
 - usar JavaScript Vanilla ES6+;
 - não usar Tailwind CSS;
 - tratar Login/Cadastro como autenticação acadêmica de demonstração.
+
+## 20. Evolução visual na implementação (Entrega 2)
+
+O código acrescenta alguns detalhes que não existem como quadros do Stitch. Nenhum cria funcionalidade nova:
+
+- sobretítulo curto acima do título, em Minha estante e nas telas de entrada;
+- texto de apoio (`lead`) sob os títulos de Minha estante e Adicionar livro;
+- painel de marca no desktop de Login e Cadastro, com degradê discreto da cor primária e a lista de três funções já previstas no PRD (organizar por status, buscar por título, autoria ou ISBN, avaliar);
+- formulário de livro dividido em duas seções ("Identificação" e "Dados do livro") e link "Voltar para a estante";
+- ficha com o ISBN em duas colunas e resenha em formato de citação nos Detalhes;
+- rodapé escuro em três blocos (marca, frase, link para a estante);
+- link "Ver detalhes" estendido ao card inteiro.
+
+Continuam valendo as restrições deste documento: sem dashboard ou estatísticas, sem glassmorphism, sombras leves e exatamente um CTA principal por tela.

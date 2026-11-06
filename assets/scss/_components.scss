@@ -33,21 +33,6 @@
 .badge-lendo     { @include selo-status($bt-info); }
 .badge-quero-ler { @include selo-status($bt-warning); }
 
-// Resumo da leitura (cabeçalho da estante): barra empilhada do Bootstrap + legenda.
-.resumo {
-  @include superficie(1rem);
-  padding: espaco(3);
-  .progress-stacked { height: 0.625rem; background-color: $bt-chip-bg; }
-}
-.resumo-numero { font-family: $bt-font-titulo; font-size: 2.25rem; line-height: 1; color: $bt-primary; }
-.legenda-ponto {
-  display: inline-block;
-  width: 0.625rem;
-  height: 0.625rem;
-  margin-right: espaco(1);
-  border-radius: 50%;
-}
-
 // Card de livro: horizontal no celular (M1), vertical a partir de sm (D1)
 .book-card {
   @include superficie(1rem);

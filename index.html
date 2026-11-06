@@ -56,34 +56,19 @@
   <main class="flex-grow-1">
     <div class="container py-4 py-lg-5 d-flex flex-column gap-4">
 
-      <!-- Cabeçalho editorial (CSS Grid próprio .masthead): título à esquerda, resumo da leitura à direita -->
+      <!-- Cabeçalho da página (CSS Grid próprio .masthead): título à esquerda, único CTA à direita no desktop -->
       <div class="masthead">
         <div>
           <span class="eyebrow mb-2">Coleção pessoal</span>
           <h1 class="titulo-pagina mb-3">Minha estante</h1>
-          <p class="lead text-secondary medida mb-4">Seus livros organizados por status de leitura, para você saber onde parou e o que vem a seguir.</p>
-          <!-- Botão: largura total no celular (d-grid), automática a partir de sm -->
-          <div class="d-grid d-sm-block">
-            <a href="livro-form.html" class="btn btn-primary btn-lg">
-              <i class="bi bi-plus-lg me-1" aria-hidden="true"></i>Adicionar livro
-            </a>
-          </div>
+          <p class="lead text-secondary medida mb-0">Seus livros organizados por status de leitura, para você saber onde parou e o que vem a seguir.</p>
         </div>
-
-        <!-- COMPONENTE: barra de progresso empilhada do Bootstrap (4 livros: 2 lidos, 1 lendo, 1 quero ler) -->
-        <aside class="resumo" aria-label="Resumo da estante">
-          <p class="mb-3"><span class="resumo-numero">4</span> <span class="text-secondary">livros na estante</span></p>
-          <div class="progress-stacked mb-3" role="img" aria-label="2 lidos, 1 lendo, 1 quero ler">
-            <div class="progress w-50"><div class="progress-bar bg-success"></div></div>
-            <div class="progress w-25"><div class="progress-bar bg-info"></div></div>
-            <div class="progress w-25"><div class="progress-bar bg-warning"></div></div>
-          </div>
-          <ul class="list-unstyled d-flex flex-wrap gap-3 small mb-0">
-            <li><span class="legenda-ponto bg-success"></span>2 lidos</li>
-            <li><span class="legenda-ponto bg-info"></span>1 lendo</li>
-            <li><span class="legenda-ponto bg-warning"></span>1 quero ler</li>
-          </ul>
-        </aside>
+        <!-- Botão: largura total no celular (d-grid), automática a partir de md -->
+        <div class="d-grid d-md-block">
+          <a href="livro-form.html" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-lg me-1" aria-hidden="true"></i>Adicionar livro
+          </a>
+        </div>
       </div>
 
       <!-- Busca (Input Group), filtros e ordenação (Select) -->

@@ -76,8 +76,7 @@
 
 // Barra de navegação: marca com ícone e link ativo sublinhado.
 .navbar-bt {
-  background-color: rgba($bt-surface, 0.92);
-  backdrop-filter: blur(0.5rem);
+  background-color: $bt-surface;
   border-bottom: var(--bs-border-width) solid $bt-border;
   .navbar-brand {
     display: inline-flex;
