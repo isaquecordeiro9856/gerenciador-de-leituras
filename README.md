@@ -1,230 +1,54 @@
 # BookTracker — Gerenciador de Leituras
 
 **Autor:** Isaque Cordeiro
+**Disciplina:** Desenvolvimento de Páginas Web com Framework e CSS (TSI32B) — UTFPR, Sistemas para Internet
 
-Aplicação web responsiva para organizar uma biblioteca pessoal: criar uma conta acadêmica de demonstração, gerenciar livros por status de leitura, buscar dados por ISBN e avaliar obras concluídas.
+## Descrição
 
-> A aplicação ainda não foi codificada. A **1ª Entrega** é a fundação do produto: documentação técnica + Design System + protótipo navegável Mobile/Desktop no Google Stitch. O setup Node/NPM existente pertence à Atividade 06.
+Aplicação web responsiva para organizar uma biblioteca pessoal: criar uma conta acadêmica de demonstração, cadastrar livros e acompanhar cada um por status de leitura (Quero ler, Lendo, Lido), buscar dados por ISBN e avaliar obras concluídas.
 
-## 📌 1ª Entrega — Fundação
+**Estado atual: Entrega 2 — a casca.** As cinco páginas já existem em HTML, Sass e Bootstrap, com layout responsivo. Ainda não há lógica JavaScript, validação, dados nem API: isso é a Entrega 3.
 
-| Requisito | Estado |
-|---|---|
-| Repositório público | ✅ |
-| `docs/prd.md` | ✅ |
-| `docs/architecture.md` | ✅ |
-| Framework CSS definido | ✅ Bootstrap 5.3 |
-| API pública definida | ✅ Google Books API v1 |
-| Design Tokens | ✅ |
-| Protótipo Mobile | ✅ |
-| Protótipo Desktop | ✅ |
-| Fluxos navegáveis | ✅ |
-| Design System | ✅ |
-| Vídeo de apresentação | ⏳ |
+## Links
 
-### Links
+- **Protótipo (Google Stitch):** https://stitch.google.com/u/1/projects/18205289966603005290?pli=1
+- **Design System:** [docs/architecture.md#8-design-system](docs/architecture.md#8-design-system)
+- **Site em produção:** a partir da Entrega 3
+- **Vídeos:** Vídeo 1 e Vídeo 2 na entrega do Moodle; Vídeo 3 na Entrega 3
 
-- **Repositório:** https://github.com/isaquecordeiro9856/gerenciador-de-leituras
-- **Protótipo Google Stitch:** https://stitch.google.com/u/1/projects/18205289966603005290?pli=1
-- **Vídeo:** pendente de gravação/publicação como Não listado no YouTube.
-
-Antes da entrega no Moodle, os links do GitHub, Stitch e YouTube devem ser testados em janela anônima/deslogada.
-
-## 📚 Documentação
-
-- [PRD](docs/prd.md) — escopo, público-alvo, histórias de usuário e regras de negócio.
-- [Architecture](docs/architecture.md) — SDD, modelo de dados, Design System, responsividade e arquitetura.
-- [Spec](docs/spec.md) — contratos técnicos, validações, integrações e convenções.
-- [Design Brief](docs/design-brief.md) — contrato visual e inventário oficial do protótipo.
-- [Roadmap da Disciplina](docs/course-roadmap.md) — requisitos e estado das atividades/entregas ao longo do semestre.
-
-## 🎨 Protótipo e Design
-
-### Direção visual
-
-O BookTracker segue uma linguagem de **biblioteca pessoal contemporânea**: editorial, limpa, acolhedora e profissional. As capas são o principal elemento visual; o fundo é neutro e quente, o verde profundo representa as ações principais e o terracota funciona como acento.
-
-### Design System
-
-Tokens oficiais:
-
-- Primary: `#3F5144`
-- Primary dark: `#2C3A30`
-- Accent: `#C47A4A`
-- Background: `#F5F3EE`
-- Surface: `#FFFFFF`
-- Text: `#20231F`
-- Muted: `#62685F`
-- Border: `#D9DDD6`
-- Success: `#2F7D4A`
-- Info: `#3F6F8E`
-- Warning: `#A56A22`
-- Danger: `#B4423C`
-- Títulos: **DM Serif Display**
-- Corpo/UI: **Inter**
-
-Contrato completo: [docs/architecture.md#8-design-system](docs/architecture.md#8-design-system).
-
-### Mapeamento visual para Bootstrap 5.3
-
-O protótipo foi planejado para indicar visualmente componentes que serão implementados com Bootstrap. Para a apresentação da 1ª Entrega, os três exemplos principais são:
-
-1. **Navbar / Offcanvas** — navegação responsiva;
-2. **Card** — livros da estante;
-3. **Modal** — confirmação de exclusão.
-
-Também estão previstos Forms/Input Group, Buttons, Badges, Alert/Toast e Select/Dropdown.
-
-## 🖼️ Inventário oficial do Stitch
-
-Somente o conjunto **APPROVED** deve orientar a implementação.
-
-### Mobile
-
-- M0A — Login
-- M0B — Cadastro
-- M1 — Minha Estante
-- M2 — Estante Vazia
-- M3 — Offcanvas
-- M4 — Adicionar/Editar Livro
-- M5 — Validação e API
-- M6 — Detalhes Lido
-- M7 — Detalhes Não Concluído
-- M8 — Modal de Exclusão
-- M9 — Feedback e Loading
-
-### Desktop
-
-- D0A — Login
-- D0B — Cadastro
-- D1 — Minha Estante
-- D2 — Estante Vazia
-- D4 — Adicionar/Editar Livro
-- D5 — Validação e API
-- D6 — Detalhes Lido
-- D7 — Detalhes Não Concluído
-- D8 — Modal de Exclusão
-
-Além das telas, existe o **APPROVED DESIGN SYSTEM**.
-
-## ✏️ Regra oficial de Adicionar e Editar Livro
-
-Não existem telas separadas M4B/D4B.
-
-**M4 e D4 são um único formulário reutilizado em dois modos:**
-
-- **Adicionar:** campos inicialmente vazios e ação principal `Salvar livro`;
-- **Editar:** campos pré-preenchidos com o livro atual e ação principal `Salvar alterações`.
-
-No modo Editar, o usuário pode alterar ISBN, título, autor(es) e status. A capa continua vinculada à busca por ISBN na Google Books API; não existe upload manual de imagem.
-
-A avaliação **não faz parte do formulário de edição**. Estrelas e resenha pertencem à seção **Minha avaliação** dos Detalhes quando o livro está com status `Lido`.
-
-Fluxo de edição:
-
-`Detalhes → Editar → M4/D4 preenchido → Salvar alterações → Detalhes atualizado`
-
-`Cancelar → Detalhes sem alteração`
-
-## ⭐ Regra de avaliação
-
-- `Lido` + avaliação existente → mostrar a nota de 1 a 5 estrelas.
-- `Lido` sem avaliação → mostrar `Ainda não avaliado`.
-- `Lendo` ou `Quero ler` → não mostrar estrelas falsas.
-- A avaliação é criada/editada somente na área **Minha avaliação** dos Detalhes.
-
-Se um livro avaliado deixar o status `Lido`, a implementação deverá pedir confirmação antes de remover a avaliação incompatível.
-
-## 🧭 Páginas planejadas
-
-A implementação terá cinco páginas HTML principais:
-
-1. **Login** — `login.html`
-2. **Cadastro** — `cadastro.html`
-3. **Estante** — `index.html`
-4. **Adicionar/Editar Livro** — `livro-form.html`
-5. **Detalhes do Livro** — `livro.html`
-
-Frames como estado vazio, validação, modal, loading e feedback são estados/componentes dessas páginas, não páginas HTML adicionais.
-
-## 🔐 Autenticação acadêmica
-
-Login e Cadastro fazem parte do protótipo final, mas serão implementados sobre JSON Server apenas para fins acadêmicos.
-
-- usar somente credenciais fictícias de demonstração;
-- não apresentar o mecanismo como autenticação segura de produção;
-- nunca armazenar senha no Web Storage;
-- a sessão guarda apenas o identificador do usuário.
-
-## 💻 Tecnologias
+## Tecnologias
 
 | Tecnologia | Uso |
 |---|---|
-| **Bootstrap 5.3.8** | Framework CSS principal. |
-| **HTML5 / CSS3** | Estrutura semântica e estilos próprios. |
-| **JavaScript ES6+** | Lógica, DOM, validações e Fetch API. |
-| **Sass (SCSS)** | Tokens, mixins, funções e modularização. |
-| **jQuery** | Requisito de manipulação/interatividade da disciplina. |
-| **uuid** | Identificadores quando necessários. |
-| **JSON Server** | API fake para usuários, livros e avaliações. |
-| **Google Books API v1** | Busca de título, autoria e capa por ISBN. |
-| **gh-pages / GitHub Pages** | Publicação estática em etapa posterior. |
+| **Bootstrap 5.3** | Framework CSS (Grid, Flexbox e componentes). Tailwind não é usado. |
+| **Sass (SCSS)** | Tokens do Design System, mixins, funções e customização do Bootstrap. |
+| Bootstrap Icons | Ícones. |
+| Google Books API v1 | API pública para buscar título, autoria e capa por ISBN (Entrega 3). |
+| JSON Server | API fake para usuários, livros e avaliações (Entrega 3). |
+| jQuery, uuid | Dependências instaladas para as próximas entregas. |
 
-### Framework CSS
+## Páginas
 
-O framework oficial é **Bootstrap 5.3**. Tailwind CSS não será utilizado.
+| Página | Arquivo |
+|---|---|
+| Login | `login.html` |
+| Cadastro | `cadastro.html` |
+| Minha estante | `index.html` |
+| Adicionar/Editar livro | `livro-form.html` |
+| Detalhes do livro | `livro.html` |
 
-### API pública
+## Organização do projeto
 
-A API pública oficial é a **Google Books API v1**, consultada por ISBN. Quando não houver resultado ou ocorrer falha, o formulário continua disponível para preenchimento manual.
+```
+assets/
+  scss/        _functions, _variables, _mixins, _base, _components, _paginas, main.scss
+  css/         main.css (gerado pelo Sass e versionado)
+  images/      capas em JPG e WebP, ilustração de capa
+docs/          prd.md, architecture.md, spec.md, design-brief.md, course-roadmap.md
+*.html         as cinco páginas
+```
 
-
-## ✅ Checklist | Indicadores de Desempenho
-
-### RA1 — Framework CSS e responsividade
-
-- [x] ID 01 — Protótipo adaptável Mobile/Desktop no Stitch.
-- [ ] ID 02 — Layout responsivo implementado com Bootstrap Grid/Flexbox.
-- [ ] ID 03 — CSS próprio usando Flexbox/Grid.
-- [ ] ID 04 — Componentes Bootstrap implementados no código.
-- [ ] ID 05 — Layout fluido com unidades relativas.
-- [ ] ID 06 — Design System aplicado consistentemente na aplicação implementada.
-- [ ] ID 07 — Sass com variáveis, mixins e funções.
-- [ ] ID 08 — Tipografia responsiva/fluida implementada.
-- [ ] ID 09 — Imagens responsivas implementadas.
-- [ ] ID 10 — Otimização/carregamento adaptativo de imagens.
-
-### RA2 — Formulários
-
-- [ ] ID 11 — Validação HTML nativa e feedback.
-- [ ] ID 12 — REGEX customizada.
-- [ ] ID 13 — Checkbox, radio ou select.
-- [ ] ID 14 — Web Storage.
-
-### RA3 — Ferramentas
-
-- [x] ID 15 — Node.js/NPM inicializado.
-- [x] ID 16 — Git/GitHub e `.gitignore`.
-- [x] ID 17 — README com checklist.
-- [ ] ID 18 — Organização modular implementada.
-- [ ] ID 19 — ESLint/Prettier.
-
-### RA4 — Bibliotecas JavaScript
-
-- [ ] ID 20 — jQuery utilizado.
-- [ ] ID 21 — Plugin/biblioteca complementar utilizada.
-
-### RA5 — APIs
-
-- [ ] ID 22 — POST assíncrono na API fake.
-- [ ] ID 23 — GET assíncrono da API fake.
-- [ ] ID 24 — Google Books API com tratamento de erros.
-
-> Itens de implementação permanecem desmarcados até existirem no código. Isso evita registrar como concluído algo que ainda é apenas parte do protótipo.
-
-## 🚀 Execução atual
-
-Nesta fase a aplicação HTML ainda não foi implementada. As dependências da Atividade 06 podem ser restauradas com:
+## Instruções de execução
 
 ```bash
 git clone https://github.com/isaquecordeiro9856/gerenciador-de-leituras.git
@@ -232,25 +56,72 @@ cd gerenciador-de-leituras
 npm install
 ```
 
-### Visualizar a Atividade 07
+Abra a pasta no VS Code e abra o `index.html` com a extensão **Live Server**.
 
-1. Execute `npm install` após clonar o projeto, caso `node_modules` ainda não exista.
-2. Abra `atividade-07.html` diretamente no navegador.
+Para alterar os estilos, edite os arquivos em `assets/scss/` e recompile:
 
-Não é necessário iniciar servidor: a página funciona via `file://`, carregando Bootstrap, Bootstrap Icons, CSS próprio e imagem a partir de caminhos relativos.
+```bash
+npm run build:css    # compila uma vez
+npm run watch:css    # recompila ao salvar
+```
 
-## 🗺️ Roadmap da Disciplina
+O `assets/css/main.css` já vem compilado no repositório.
 
-O planejamento completo está em [docs/course-roadmap.md](docs/course-roadmap.md).
+## Telas da aplicação
 
-- **Atividade 03:** tema/escopo · README · PRD · Architecture ✅
-- **Atividade 04:** protótipo responsivo e navegável Mobile/Desktop ✅
-- **Atividade 05:** Bootstrap 5.3 + Google Books API definidos/documentados ✅
-- **1ª Entrega:** documentação ✅ · Design System/protótipo ✅ · Mobile/Desktop navegável ✅ · Vídeo 1 ⏳
-- **Atividade 06:** Node/NPM/Git ✅ · evidências ✅ · PDF ✅ · Moodle ✅
-- **Atividade 07:** laboratório Bootstrap via NPM (`atividade-07.html` + `atividade-07.css`) · Grid · Modal · Card · Flexbox · Bootstrap Icons implementados · prints/PDF/Moodle ⏳
-- **Atividade 08:** protótipo → código Bootstrap · 10 componentes · Grid/Flexbox · Sticky Footer · breakpoints · PDF ⏳
-- **Entrega 2:** HTML/CSS responsivo + Bootstrap + Sass · Vídeo 2 ⏳
-- **Entrega 3:** JavaScript ES6+ · validações · Web Storage · jQuery · JSON Server · Google Books · deploy · Vídeo 3 ⏳
+Prints das páginas no celular e no desktop: _a adicionar._
 
-> Os requisitos são marcados somente quando há implementação/evidência real. O protótipo não substitui a comprovação no código.
+## ✅ Checklist | Indicadores de Desempenho
+
+### RA1 — Utilizar Frameworks CSS para estilização de elementos HTML e criação de layouts responsivos
+
+- [x] ID 01 — Prototipa interfaces adaptáveis para no mínimo os tamanhos de tela mobile e desktop, usando ferramentas de design tradicionais (Figma, Quant UX ou Sketch) ou IA (Stitch).
+- [x] ID 02 — Implementa layout responsivo com Framework CSS (Bootstrap, Materialize) usando Flexbox ou Grid do próprio framework.
+- [x] ID 03 — Implementa layout responsivo com CSS puro, usando Flexbox ou Grid Layout.
+- [x] ID 04 — Utiliza componentes prontos de um Framework CSS (ex.: card, button) e componentes JavaScript do framework (ex.: modal, carousel).
+- [x] ID 05 — Cria layout fluido usando unidades relativas (vw, vh, %, em, rem) no lugar de unidades fixas (px).
+- [x] ID 06 — Aplica um Design System consistente (cores, tipografia, padrões de componentes) em toda a aplicação.
+- [x] ID 07 — Utiliza Sass (SCSS) com ou sem framework, aplicando variáveis, mixins e funções para modularizar o código.
+- [x] ID 08 — Aplica tipografia responsiva (media queries mobile first) ou tipografia fluida (função clamp() + unidades relativas).
+- [x] ID 09 — Aplica técnicas de responsividade de imagens usando CSS (object-fit, containers com unidades relativas).
+- [x] ID 10 — Otimiza imagens usando formatos modernos (WebP) e carregamento adaptativo (srcset, picture, ou parâmetros do Cloudinary).
+
+### RA2 — Realizar tratamento de formulários e aplicar validações customizadas no lado cliente
+
+- [ ] ID 11 — Implementa validação HTML nativa (campos obrigatórios, tipos, limites de caracteres) com mensagens de erro/sucesso no lado cliente.
+- [ ] ID 12 — Aplica expressões regulares (REGEX) para validações customizadas (e-mail, telefone, datas, etc.)
+- [ ] ID 13 — Utiliza elementos de seleção em formulários (checkbox, radio, select) para coleta de dados.
+- [ ] ID 14 — Implementa leitura e escrita no Web Storage (localStorage/sessionStorage) para persistir dados localmente.
+
+### RA3 — Aplicar ferramentas para otimização do processo de desenvolvimento web
+
+- [x] ID 15 — Configura ambiente com Node.js e NPM para gerenciamento de pacotes e dependências.
+- [x] ID 16 — Utiliza boas práticas de versionamento no Git/GitHub (branch main ou branches específicos, uso de .gitignore).
+- [ ] ID 17 — Mantém um README.md padronizado, conforme template da disciplina, com checklist preenchido.
+- [ ] ID 18 — Organiza arquivos do projeto de forma modular, seguindo padrão de exemplo fornecido.
+- [ ] ID 19 — Configura linters e formatadores (ESLint, Prettier) para manter qualidade e padronização do código.
+
+### RA4 — Aplicar bibliotecas de funções e componentes em JavaScript para aprimorar a interatividade de páginas web
+
+- [ ] ID 20 — Utiliza jQuery para manipulação do DOM e interatividade (eventos, animações, manipulação de elementos)
+- [ ] ID 21 — Integra e configura um plugin jQuery relevante (ex.: jQuery Mask Plugin) ou outra biblioteca de funções.
+
+### RA5 — Efetuar requisições assíncronas para uma API fake e APIs públicas, permitindo a obtenção e manipulação de dados dinamicamente
+
+- [ ] ID 22 — Realiza requisições assíncronas para uma API fake (ex.: JSON Server) para persistir dados de um formulário.
+- [ ] ID 23 — Realiza requisições assíncronas para uma API fake para exibir dados na página.
+- [ ] ID 24 — Realiza requisições assíncronas para APIs públicas reais (OpenWeather, ViaCEP etc.), exibindo os dados e tratando erros.
+
+## 📚 Documentação
+
+- [PRD](docs/prd.md) — escopo, público-alvo, histórias de usuário e regras de negócio.
+- [Architecture](docs/architecture.md) — modelo de dados, Design System, responsividade e arquitetura.
+- [Spec](docs/spec.md) — contratos técnicos, validações, integrações e convenções.
+- [Design Brief](docs/design-brief.md) — contrato visual e inventário do protótipo.
+- [Roadmap da disciplina](docs/course-roadmap.md) — planejamento do semestre.
+
+## Regras de produto
+
+- **Adicionar e Editar** usam o mesmo formulário (`livro-form.html`), em dois modos.
+- **Avaliação** (1 a 5 estrelas e resenha) existe só nos Detalhes e só para livros com status Lido.
+- **Autenticação** é acadêmica, apenas de demonstração, sobre JSON Server. Use somente credenciais fictícias e nunca guarde senha no Web Storage.
