@@ -69,7 +69,17 @@ O `assets/css/main.css` já vem compilado no repositório.
 
 ## Telas da aplicação
 
-Prints das páginas no celular e no desktop: _a adicionar._
+Capturas reais das páginas, em desktop (1440 px) e celular:
+
+| Página | Desktop | Celular |
+|---|---|---|
+| Login | ![Login no desktop](docs/telas/desktop-login.webp) | ![Login no celular](docs/telas/mobile-login.webp) |
+| Cadastro | ![Cadastro no desktop](docs/telas/desktop-cadastro.webp) | ![Cadastro no celular](docs/telas/mobile-cadastro.webp) |
+| Minha estante | ![Estante no desktop](docs/telas/desktop-estante.webp) | ![Estante no celular](docs/telas/mobile-estante.webp) |
+| Adicionar livro | ![Formulário no desktop](docs/telas/desktop-livro-form.webp) | ![Formulário no celular](docs/telas/mobile-livro-form.webp) |
+| Detalhes | ![Detalhes no desktop](docs/telas/desktop-livro.webp) | ![Detalhes no celular](docs/telas/mobile-livro.webp) |
+
+Menu (Offcanvas) aberto no celular: ![Offcanvas aberto](docs/telas/mobile-offcanvas.webp)
 
 ## ✅ Checklist | Indicadores de Desempenho
 
