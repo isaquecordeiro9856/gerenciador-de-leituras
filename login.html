@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
@@ -16,14 +17,22 @@
   <div class="auth-page">
 
     <aside class="auth-marca" aria-hidden="true">
-      <span class="eyebrow text-white opacity-75">Biblioteca pessoal</span>
-      <p class="font-serif-bt titulo-pagina mb-0">BookTracker</p>
-      <p class="lead mb-0">Organize o que você quer ler, está lendo e já leu, em um só lugar.</p>
+      <p class="font-serif-bt fs-3 mb-0"><i class="bi bi-book-half text-acento me-2"></i>BookTracker</p>
+      <div>
+        <span class="eyebrow mb-3">Biblioteca pessoal</span>
+        <p class="font-serif-bt titulo-pagina mb-4">Cada livro no seu lugar na estante.</p>
+        <ul class="auth-lista">
+          <li><i class="bi bi-bookmark-star"></i>Organize por status: quero ler, lendo e lido.</li>
+          <li><i class="bi bi-search"></i>Encontre qualquer livro pelo título, autor ou ISBN.</li>
+          <li><i class="bi bi-star"></i>Avalie e registre o que achou de cada leitura.</li>
+        </ul>
+      </div>
+      <p class="small opacity-75 mb-0">Volte para a sua estante e continue de onde parou.</p>
     </aside>
 
     <main class="auth-form">
       <div class="auth-card">
-        <p class="font-serif-bt fs-4 text-primary mb-1">BookTracker</p>
+        <p class="eyebrow mb-2">BookTracker</p>
         <h1 class="titulo-secao mb-4">Entrar</h1>
 
         <!-- Casca: o envio leva à estante. A validação e a autenticação ficam para a Entrega 3 -->

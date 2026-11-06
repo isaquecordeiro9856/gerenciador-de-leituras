@@ -20,7 +20,7 @@
   <!-- COMPONENTE: Navbar. No celular o botão abre o Offcanvas (componente com JavaScript do Bootstrap) -->
   <header class="navbar navbar-expand-lg navbar-bt sticky-top">
     <div class="container">
-      <a class="navbar-brand font-serif-bt fs-4" href="index.html">BookTracker</a>
+      <a class="navbar-brand font-serif-bt fs-4" href="index.html"><i class="bi bi-book-half" aria-hidden="true"></i>BookTracker</a>
       <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
               data-bs-target="#navMobile" aria-controls="navMobile" aria-label="Abrir navegação">
         <span class="navbar-toggler-icon"></span>
@@ -56,19 +56,34 @@
   <main class="flex-grow-1">
     <div class="container py-4 py-lg-5 d-flex flex-column gap-4">
 
-      <!-- Cabeçalho da página -->
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
-        <div class="col-md-8">
-          <span class="eyebrow d-block mb-1">Coleção pessoal</span>
-          <h1 class="titulo-pagina mb-2">Minha estante</h1>
-          <p class="text-secondary medida mb-0">Sua coleção pessoal de leituras, organizada de forma clara para acompanhar o seu acervo.</p>
+      <!-- Cabeçalho editorial (CSS Grid próprio .masthead): título à esquerda, resumo da leitura à direita -->
+      <div class="masthead">
+        <div>
+          <span class="eyebrow mb-2">Coleção pessoal</span>
+          <h1 class="titulo-pagina mb-3">Minha estante</h1>
+          <p class="lead text-secondary medida mb-4">Seus livros organizados por status de leitura, para você saber onde parou e o que vem a seguir.</p>
+          <!-- Botão: largura total no celular (d-grid), automática a partir de sm -->
+          <div class="d-grid d-sm-block">
+            <a href="livro-form.html" class="btn btn-primary btn-lg">
+              <i class="bi bi-plus-lg me-1" aria-hidden="true"></i>Adicionar livro
+            </a>
+          </div>
         </div>
-        <!-- Botão: largura total no celular (d-grid), automática a partir de md -->
-        <div class="d-grid d-md-block">
-          <a href="livro-form.html" class="btn btn-primary">
-            <i class="bi bi-plus-lg me-1" aria-hidden="true"></i>Adicionar livro
-          </a>
-        </div>
+
+        <!-- COMPONENTE: barra de progresso empilhada do Bootstrap (4 livros: 2 lidos, 1 lendo, 1 quero ler) -->
+        <aside class="resumo" aria-label="Resumo da estante">
+          <p class="mb-3"><span class="resumo-numero">4</span> <span class="text-secondary">livros na estante</span></p>
+          <div class="progress-stacked mb-3" role="img" aria-label="2 lidos, 1 lendo, 1 quero ler">
+            <div class="progress w-50"><div class="progress-bar bg-success"></div></div>
+            <div class="progress w-25"><div class="progress-bar bg-info"></div></div>
+            <div class="progress w-25"><div class="progress-bar bg-warning"></div></div>
+          </div>
+          <ul class="list-unstyled d-flex flex-wrap gap-3 small mb-0">
+            <li><span class="legenda-ponto bg-success"></span>2 lidos</li>
+            <li><span class="legenda-ponto bg-info"></span>1 lendo</li>
+            <li><span class="legenda-ponto bg-warning"></span>1 quero ler</li>
+          </ul>
+        </aside>
       </div>
 
       <!-- Busca (Input Group), filtros e ordenação (Select) -->
@@ -102,7 +117,7 @@
       </section>
 
       <!-- GRID do Bootstrap: 1 coluna (celular), 2 (sm), 4 (lg). Cada .col guarda um Card -->
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4" id="grade-livros">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4" id="grade-livros">
 
         <div class="col">
           <article class="card book-card h-100 flex-row flex-sm-column">
@@ -111,7 +126,7 @@
               <picture>
                 <source type="image/webp"
                         srcset="assets/images/capas/capa-d1-1-256.webp 256w, assets/images/capas/capa-d1-1-full.webp 286w"
-                        sizes="(min-width: 992px) 16rem, (min-width: 576px) 40vw, 7rem">
+                        sizes="(min-width: 1200px) 17rem, (min-width: 992px) 21rem, (min-width: 576px) 45vw, 7rem">
                 <img src="assets/images/capas/capa-d1-1.jpg" class="card-img-top" width="286" height="512" loading="lazy"
                      alt="Capa do livro Torto Arado, de Itamar Vieira Junior, em tons terrosos">
               </picture>
@@ -125,7 +140,7 @@
               <div class="book-rating small" role="img" aria-label="Avaliação: 5 de 5 estrelas">
                 <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
               </div>
-              <a href="livro.html" class="link-bt small mt-auto pt-1">Ver detalhes <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+              <a href="livro.html" class="link-bt stretched-link small mt-auto pt-1">Ver detalhes <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
             </div>
           </article>
         </div>
@@ -136,7 +151,7 @@
               <picture>
                 <source type="image/webp"
                         srcset="assets/images/capas/capa-d1-2-256.webp 256w, assets/images/capas/capa-d1-2-full.webp 512w"
-                        sizes="(min-width: 992px) 16rem, (min-width: 576px) 40vw, 7rem">
+                        sizes="(min-width: 1200px) 17rem, (min-width: 992px) 21rem, (min-width: 576px) 45vw, 7rem">
                 <img src="assets/images/capas/capa-d1-2.jpg" class="card-img-top" width="512" height="279" loading="lazy"
                      alt="Capa do livro A Hora da Estrela, de Clarice Lispector, em fundo bege com ilustração">
               </picture>
@@ -148,7 +163,7 @@
               <h2 class="card-title font-serif-bt fs-5 mb-0 book-title">A Hora da Estrela</h2>
               <p class="card-subtitle text-secondary small mb-1">Clarice Lispector</p>
               <div class="book-rating" aria-hidden="true"></div>
-              <a href="livro.html" class="link-bt small mt-auto pt-1">Ver detalhes <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+              <a href="livro.html" class="link-bt stretched-link small mt-auto pt-1">Ver detalhes <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
             </div>
           </article>
         </div>
@@ -159,7 +174,7 @@
               <picture>
                 <source type="image/webp"
                         srcset="assets/images/capas/capa-d1-3-256.webp 256w, assets/images/capas/capa-d1-3-full.webp 343w"
-                        sizes="(min-width: 992px) 16rem, (min-width: 576px) 40vw, 7rem">
+                        sizes="(min-width: 1200px) 17rem, (min-width: 992px) 21rem, (min-width: 576px) 45vw, 7rem">
                 <img src="assets/images/capas/capa-d1-3.jpg" class="card-img-top" width="343" height="425" loading="lazy"
                      alt="Capa do livro Cem Anos de Solidão, de Gabriel García Márquez, com motivos tropicais">
               </picture>
@@ -171,7 +186,7 @@
               <h2 class="card-title font-serif-bt fs-5 mb-0 book-title">Cem Anos de Solidão</h2>
               <p class="card-subtitle text-secondary small mb-1">Gabriel García Márquez</p>
               <div class="book-rating" aria-hidden="true"></div>
-              <a href="livro.html" class="link-bt small mt-auto pt-1">Ver detalhes <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+              <a href="livro.html" class="link-bt stretched-link small mt-auto pt-1">Ver detalhes <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
             </div>
           </article>
         </div>
@@ -182,7 +197,7 @@
               <picture>
                 <source type="image/webp"
                         srcset="assets/images/capas/capa-d1-4-256.webp 256w, assets/images/capas/capa-d1-4-full.webp 512w"
-                        sizes="(min-width: 992px) 16rem, (min-width: 576px) 40vw, 7rem">
+                        sizes="(min-width: 1200px) 17rem, (min-width: 992px) 21rem, (min-width: 576px) 45vw, 7rem">
                 <img src="assets/images/capas/capa-d1-4.jpg" class="card-img-top" width="512" height="512" loading="lazy"
                      alt="Capa do livro Ensaio sobre a Cegueira, de José Saramago, minimalista em alto contraste">
               </picture>
@@ -196,7 +211,7 @@
               <div class="book-rating small" role="img" aria-label="Avaliação: 5 de 5 estrelas">
                 <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
               </div>
-              <a href="livro.html" class="link-bt small mt-auto pt-1">Ver detalhes <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
+              <a href="livro.html" class="link-bt stretched-link small mt-auto pt-1">Ver detalhes <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i></a>
             </div>
           </article>
         </div>
@@ -217,8 +232,9 @@
 
   <footer class="footer-bt">
     <div class="container footer-conteudo">
-      <span>BookTracker — Gerenciador de Leituras</span>
-      <span>Biblioteca pessoal contemporânea</span>
+      <span class="footer-marca font-serif-bt">BookTracker</span>
+      <span>Gerenciador de leituras: sua biblioteca pessoal, no seu ritmo.</span>
+      <a href="index.html">Minha estante</a>
     </div>
   </footer>
 

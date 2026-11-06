@@ -9,10 +9,17 @@
   border-radius: $raio;
 }
 
+// Sombra suave em duas camadas, na cor do texto: dá "peso" de objeto a cards, capas e painéis.
+// Usada no hover dos cards de livro, na capa dos detalhes e no card de login/cadastro.
+@mixin sombra-livro {
+  box-shadow: 0 0.125rem 0.25rem rgba($bt-text, 0.06), 0 0.75rem 1.75rem rgba($bt-text, 0.12);
+}
+
 // Título fluido (ID 08): cresce de $min a $max conforme a largura da tela.
 // clamp(mínimo, valor preferido, máximo); o "2vw" faz o texto acompanhar a janela.
 @mixin titulo-fluido($min, $max) {
   font-size: clamp(#{$min}, 1rem + 2vw, #{$max});
+  line-height: $headings-line-height; // vale também quando a classe vai num <p>, que herdaria 1.65
 }
 
 // Selo de status: fundo = cor bem clara; texto = a cor um pouco mais escura.
