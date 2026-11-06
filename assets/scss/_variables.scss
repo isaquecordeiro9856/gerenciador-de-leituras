@@ -16,6 +16,7 @@ $bt-info:         #3f6f8e;
 $bt-warning:      #a56a22;
 $bt-danger:       #b4423c;
 $bt-chip-bg:      #edefe8;
+$bt-paper-dark:   #ebe7dd;   // fundo de apoio, um tom abaixo do papel
 
 $bt-font-titulo: "DM Serif Display", Georgia, "Times New Roman", serif;
 $bt-font-corpo:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -42,3 +43,17 @@ $headings-font-weight:   400;
 $border-radius:      0.75rem;
 $border-radius-lg:   1rem;
 $border-radius-pill: 50rem;
+
+// Leitura mais confortável e títulos mais compactos (hierarquia editorial)
+$line-height-base:     1.65;
+$headings-line-height: 1.15;
+$lead-font-size:       1.125rem;
+
+// Botões e campos com mais presença (Design System: componentes generosos)
+$btn-font-weight:          600;
+$btn-padding-y:            0.55rem;
+$btn-padding-x:            1.25rem;
+$input-padding-y:          0.65rem;
+$input-padding-x:          0.9rem;
+$form-label-font-weight:   600;
+$form-label-margin-bottom: 0.4rem;

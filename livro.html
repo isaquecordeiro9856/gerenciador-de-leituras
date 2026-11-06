@@ -16,7 +16,7 @@
 
   <header class="navbar navbar-expand-lg navbar-bt sticky-top">
     <div class="container">
-      <a class="navbar-brand font-serif-bt fs-4" href="index.html">BookTracker</a>
+      <a class="navbar-brand font-serif-bt fs-4" href="index.html"><i class="bi bi-book-half" aria-hidden="true"></i>BookTracker</a>
       <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
               data-bs-target="#navMobile" aria-controls="navMobile" aria-label="Abrir navegação">
         <span class="navbar-toggler-icon"></span>
@@ -66,8 +66,12 @@
           <div>
             <span class="badge badge-status badge-lido mb-2"><i class="bi bi-check-lg me-1" aria-hidden="true"></i>Lido</span>
             <h1 class="titulo-pagina mb-1">Torto Arado</h1>
-            <p class="text-secondary mb-1">Itamar Vieira Junior</p>
-            <p class="small text-secondary mb-0">ISBN 9788569020318</p>
+            <p class="lead text-secondary mb-4">Itamar Vieira Junior</p>
+            <!-- Ficha técnica em CSS Grid próprio (.ficha): rótulo e valor alinhados em duas colunas -->
+            <dl class="ficha small">
+              <dt>ISBN</dt><dd>9788569020318</dd>
+              <dt>Status</dt><dd>Lido</dd>
+            </dl>
           </div>
 
           <div class="d-flex flex-column flex-sm-row gap-2">
@@ -85,7 +89,7 @@
             <div class="book-rating mb-2" role="img" aria-label="Avaliação: 5 de 5 estrelas">
               <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
             </div>
-            <p class="medida mb-3">Uma leitura marcante, com personagens fortes e uma linguagem que prende do começo ao fim.</p>
+            <blockquote class="resenha medida mb-3">Uma leitura marcante, com personagens fortes e uma linguagem que prende do começo ao fim.</blockquote>
             <button type="button" class="btn btn-sm btn-outline-secondary">Editar avaliação</button>
           </section>
         </div>
@@ -114,8 +118,9 @@
 
   <footer class="footer-bt">
     <div class="container footer-conteudo">
-      <span>BookTracker — Gerenciador de Leituras</span>
-      <span>Biblioteca pessoal contemporânea</span>
+      <span class="footer-marca font-serif-bt">BookTracker</span>
+      <span>Gerenciador de leituras: sua biblioteca pessoal, no seu ritmo.</span>
+      <a href="index.html">Minha estante</a>
     </div>
   </footer>
 

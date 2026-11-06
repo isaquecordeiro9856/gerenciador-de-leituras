@@ -16,7 +16,7 @@
 
   <header class="navbar navbar-expand-lg navbar-bt sticky-top">
     <div class="container">
-      <a class="navbar-brand font-serif-bt fs-4" href="index.html">BookTracker</a>
+      <a class="navbar-brand font-serif-bt fs-4" href="index.html"><i class="bi bi-book-half" aria-hidden="true"></i>BookTracker</a>
       <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
               data-bs-target="#navMobile" aria-controls="navMobile" aria-label="Abrir navegação">
         <span class="navbar-toggler-icon"></span>
@@ -46,12 +46,20 @@
   <main class="flex-grow-1">
     <div class="container py-4 py-lg-5">
       <!-- Modo Adicionar. O modo Editar (campos preenchidos) é comportamento da Entrega 3, na mesma página -->
-      <h1 class="titulo-pagina mb-4">Adicionar livro</h1>
+      <nav aria-label="Voltar" class="mb-3">
+        <a href="index.html" class="link-bt small"><i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Voltar para a estante</a>
+      </nav>
+      <header class="mb-4">
+        <span class="eyebrow mb-2">Nova leitura</span>
+        <h1 class="titulo-pagina mb-2">Adicionar livro</h1>
+        <p class="lead text-secondary medida mb-0">Busque pelo ISBN para preencher os dados automaticamente ou digite você mesmo.</p>
+      </header>
 
       <!-- Layout próprio em CSS Grid (.form-livro): formulário + preview da capa -->
       <form class="form-livro" action="index.html">
         <div class="painel d-flex flex-column gap-3">
 
+          <p class="painel-titulo mb-0"><i class="bi bi-upc-scan" aria-hidden="true"></i>Identificação</p>
           <div>
             <label for="isbn" class="form-label">ISBN</label>
             <div class="input-group">
@@ -61,6 +69,8 @@
             <div id="isbn-ajuda" class="form-text">Use 10 ou 13 dígitos. Se a busca não encontrar o livro, preencha os campos manualmente.</div>
           </div>
 
+          <hr class="my-1">
+          <p class="painel-titulo mb-0"><i class="bi bi-journal-text" aria-hidden="true"></i>Dados do livro</p>
           <div>
             <label for="titulo" class="form-label">Título</label>
             <input type="text" class="form-control campo-bt" id="titulo" name="titulo" required>
@@ -81,9 +91,9 @@
             </select>
           </div>
 
-          <div class="d-flex flex-column flex-sm-row gap-2 justify-content-sm-end pt-2">
+          <div class="d-flex flex-column-reverse flex-sm-row gap-2 justify-content-sm-end pt-3 border-top">
             <a href="index.html" class="btn btn-outline-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Salvar livro</button>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg me-1" aria-hidden="true"></i>Salvar livro</button>
           </div>
         </div>
 
@@ -100,8 +110,9 @@
 
   <footer class="footer-bt">
     <div class="container footer-conteudo">
-      <span>BookTracker — Gerenciador de Leituras</span>
-      <span>Biblioteca pessoal contemporânea</span>
+      <span class="footer-marca font-serif-bt">BookTracker</span>
+      <span>Gerenciador de leituras: sua biblioteca pessoal, no seu ritmo.</span>
+      <a href="index.html">Minha estante</a>
     </div>
   </footer>
 

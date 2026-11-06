@@ -4,16 +4,30 @@
 
 .font-serif-bt { font-family: $bt-font-titulo; font-weight: 400; }
 
+// Sobretítulo editorial: uma linha curta antes do texto em caixa alta.
 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: espaco(1.5);
   font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: $bt-muted;
+  // shade-color() (função do Bootstrap) escurece o terracota até passar de 4,5:1 sobre o papel (WCAG AA).
+  color: shade-color($bt-accent, 35%);
+  &::before {
+    content: "";
+    width: espaco(3);
+    height: 0.125rem;
+    background-color: currentColor;
+  }
 }
 
-// Tipografia fluida (ID 08)
-.titulo-pagina { @include titulo-fluido(1.75rem, 2.75rem); }
-.titulo-secao  { @include titulo-fluido(1.25rem, 1.75rem); }
+.text-acento { color: $bt-accent; }
+
+// Tipografia fluida (ID 08): cresce com a janela, sem media query.
+.titulo-pagina { @include titulo-fluido(2rem, 3.5rem); }
+.titulo-secao  { @include titulo-fluido(1.375rem, 1.875rem); }
 
 // Largura de leitura confortável: 60ch = largura de 60 caracteres "0" da fonte (ID 05).
 .medida { max-width: 60ch; }
@@ -22,7 +36,7 @@
   color: $bt-primary;
   font-weight: 600;
   text-decoration: none;
-  &:hover { color: $bt-accent; }
+  &:hover { color: shade-color($bt-accent, 35%); }
   @include anel-foco;
 }
 
@@ -30,25 +44,25 @@
 .campo-bt {
   background-color: $bt-bg;
   &:focus {
+    background-color: $bt-surface;
     border-color: $bt-primary;
     box-shadow: 0 0 0 0.25rem rgba($bt-primary, 0.15);
   }
 }
 
-// Rodapé: CSS PRÓPRIO com Flexbox (ID 03).
-// Coluna no celular; linha com espaço entre os itens a partir de md.
+// Rodapé: CSS PRÓPRIO com Flexbox (ID 03), três blocos.
+// Coluna centralizada no celular; linha com espaço entre os blocos a partir de md.
 .footer-bt {
-  @include superficie(0);
-  border-width: var(--bs-border-width) 0 0;
-  color: $bt-muted;
+  background-color: $bt-primary-dark;
+  color: tint-color($bt-primary, 70%);
   font-size: 0.875rem;
-  padding: espaco(3) 0;
+  padding: espaco(5) 0;
 
   .footer-conteudo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: espaco(1);
+    gap: espaco(2);
     text-align: center;
     @include media-breakpoint-up(md) {
       flex-direction: row;
@@ -56,16 +70,27 @@
       text-align: start;
     }
   }
+  .footer-marca { font-size: 1.25rem; color: #fff; }
+  a { color: #fff; text-decoration: none; &:hover { color: tint-color($bt-accent, 55%); } }
 }
 
+// Barra de navegação: marca com ícone e link ativo sublinhado.
 .navbar-bt {
-  background-color: $bt-surface;
+  background-color: rgba($bt-surface, 0.92);
+  backdrop-filter: blur(0.5rem);
   border-bottom: var(--bs-border-width) solid $bt-border;
-  .navbar-brand { color: $bt-primary; }
+  .navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: espaco(1);
+    color: $bt-primary;
+    .bi { color: $bt-accent; }
+  }
+  .nav-link { color: $bt-muted; font-weight: 500; &:hover { color: $bt-text; } }
   .nav-link.active {
     color: $bt-text;
     font-weight: 600;
-    border-bottom: 0.125rem solid $bt-primary;
+    box-shadow: inset 0 -0.125rem 0 $bt-primary;
   }
 }
 
