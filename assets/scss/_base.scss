@@ -1,0 +1,71 @@
+// ============================================================
+// BASE: elementos globais e utilitários do Design System
+// ============================================================
+
+.font-serif-bt { font-family: $bt-font-titulo; font-weight: 400; }
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $bt-muted;
+}
+
+// Tipografia fluida (ID 08)
+.titulo-pagina { @include titulo-fluido(1.75rem, 2.75rem); }
+.titulo-secao  { @include titulo-fluido(1.25rem, 1.75rem); }
+
+.link-bt {
+  color: $bt-primary;
+  font-weight: 600;
+  text-decoration: none;
+  &:hover { color: $bt-accent; }
+  @include anel-foco;
+}
+
+// Campos do formulário e busca (fundo do Design System)
+.campo-bt {
+  background-color: $bt-bg;
+  &:focus {
+    border-color: $bt-primary;
+    box-shadow: 0 0 0 0.25rem rgba($bt-primary, 0.15);
+  }
+}
+
+// Rodapé: CSS PRÓPRIO com Flexbox (ID 03).
+// Coluna no celular; linha com espaço entre os itens a partir de md.
+.footer-bt {
+  @include superficie(0);
+  border-width: var(--bs-border-width) 0 0;
+  color: $bt-muted;
+  font-size: 0.875rem;
+  padding: espaco(3) 0;
+
+  .footer-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: espaco(1);
+    text-align: center;
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: start;
+    }
+  }
+}
+
+.navbar-bt {
+  background-color: $bt-surface;
+  border-bottom: var(--bs-border-width) solid $bt-border;
+  .navbar-brand { color: $bt-primary; }
+  .nav-link.active {
+    color: $bt-text;
+    font-weight: 600;
+    border-bottom: 0.125rem solid $bt-primary;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

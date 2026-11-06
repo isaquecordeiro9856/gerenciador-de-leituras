@@ -1,0 +1,19 @@
+// ============================================================
+// BookTracker — ponto de entrada do Sass
+// Compilar:  npm run build:css      Observar:  npm run watch:css
+// ============================================================
+
+// 1) Funções e variáveis (tokens do Design System) ANTES do Bootstrap
+@import "functions";
+@import "variables";
+
+// 2) Bootstrap completo (já enxerga as variáveis acima)
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// 3) Mixins próprios (usam funções/mixins do Bootstrap, por isso vêm depois)
+@import "mixins";
+
+// 4) Partes do projeto
+@import "base";
+@import "components";
+@import "paginas";

@@ -1,0 +1,10 @@
+// ============================================================
+// FUNÇÕES PRÓPRIAS (ID 07)
+// ============================================================
+
+// O Design System usa um ritmo de 8 px. 1 passo = 0.5rem (8px com fonte de 16px).
+// Uso: padding: espaco(3);  ->  1.5rem no CSS compilado.
+// Em rem (e não px) para acompanhar a fonte escolhida pelo usuário (ID 05).
+@function espaco($passos) {
+  @return $passos * 0.5rem;
+}

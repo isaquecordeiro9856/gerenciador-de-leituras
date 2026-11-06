@@ -1,0 +1,31 @@
+// ============================================================
+// MIXINS PRÓPRIOS (ID 07) — cada um é usado em mais de um lugar
+// ============================================================
+
+// Superfície branca com borda discreta (cards, toolbar, formulários, painéis...).
+@mixin superficie($raio: $border-radius-lg) {
+  background-color: $bt-surface;
+  border: var(--bs-border-width) solid $bt-border;
+  border-radius: $raio;
+}
+
+// Título fluido (ID 08): cresce de $min a $max conforme a largura da tela.
+// clamp(mínimo, valor preferido, máximo); o "2vw" faz o texto acompanhar a janela.
+@mixin titulo-fluido($min, $max) {
+  font-size: clamp(#{$min}, 1rem + 2vw, #{$max});
+}
+
+// Selo de status: fundo = cor bem clara; texto = a cor um pouco mais escura.
+// tint-color() e shade-color() são FUNÇÕES do Bootstrap.
+@mixin selo-status($cor) {
+  background-color: tint-color($cor, 85%);
+  color: shade-color($cor, 10%);
+}
+
+// Anel de foco para teclado, na cor da identidade.
+@mixin anel-foco {
+  &:focus-visible {
+    outline: 0.25rem solid rgba($bt-primary, 0.25);
+    outline-offset: 0.125rem;
+  }
+}

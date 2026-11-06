@@ -1,0 +1,44 @@
+// ============================================================
+// DESIGN TOKENS do BookTracker (ID 06) — fonte: docs/architecture.md §8
+// ============================================================
+
+// 1) Tokens do Design System (nomes do projeto)
+$bt-primary:      #3f5144;
+$bt-primary-dark: #2c3a30;
+$bt-accent:       #c47a4a;
+$bt-bg:           #f5f3ee;
+$bt-surface:      #ffffff;
+$bt-text:         #20231f;
+$bt-muted:        #62685f;
+$bt-border:       #d9ddd6;
+$bt-success:      #2f7d4a;
+$bt-info:         #3f6f8e;
+$bt-warning:      #a56a22;
+$bt-danger:       #b4423c;
+$bt-chip-bg:      #edefe8;
+
+$bt-font-titulo: "DM Serif Display", Georgia, "Times New Roman", serif;
+$bt-font-corpo:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+// 2) Customização do Bootstrap (ID 07)
+// ATENÇÃO À ORDEM: estas variáveis vêm ANTES do @import do Bootstrap.
+// As variáveis do Bootstrap têm !default ("use este valor só se ninguém
+// definiu antes"), por isso o valor definido aqui vence.
+$primary:   $bt-primary;
+$secondary: $bt-muted;
+$success:   $bt-success;
+$info:      $bt-info;
+$warning:   $bt-warning;
+$danger:    $bt-danger;
+
+$body-bg:      $bt-bg;
+$body-color:   $bt-text;
+$border-color: $bt-border;
+
+$font-family-sans-serif: $bt-font-corpo;
+$headings-font-family:   $bt-font-titulo;
+$headings-font-weight:   400;
+
+$border-radius:      0.75rem;
+$border-radius-lg:   1rem;
+$border-radius-pill: 50rem;
