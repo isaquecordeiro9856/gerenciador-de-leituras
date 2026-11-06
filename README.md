@@ -71,7 +71,7 @@ O `assets/css/main.css` já vem compilado no repositório.
 
 ## Telas da aplicação
 
-Capturas reais das páginas, em desktop (1440 × 900) e celular (390 × 844):
+Capturas reais. Desktop: janela de 1440 × 900 (área visível). Celular: largura de 390 px (algumas mostram a página inteira, por isso são mais altas).
 
 | Página | Desktop | Celular |
 |---|---|---|
@@ -81,7 +81,14 @@ Capturas reais das páginas, em desktop (1440 × 900) e celular (390 × 844):
 | Adicionar livro | ![Formulário no desktop](docs/telas/desktop-livro-form.webp) | ![Formulário no celular](docs/telas/mobile-livro-form.webp) |
 | Detalhes | ![Detalhes no desktop](docs/telas/desktop-livro.webp) | ![Detalhes no celular](docs/telas/mobile-livro.webp) |
 
-Menu (Offcanvas) aberto no celular: ![Offcanvas aberto](docs/telas/mobile-offcanvas.webp)
+Componentes do Bootstrap com JavaScript em uso:
+
+| Componente | Desktop | Celular |
+|---|---|---|
+| Offcanvas (menu) | — (a navbar fica aberta) | ![Offcanvas aberto](docs/telas/mobile-offcanvas.webp) |
+| Modal (excluir livro) | ![Modal no desktop](docs/telas/desktop-modal.webp) | ![Modal no celular](docs/telas/mobile-modal.webp) |
+
+Também há capturas em 768 × 1024 (`docs/telas/tablet-*.webp`).
 
 ## ✅ Checklist | Indicadores de Desempenho
 
